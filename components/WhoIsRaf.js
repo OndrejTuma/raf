@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import ReactSVG from 'react-svg'
+import { nextConnect } from '../store'
 import { getTranslate } from 'react-localize-redux'
 
-import { nextConnect } from '../store'
+import ReactSVG from 'react-svg'
 
-class Scroll extends Component {
+
+class WhiIsRaf extends Component {
+
 	render() {
 		const { translate } = this.props
 
 		return (
-			<div className="scroll">
-				<p>{translate('scroll')}</p>
-				<ReactSVG path="static/svg/mouse.svg" className="mouse" />
-				<ReactSVG path="static/svg/mouse-down.svg" className="arrow" />
+			<div className="who-is-raf">
+				<p>{translate('who')}</p>
 			</div>
 		)
 	}
@@ -22,4 +22,4 @@ export default nextConnect(state => ({
 	auth: state.auth,
 	global: state.global,
 	translate: (state.locale && state.locale.languages.length) ? getTranslate(state.locale) : () => {},
-}))(Scroll)
+}))(WhiIsRaf)

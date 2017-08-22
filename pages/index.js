@@ -8,7 +8,10 @@ import Header from '../components/Header'
 import Languages from '../components/Languages'
 import Scroll from '../components/Scroll'
 import Youtube from '../components/Youtube'
+import WhoIsRaf from '../components/WhoIsRaf'
+
 import stylesheet from '../styles/index.scss'
+
 import { defaultLang, langs, strings } from '../translations'
 
 class Index extends Component {
@@ -31,6 +34,7 @@ class Index extends Component {
 				<Languages/>
 				<Youtube/>
 				<Scroll/>
+				<WhoIsRaf/>
             </div>
         )
     }

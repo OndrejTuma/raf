@@ -1,4 +1,4 @@
-export let defaultLang = 'sk'
+export let defaultLang = 'en'
 
 export const langs = ['en', 'cz', 'sk']
 

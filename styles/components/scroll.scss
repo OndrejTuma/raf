@@ -2,9 +2,14 @@
 	bottom: 30px;
 	left: 50%;
 	position: absolute;
+	text-align: center;
 	transform: translateX(-50%);
 
-
+	p {
+		font-size: .6em;
+		margin-bottom: 5px;
+		text-transform: uppercase;
+	}
 	svg {
 		fill: $white;
 		width: 30px;
@@ -22,6 +27,6 @@
 @keyframes jumpy {
 	0% { top: -5px; }
 	50% { top: 0; }
-	70% { top: 2px; }
+	70% { top: 5px; }
 	100% { top: -5px; }
 }
