@@ -1,0 +1,40 @@
+// assumes .checkbox > input + label
+.checkbox {
+	$border-width: 1px;
+	$boder-color: $gray;
+	$active-background: $red;
+	$label-padding-left: 25px;
+	$size: 18px;
+	$top: 3px;
+	$left: 5px;
+
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+
+	input {
+		height: auto;
+		position: absolute;
+		visibility: hidden;
+
+		&:checked + label {
+
+			&:before {
+				background-color: $active-background;
+			}
+		}
+
+		& + label {
+			cursor: pointer;
+			padding-left: $label-padding-left;
+
+			&:before {
+				@include square($size);
+				border: $border-width solid $boder-color;
+				content: '';
+				position: absolute $top auto auto $left;
+			}
+		}
+	}
+
+}

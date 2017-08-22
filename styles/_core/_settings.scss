@@ -1,0 +1,13 @@
+
+// set media query variables
+@include media-queries(true);
+
+// set font face
+@include font-face($font-brandon, 'BrandonGrotesque-Bold', $fonts-url) {
+	font-weight: 700;
+};
+@include font-face($font-brandon, 'BrandonGrotesque-Regular', $fonts-url);
+
+
+//$icomoon-font-path: "#{$icons-url}fonts" !default;
+//@import "../../icons/style.scss";	// assets/icons/ _unpacked_icomoon_files_
