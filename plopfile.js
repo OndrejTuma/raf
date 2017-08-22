@@ -1,6 +1,7 @@
 const paths = {
+	components: 'components/',
 	sass: 'styles/',
-	components: 'styles/components/',
+	sassComponents: 'styles/components/',
 	pages: 'styles/pages/',
 }
 
@@ -23,13 +24,30 @@ module.exports = function (plop) {
 		}],
 		actions: [{
 			type: 'add',
-			path: `${paths.components}/{{component}}.scss`,
-			templateFile: 'plop-templates/component.txt',
+			path: `${paths.sassComponents}/{{component}}.scss`,
+			templateFile: 'plop-templates/sass-component.txt',
 		},{
 			type: 'modify',
 			path: `${paths.sass}/index.scss`,
 			pattern: /(\/\/#generated-components)/gi,
 			template: `$1\n@import "components/{{component}}";`
+		}]
+	});
+	plop.setGenerator('comp', {
+		description: 'Nova JS komponenta',
+		prompts: [{
+			type: 'input',
+			name: 'component',
+			message: 'Nazev komponenty:',
+			validate: function (value) {
+				if ((/.+/).test(value)) { return true; }
+				return 'Nejak se jmenovat musi';
+			}
+		}],
+		actions: [{
+			type: 'add',
+			path: `${paths.components}/{{component}}.js`,
+			templateFile: 'plop-templates/component.txt',
 		}]
 	});
 	plop.setGenerator('page', {
