@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { localeReducer as locale } from 'react-localize-redux'
 
 const authReducer = (state = {
 	user: {
@@ -33,6 +34,7 @@ const globalReducer = (state = {
 
 
 export default combineReducers({
+	locale,
 	auth: authReducer,
 	global: globalReducer,
 })

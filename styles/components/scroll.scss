@@ -1,0 +1,27 @@
+.scroll {
+	bottom: 30px;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+
+
+	svg {
+		fill: $white;
+		width: 30px;
+
+		&.arrow {
+			animation: jumpy 1.5s infinite;
+			display: block;
+			margin: auto;
+			position: relative;
+			width: 10px;
+		}
+	}
+}
+
+@keyframes jumpy {
+	0% { top: -5px; }
+	50% { top: 0; }
+	70% { top: 2px; }
+	100% { top: -5px; }
+}
