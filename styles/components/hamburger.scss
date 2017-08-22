@@ -1,8 +1,11 @@
 .hamburger {
 	$line-thickness: 2px;
 	$line-margin-bottom: 4px;
+	$width: 60px;
 
-	.active & {
+	width: $width;
+
+	&.active {
 
 		&:after,
 		&:before {

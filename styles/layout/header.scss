@@ -1,86 +1,19 @@
 .header {
-	background-color: rgba($black, .8);
+	padding: 20px 10px 30px 30px;
 	position: relative;
 	z-index: 2;
 
-	[data-toggle='collapse'] {
-		color: $california;
-
-		&.collapsed {
-			color: $white;
-		}
-		&:hover {
-			color: $california;
-		}
-
-		.caret {
-			display: none;
-		}
+	.logo-footshop {
+		float: left;
+		margin-top: 5px;
 	}
 
-	.block-right {
-		font-size: 22px;
-		padding-top: 15px;
-		text-align: center;
+	.hamburger {
+		float: right;
+		padding-top: 7px;
 	}
-	.user-menu {
-		@extend %reset-ul;
-		text-align: left;
-
-		li {
-			padding-left: $padding--small;
-		}
+	.logo-raf {
+		display: block;
+		margin: auto;
 	}
-
-	a {
-		color: $white;
-		cursor: pointer;
-
-		&:hover {
-			color: $california;
-		}
-	}
-
-	@include media(tablet) {
-		[data-toggle='collapse'] {
-			&.collapsed .caret {
-				display: none;
-			}
-			&:hover .caret {
-				display: block;
-			}
-
-			.caret {
-				display: block;
-
-				&:before {
-					margin: 10px 0 0;
-					vertical-align: top;
-				}
-			}
-		}
-
-		.block-right {
-			font-size: 30px;
-			height: 100px;
-			padding-top: 30px;
-			position: relative;
-			z-index: 1;
-		}
-		.cart_block {
-			display: none;
-		}
-		.item {
-			display: inline-block;
-			padding: 0 5px;
-			position: relative;
-			vertical-align: top;
-
-			&:before {
-				margin: 0;
-			}
-
-		}
-	}
-
 }
