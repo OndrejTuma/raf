@@ -2,8 +2,9 @@ import React from 'react'
 
 const {{component}} = props =>  {
 	return (
-		<div className={'{{component}}'.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`)}>
+		<div className={`{{component}}`}>
 			<p>Component {{component}}</p>
+			{props.children}
 		</div>
 	)
 }

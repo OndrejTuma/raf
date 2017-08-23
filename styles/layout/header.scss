@@ -1,7 +1,10 @@
 .header {
 	background-color: #111;
+	left: 0;
 	padding: 20px 10px 25px 30px;
-	position: relative;
+	position: fixed;
+	top: 0;
+	width: 100%;
 	z-index: 2;
 
 	.logo-footshop {

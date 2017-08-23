@@ -34,7 +34,7 @@ module.exports = function (plop) {
 		}]
 	});
 	plop.setGenerator('comp', {
-		description: 'Nova JS komponenta',
+		description: 'Nova JS komponenta, vytvori pro ni i sass file',
 		prompts: [{
 			type: 'input',
 			name: 'component',
@@ -48,6 +48,15 @@ module.exports = function (plop) {
 			type: 'add',
 			path: `${paths.components}/{{component}}.js`,
 			templateFile: 'plop-templates/component.txt',
+		},{
+			type: 'add',
+			path: `${paths.sassComponents}/{{component}}.scss`,
+			templateFile: 'plop-templates/sass-component.txt',
+		},{
+			type: 'modify',
+			path: `${paths.sass}/index.scss`,
+			pattern: /(\/\/#generated-components)/gi,
+			template: `$1\n@import "components/{{component}}";`
 		}]
 	});
 	plop.setGenerator('page', {

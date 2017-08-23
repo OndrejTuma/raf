@@ -7,6 +7,7 @@ import { nextConnect } from '../store'
 import Header from '../components/Header'
 import Languages from '../components/Languages'
 import Scroll from '../components/Scroll'
+import Slide from '../components/Slide'
 import Youtube from '../components/Youtube'
 import WhoIsRaf from '../components/WhoIsRaf'
 
@@ -31,10 +32,16 @@ class Index extends Component {
                 	<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
                 </Head>
                 <Header/>
-				<Languages/>
-				<Youtube/>
 				<Scroll/>
-				<WhoIsRaf/>
+				<div>
+					<Slide>
+						<Languages/>
+						<Youtube/>
+					</Slide>
+					<Slide>
+						<WhoIsRaf/>
+					</Slide>
+				</div>
             </div>
         )
     }
