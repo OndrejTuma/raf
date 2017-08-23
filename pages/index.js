@@ -7,6 +7,7 @@ import { nextConnect } from '../store'
 import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
+import RafInFs from '../components/RafInFs'
 import Scroll from '../components/Scroll'
 import Signature from '../components/Signature'
 import Slide from '../components/Slide'
@@ -77,6 +78,13 @@ class Index extends Component {
 							fact2: translate('sign2'),
 							fact3: translate('sign3'),
 							fact4: translate('sign4'),
+						}}/>
+					</Slide>
+					<Slide>
+						<RafInFs translations={{
+							heading: translate('RafInFs'),
+							collection: translate('collection'),
+							inFs: translate('inFs'),
 						}}/>
 					</Slide>
 				</div>

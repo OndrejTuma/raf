@@ -91,4 +91,26 @@ export const strings = {
 		'Ultra rare hiking boots',
 	],
 
+	RafInFs: [
+		'Raf in Footshop',
+		'Raf ve Footshopu',
+		'Raf vo Footshope',
+	],
+	collection: [
+		'New collection',
+		'Aktuálni kolekce',
+		'Aktuálna kolekcia',
+	],
+	inFs: [
+		'in Footshop',
+		've Footshopu',
+		'vo Footshope',
+	],
+
+	foot: [
+		'Footshop zastává na českém a slovenském trhu vedoucí postavení, za což vděčí především svým aktivitám, které dalece přesahují prostý prodej tenisek. Spolupracuje se známými umělci a médii, a tak k nám jako jediný přináší řadu exkluzivních značek a kolekcí tenisek.  Více o FOOTSHOPU zde.',
+		'Footshop zastává na českém a slovenském trhu vedoucí postavení, za což vděčí především svým aktivitám, které dalece přesahují prostý prodej tenisek. Spolupracuje se známými umělci a médii, a tak k nám jako jediný přináší řadu exkluzivních značek a kolekcí tenisek.  Více o FOOTSHOPU zde.',
+		'Footshop zastává na českém a slovenském trhu vedoucí postavení, za což vděčí především svým aktivitám, které dalece přesahují prostý prodej tenisek. Spolupracuje se známými umělci a médii, a tak k nám jako jediný přináší řadu exkluzivních značek a kolekcí tenisek.  Více o FOOTSHOPU zde.',
+	],
+
 }

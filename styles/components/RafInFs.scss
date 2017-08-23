@@ -1,0 +1,17 @@
+.RafInFs {
+	.collection {
+		background-color: $white;
+		color: $black;
+		margin: 0 auto;
+		padding: 10px 20px;
+		text-align: center;
+		text-transform: uppercase;
+		width: 80%;
+
+		strong {
+			display: block;
+			font-size: 1.3em;
+			font-weight: 400;
+		}
+	}
+}
