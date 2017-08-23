@@ -5,6 +5,7 @@ import { addTranslation, getTranslate, setLanguages, getActiveLanguage } from 'r
 import { nextConnect } from '../store'
 
 import Header from '../components/Header'
+import History from '../components/History'
 import Languages from '../components/Languages'
 import Scroll from '../components/Scroll'
 import Slide from '../components/Slide'
@@ -24,6 +25,8 @@ class Index extends Component {
 	}
 
     render () {
+    	const { translate } = this.props
+
         return (
             <div>
                 <Head>
@@ -32,14 +35,35 @@ class Index extends Component {
                 	<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
                 </Head>
                 <Header/>
-				<Scroll/>
+				<Scroll translations={{
+					scroll: translate('scroll'),
+				}}/>
 				<div>
 					<Slide>
 						<Languages/>
-						<Youtube/>
+						<Youtube translations={{
+							loud: translate('loud'),
+							mute: translate('mute'),
+							raf: translate('raf'),
+						}}/>
 					</Slide>
 					<Slide>
-						<WhoIsRaf/>
+						<WhoIsRaf translations={{
+							heading: translate('who'),
+							about: translate('about'),
+							interview: translate('interview'),
+							cite: translate('cite1'),
+						}}/>
+					</Slide>
+					<Slide>
+						<History translations={{
+							heading: translate('history'),
+							fact1: translate('1989'),
+							fact2: translate('1995'),
+							fact3: translate('2001'),
+							fact4: translate('2006'),
+							fact5: translate('2013'),
+						}}/>
 					</Slide>
 				</div>
             </div>

@@ -1,0 +1,29 @@
+.youtube {
+
+	.video {
+		clear: both;
+		position: relative;
+
+		.title {
+			font-size: 50px;
+			font-weight: 700;
+			letter-spacing: 5px;
+			margin-bottom: 0;
+			opacity: .5;
+			position: absolute;
+			text-transform: uppercase;
+			top: 100%;
+
+			&.left {
+				left: 0;
+				transform: rotate(-90deg);
+				transform-origin: top left;
+			}
+			&.right {
+				right: 0;
+				transform: rotate(90deg);
+				transform-origin: top right;
+			}
+		}
+	}
+}

@@ -1,19 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ReactSVG from 'react-svg'
-import {getTranslate} from 'react-localize-redux'
-
-import {nextConnect} from '../store'
 
 class Scroll extends Component {
 	componentDidMount() {
-		window.addEventListener('scroll', this._handleScroll.bind(this));
-	}
-	componentWillUnmount() {
-		window.removeEventListener('scroll', this._handleScroll.bind(this));
+		window.addEventListener('scroll', this._handleScroll.bind(this))
+
+		this._handleScroll()
 	}
 
-	_handleScroll(event) {
-		let scrollTop = event.srcElement.body.scrollTop
+	_handleScroll() {
+		let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
 
 		if (scrollTop > 100) {
 			this._hide()
@@ -34,11 +30,11 @@ class Scroll extends Component {
 	}
 
 	render() {
-		const {translate} = this.props
+		const { translations: { scroll } } = this.props
 
 		return (
-			<div className="scroll" ref={elm => this.wrapper = elm} style={{ display: 'block' }}>
-				<p>{translate('scroll')}</p>
+			<div className="scroll" ref={elm => this.wrapper = elm} style={{ display: 'none' }}>
+				<p>{scroll}</p>
 				<ReactSVG path="static/svg/mouse.svg" className="mouse"/>
 				<ReactSVG path="static/svg/mouse-down.svg" className="arrow"/>
 			</div>
@@ -46,9 +42,4 @@ class Scroll extends Component {
 	}
 }
 
-export default nextConnect(state => ({
-	auth: state.auth,
-	global: state.global,
-	translate: (state.locale && state.locale.languages.length) ? getTranslate(state.locale) : () => {
-	},
-}))(Scroll)
+export default Scroll

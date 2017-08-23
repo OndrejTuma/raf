@@ -1,0 +1,30 @@
+.who-is-raf {
+	font-size: 16px;
+	line-height: 18px;
+	padding: 0 30px 0 20px;
+
+	blockquote {
+		color: $gray;
+		font-size: $font-size-small;
+		font-weight: 700;
+		margin: $margin--default 0;
+		text-align: center;
+
+		small {
+			float: right;
+			font-size: 16px;
+			font-weight: 400;
+			margin-top: 5px;
+			text-transform: uppercase;
+		}
+	}
+	img {
+		left: 0;
+		opacity: .4;
+		position: absolute;
+	}
+	p {
+		padding-top: 20%;
+		position: relative;
+	}
+}

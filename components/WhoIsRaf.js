@@ -1,25 +1,17 @@
-import React, { Component } from 'react'
-import { nextConnect } from '../store'
-import { getTranslate } from 'react-localize-redux'
+import React from 'react'
 
-import ReactSVG from 'react-svg'
-
-
-class WhiIsRaf extends Component {
-
-	render() {
-		const { translate } = this.props
-
-		return (
-			<div className="who-is-raf">
-				<p>{translate('who')}</p>
-			</div>
-		)
-	}
+const WhoIsRaf = ({
+	translations: { heading, about, interview, cite }
+}) => {
+	return (
+		<div className="who-is-raf">
+			<h2 className="heading">{heading}</h2>
+			<img src={`static/images/raf-bio.jpg`} alt="Raf Simons" className="image"/>
+			<p>{about}</p>
+			<a href="#">{interview}</a>
+			<blockquote>{cite}</blockquote>
+		</div>
+	)
 }
 
-export default nextConnect(state => ({
-	auth: state.auth,
-	global: state.global,
-	translate: (state.locale && state.locale.languages.length) ? getTranslate(state.locale) : () => {},
-}))(WhiIsRaf)
+export default WhoIsRaf

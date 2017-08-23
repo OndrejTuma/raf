@@ -24,6 +24,7 @@
 
 // thirdparty plugins
 @import "plugins/_sprite";
+@import "plugins/slick";
 
 //core settings
 @import "_core/_settings";
@@ -59,6 +60,10 @@
 // reusable components
 @import "components/hamburger";
 //#generated-components
+@import "components/History";
+@import "components/karaoke";
+@import "components/youtube";
+@import "components/who-is-raf";
 @import "components/Slide";
 @import "components/scroll";
 @import "components/languages";

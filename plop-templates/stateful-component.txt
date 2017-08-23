@@ -1,0 +1,15 @@
+import React, { Component } from 'react'
+
+class {{component}} extends Component {
+
+	render() {
+		return (
+			<div className={`{{component}}`}>
+				<p>Component {{component}}</p>
+				{this.props.children}
+			</div>
+		)
+	}
+}
+
+export default {{component}}

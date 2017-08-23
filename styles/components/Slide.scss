@@ -1,4 +1,17 @@
 .Slide {
 	min-height: 100vh;
-	padding-top: 80px;
+	padding-top: 100px;
+	position: relative;
+
+	.heading {
+		line-height: normal;
+		position: absolute;
+		right: 0;
+		top: 80px;
+		transform-origin: top right;
+		transform: rotate(90deg) translateX(100%);
+	}
+	.image {
+		max-width: 90%;
+	}
 }
