@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
 import Scroll from '../components/Scroll'
+import Signature from '../components/Signature'
 import Slide from '../components/Slide'
 import Youtube from '../components/Youtube'
 import WhoIsRaf from '../components/WhoIsRaf'
@@ -63,6 +64,19 @@ class Index extends Component {
 							fact3: translate('2001'),
 							fact4: translate('2006'),
 							fact5: translate('2013'),
+						}}/>
+					</Slide>
+					<Slide>
+						<Signature translations={{
+							heading: translate('signature'),
+							key1: translate('signKey1'),
+							key2: translate('signKey2'),
+							key3: translate('signKey3'),
+							key4: translate('signKey4'),
+							fact1: translate('sign1'),
+							fact2: translate('sign2'),
+							fact3: translate('sign3'),
+							fact4: translate('sign4'),
 						}}/>
 					</Slide>
 				</div>

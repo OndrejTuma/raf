@@ -49,4 +49,46 @@ export const strings = {
 		'píše se rok 2013',
 	],
 
+	signature: ['Signature style', 'Signature style', 'Signature style'],
+	signKey1: [
+		'Ozweego Bunny',
+		'Ozweego Bunny',
+		'Ozweego Bunny',
+	],
+	signKey2: [
+		'1990 Ozweego',
+		'1990 Ozweego',
+		'1990 Ozweego',
+	],
+	signKey3: [
+		'Raf Simons x Fred Perry',
+		'Raf Simons x Fred Perry',
+		'Raf Simons x Fred Perry',
+	],
+	signKey4: [
+		'Ultra rare hiking boots',
+		'Ultra rare hiking boots',
+		'Ultra rare hiking boots',
+	],
+	sign1: [
+		'Již od svého debutu v roce 2008 představovala spolupráce belgického návrháře s britskou značkou unikátní propojení dvou sfér. Jednou z nich byla high fashion, tedy móda přehlídkových mol. Ta se nenásilně mísí s tradiční anglickou značkou s rozsáhlými kořeny v celé řadě subkultur, a dává tak v jeden okamžik vzniknout kontrastu i symbióze.',
+		'Již od svého debutu v roce 2008 představovala spolupráce belgického návrháře s britskou značkou unikátní propojení dvou sfér. Jednou z nich byla high fashion, tedy móda přehlídkových mol. Ta se nenásilně mísí s tradiční anglickou značkou s rozsáhlými kořeny v celé řadě subkultur, a dává tak v jeden okamžik vzniknout kontrastu i symbióze.',
+		'Již od svého debutu v roce 2008 představovala spolupráce belgického návrháře s britskou značkou unikátní propojení dvou sfér. Jednou z nich byla high fashion, tedy móda přehlídkových mol. Ta se nenásilně mísí s tradiční anglickou značkou s rozsáhlými kořeny v celé řadě subkultur, a dává tak v jeden okamžik vzniknout kontrastu i symbióze.',
+	],
+	sign2: [
+		'1990 Ozweego',
+		'1990 Ozweego',
+		'1990 Ozweego',
+	],
+	sign3: [
+		'Raf Simons x Fred Perry',
+		'Raf Simons x Fred Perry',
+		'Raf Simons x Fred Perry',
+	],
+	sign4: [
+		'Ultra rare hiking boots',
+		'Ultra rare hiking boots',
+		'Ultra rare hiking boots',
+	],
+
 }

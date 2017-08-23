@@ -1,0 +1,18 @@
+.Signature {
+
+	.slick-slide {
+		position: relative;
+
+		img {
+			max-height: 50vh;
+			opacity: .5;
+		}
+		p {
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			right: 40px;
+		}
+	}
+
+}
