@@ -6,12 +6,29 @@ import YouTube from 'react-youtube'
 import lyrics from '../karaoke-lyrics'
 
 
+if (typeof window != 'undefined' && window) {
+	window.originalSetInterval=window.setInterval;
+	window.originalClearInterval=window.clearInterval;
+	window.activeIntervals=0;
+
+	window.setInterval=function(func,delay)
+	{
+		window.activeIntervals++;
+		return window.originalSetInterval(func,delay);
+	};
+
+	window.clearInterval=function(intervalID)
+	{
+		window.activeIntervals--;
+		window.originalClearInterval(intervalID);
+	};
+}
+
+
 class Youtube extends Component {
 
 	constructor(props) {
 		super(props)
-
-		clearInterval(this.karaokeInterval)
 
 		this.state = {
 			karaoke: ''
@@ -19,11 +36,13 @@ class Youtube extends Component {
 	}
 
 	_ytStateChange(e) {
-		if (e.data === 1) {
-			this.karaokeInterval = setInterval(this.setCurrentKaraokeTexts.bind(this), 100)
-		}
-		else {
+		if (this.karaokeInterval) {
 			clearInterval(this.karaokeInterval)
+			this.karaokeInterval = 0
+		}
+
+		if (e.data === 1 && this.karaokeInterval === 0) {
+			this.karaokeInterval = setInterval(this.setCurrentKaraokeTexts.bind(this), 200)
 		}
 	}
 	_ytReady(event) {
@@ -43,10 +62,11 @@ class Youtube extends Component {
 	}
 
 	setCurrentKaraokeTexts() {
+		console.log('setCurrentKaraokeTexts', this.karaokeInterval);
 		if (this.youtube) {
 			let currentTime = this.youtube.getCurrentTime()
 
-			if (window) {
+			if (currentTime) {
 				this.setState(prevState => ({
 					karaoke: lyrics.map((lyric, i) => {
 						if (currentTime >= lyric.duration.from && lyric.duration.to >= currentTime) {

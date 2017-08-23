@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import Slider from 'react-slick'
+import CountUp from 'countup.js'
+
+import Carousel from './Carousel'
 
 class History extends Component {
 
@@ -7,17 +9,14 @@ class History extends Component {
 		const { translations: { fact1, fact2, fact3, fact4, fact5 } } = this.props
 
 		this.slides = [
-			{ year: 1989, text: fact1 },
-			{ year: 1995, text: fact2 },
-			{ year: 2001, text: fact3 },
-			{ year: 2006, text: fact4 },
-			{ year: 2013, text: fact5 },
+			{ year: 1989, text: fact1, image: 'static/images/1989.jpg' },
+			{ year: 1995, text: fact2, image: 'static/images/1989.jpg' },
+			{ year: 2001, text: fact3, image: 'static/images/1989.jpg' },
+			{ year: 2006, text: fact4, image: 'static/images/1989.jpg' },
+			{ year: 2013, text: fact5, image: 'static/images/1989.jpg' },
 		]
 
 		this.sliderSettings = {
-			customPaging: (i) => <span>{this.slides[i] ? this.slides[i].year : i+1}</span>,
-			dots: true,
-			dotsClass: 'slick-dots slick-thumb',
 			infinite: true,
 			speed: 500,
 			slidesToShow: 1,
@@ -31,14 +30,7 @@ class History extends Component {
 		return (
 			<div className={`History`}>
 				<h2 className="heading">{heading}</h2>
-				<img src={`static/images/1989.jpg`} alt="1989" className="image"/>
-				<Slider {...this.sliderSettings}>
-					{this.slides.map((slide, i) => (
-						<div key={i}>
-							<p>{slide.text}</p>
-						</div>
-					))}
-				</Slider>
+				<Carousel slides={this.slides} settings={this.sliderSettings} />
 			</div>
 		)
 	}

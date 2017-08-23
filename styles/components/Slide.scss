@@ -10,8 +10,6 @@
 		top: 80px;
 		transform-origin: top right;
 		transform: rotate(90deg) translateX(100%);
-	}
-	.image {
-		max-width: 90%;
+		z-index: 1;
 	}
 }
