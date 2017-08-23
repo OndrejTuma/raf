@@ -28,10 +28,24 @@ class Carousel extends Component {
 		}
 	}
 	render() {
-		const { className, hasCounter, slides } = this.props
+		const { className, hasCounter, reversed, slides } = this.props
+
+		let step = <div className="step">
+			<div className="prev" onClick={() => this.slider.slickPrev()}>
+				<ReactSVG path="static/svg/arrow-up.svg"/>
+			</div>
+			<div className="next" onClick={() => this.slider.slickNext()}>
+				<ReactSVG path="static/svg/arrow-down.svg"/>
+			</div>
+		</div>
+		let timeline = <ul className="timeline active0" ref={elm => this.timeline = elm}>
+			{slides && slides.map((slide, i) => (
+				<li key={i} onClick={() => this.slider.slickGoTo(i)}>{slide ? slide.key : i+1}</li>
+			))}
+		</ul>
 
 		return (
-			<div className={`Carousel${className ? ` ${className}` : ``}`}>
+			<div className={`Carousel${className ? ` ${className}` : ``}${reversed ? ` reversed` : ``}`}>
 				<Slider {...this.sliderSettings} ref={elm => this.slider = elm}>
 					{slides.map((slide, i) => (
 						<div key={i}>
@@ -40,22 +54,17 @@ class Carousel extends Component {
 						</div>
 					))}
 				</Slider>
-				<div className="slider-controls">
-					<ul className="timeline active0" ref={elm => this.timeline = elm}>
-						{slides && slides.map((slide, i) => (
-							<li key={i} onClick={() => this.slider.slickGoTo(i)}>{slide ? slide.key : i+1}</li>
-						))}
-					</ul>
-					<div className="step">
-						<div className="prev" onClick={() => this.slider.slickPrev()}>
-							<ReactSVG path="static/svg/arrow-up.svg"/>
-						</div>
-						<div className="next" onClick={() => this.slider.slickNext()}>
-							<ReactSVG path="static/svg/arrow-down.svg"/>
-						</div>
+				{reversed ? (
+					<div className="slider-controls">
+						{step}{timeline}
 					</div>
-					{hasCounter && <span ref={elm => this.selectedYear = elm} className="current">{slides[0].key}</span>}
-				</div>
+
+				) : (
+					<div className="slider-controls">
+						{timeline}{step}
+					</div>
+				)}
+				{hasCounter && <span ref={elm => this.selectedYear = elm} className="current">{slides[0].key}</span>}
 			</div>
 		)
 	}

@@ -21,7 +21,7 @@ class Signature extends Component {
 		return (
 			<div className={`Signature`}>
 				<h2 className="heading">{heading}</h2>
-				<Carousel slides={this.slides} />
+				<Carousel slides={this.slides} reversed={true} />
 			</div>
 		)
 	}
