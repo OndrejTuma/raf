@@ -12,7 +12,7 @@ const Socials = props =>  {
 	return (
 		<ul className={`Socials`}>
 			{socials.map((service, i) => (
-				<li>
+				<li key={i}>
 					<a href={service.url} title={service.name}>
 						<SVG path={`static/svg/${service.svg}.svg`} />
 					</a>

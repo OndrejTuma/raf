@@ -19,6 +19,9 @@
 			transform: translate(-50%, -50%);
 			width: 100%;
 		}
+		img {
+			opacity: .7;
+		}
 		span {
 			font-size: $font-size-small;
 			letter-spacing: 3px;

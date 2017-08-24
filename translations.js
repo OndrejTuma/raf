@@ -3,6 +3,12 @@ export let defaultLang = 'en'
 export const langs = ['en', 'cz', 'sk']
 
 export const strings = {
+	title: [
+		'Raf Simons',
+		'Raf Simons',
+		'Raf Simons',
+	],
+
 	raf: ['Raf Simons', 'Raf Simons', 'Raf Simons'],
 	lang: ['Language', 'Jazyk', 'Jazyk'],
 	mute: ['Mute music', 'Ztlumit', 'Ztlmiť'],

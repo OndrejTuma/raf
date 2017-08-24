@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SVG from 'react-svg'
 
-class Scroll extends Component {
+class ScrollDown extends Component {
 	componentDidMount() {
 		window.addEventListener('scroll', this._handleScroll.bind(this))
 
@@ -33,7 +33,7 @@ class Scroll extends Component {
 		const { translations: { scroll } } = this.props
 
 		return (
-			<div className="scroll" ref={elm => this.wrapper = elm} style={{ display: 'none' }}>
+			<div className="scroll-down" ref={elm => this.wrapper = elm} style={{ display: 'none' }}>
 				<p>{scroll}</p>
 				<SVG path="static/svg/mouse.svg" className="mouse"/>
 				<SVG path="static/svg/mouse-down.svg" className="arrow"/>
@@ -42,4 +42,4 @@ class Scroll extends Component {
 	}
 }
 
-export default Scroll
+export default ScrollDown
