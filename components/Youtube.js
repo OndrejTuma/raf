@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import ReactSVG from 'react-svg'
+import SVG from 'react-svg'
 import YouTube from 'react-youtube'
 
 import lyrics from '../karaoke-lyrics'
@@ -95,7 +95,7 @@ class Youtube extends Component {
 					}
 				}}>
 					<p ref={elm => this.mute = elm}>{loud}</p>
-					<ReactSVG path="static/svg/mute.svg"/>
+					<SVG path="static/svg/mute.svg"/>
 				</div>
 				<div className="video">
 					<p className="title left">{raf}</p>

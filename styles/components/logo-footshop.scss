@@ -1,4 +1,8 @@
 .logo-footshop {
 	fill: $white;
 	width: 50px;
+
+	&.bigger {
+		width: 80px;
+	}
 }

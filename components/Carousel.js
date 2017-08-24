@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactSVG from 'react-svg'
+import SVG from 'react-svg'
 import Slider from 'react-slick'
 import CountUp from 'countup.js'
 
@@ -14,7 +14,7 @@ class Carousel extends Component {
 						this.selectedYear,
 						slides[oldIndex].key,
 						slides[newIndex].key,
-						0, 1,
+						0, 1.5,
 						{ separator: '' }
 					)
 					numAnim.start();
@@ -32,10 +32,10 @@ class Carousel extends Component {
 
 		let step = <div className="step">
 			<div className="prev" onClick={() => this.slider.slickPrev()}>
-				<ReactSVG path="static/svg/arrow-up.svg"/>
+				<SVG path="static/svg/arrow-up.svg"/>
 			</div>
 			<div className="next" onClick={() => this.slider.slickNext()}>
-				<ReactSVG path="static/svg/arrow-down.svg"/>
+				<SVG path="static/svg/arrow-down.svg"/>
 			</div>
 		</div>
 		let timeline = <ul className="timeline active0" ref={elm => this.timeline = elm}>

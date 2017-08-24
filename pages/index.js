@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
+import SVG from 'react-svg'
 import { addTranslation, getTranslate, setLanguages, getActiveLanguage } from 'react-localize-redux'
 
 import { nextConnect } from '../store'
@@ -11,6 +12,7 @@ import RafInFs from '../components/RafInFs'
 import Scroll from '../components/Scroll'
 import Signature from '../components/Signature'
 import Slide from '../components/Slide'
+import Socials from '../components/Socials'
 import Youtube from '../components/Youtube'
 import WhoIsRaf from '../components/WhoIsRaf'
 
@@ -86,6 +88,11 @@ class Index extends Component {
 							collection: translate('collection'),
 							inFs: translate('inFs'),
 						}}/>
+						<Socials/>
+						<p className="fst tac" style={{ width: '80%', lineHeight: 1, margin: '0 auto 2em' }}>{translate('foot')}</p>
+						<p className="tac mbs">
+							<SVG path="static/svg/logo-footshop.svg" className="logo-footshop bigger" />
+						</p>
 					</Slide>
 				</div>
             </div>

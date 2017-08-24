@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactSVG from 'react-svg'
+import SVG from 'react-svg'
 
 class Scroll extends Component {
 	componentDidMount() {
@@ -35,8 +35,8 @@ class Scroll extends Component {
 		return (
 			<div className="scroll" ref={elm => this.wrapper = elm} style={{ display: 'none' }}>
 				<p>{scroll}</p>
-				<ReactSVG path="static/svg/mouse.svg" className="mouse"/>
-				<ReactSVG path="static/svg/mouse-down.svg" className="arrow"/>
+				<SVG path="static/svg/mouse.svg" className="mouse"/>
+				<SVG path="static/svg/mouse-down.svg" className="arrow"/>
 			</div>
 		)
 	}

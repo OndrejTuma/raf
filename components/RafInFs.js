@@ -8,9 +8,12 @@ class RafInFs extends Component {
 		return (
 			<div className={`RafInFs`}>
 				<h2 className="heading">{heading}</h2>
-				<div className="collection">
-					<strong>{collection}</strong> {inFs}
-				</div>
+				<figure className="collection">
+					<img src="static/images/new-collection.jpg" alt={heading}/>
+					<figcaption>
+						<strong>{collection}</strong> <span>{inFs}</span>
+					</figcaption>
+				</figure>
 			</div>
 		)
 	}

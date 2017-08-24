@@ -1,13 +1,28 @@
 .RafInFs {
 	.collection {
-		background-color: $white;
 		color: $black;
 		margin: 0 auto;
-		padding: 10px 20px;
+		padding: $padding--default;
+		position: relative;
 		text-align: center;
 		text-transform: uppercase;
 		width: 80%;
 
+		figcaption {
+			background-color: $white;
+			box-shadow: 5px 5px 20px rgba($black, .5);
+			left: 50%;
+			line-height: 1;
+			position: absolute;
+			padding: 10px;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+		}
+		span {
+			font-size: $font-size-small;
+			letter-spacing: 3px;
+		}
 		strong {
 			display: block;
 			font-size: 1.3em;

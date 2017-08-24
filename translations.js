@@ -98,8 +98,8 @@ export const strings = {
 	],
 	collection: [
 		'New collection',
-		'Aktuálni kolekce',
-		'Aktuálna kolekcia',
+		'Aktuální kolekce',
+		'Aktuální kolekcia',
 	],
 	inFs: [
 		'in Footshop',

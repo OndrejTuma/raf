@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactSVG from 'react-svg'
+import SVG from 'react-svg'
 import Link from 'next/link'
 
 import Hamburger from './Hamburger'
@@ -7,8 +7,8 @@ import Hamburger from './Hamburger'
 export default () =>
 	<div className="header">
 		<Link href="/">
-			<a><ReactSVG path="static/svg/footshop.svg" className="logo-footshop" /></a>
+			<a><SVG path="static/svg/logo-footshop.svg" className="logo-footshop" /></a>
 		</Link>
 		<Hamburger/>
-		<ReactSVG path="static/svg/raf.svg" className="logo-raf" />
+		<SVG path="static/svg/logo-raf.svg" className="logo-raf" />
 	</div>
