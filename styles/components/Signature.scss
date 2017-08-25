@@ -1,16 +1,25 @@
 .Signature {
 
-	.slick-slide {
+	.Carousel .slick-slide {
 		position: relative;
+
+		&.slick-active {
+			img {
+				opacity: .5;
+			}
+			p {
+				bottom: 0;
+			}
+		}
 
 		img {
 			max-height: 50vh;
-			opacity: .5;
 		}
 		p {
-			bottom: 0;
+			bottom: -20px;
 			left: 0;
 			position: absolute;
+			top: auto !important;
 			right: 40px;
 		}
 	}
