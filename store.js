@@ -10,8 +10,8 @@ const initStore = (initialState) => {
 	return createStore(
 		reducers,
 		initialState,
-		//applyMiddleware(thunkMiddleware, loggerMiddleware),
-		applyMiddleware(thunkMiddleware),
+		applyMiddleware(thunkMiddleware, loggerMiddleware),
+		//applyMiddleware(thunkMiddleware),
 	)
 }
 

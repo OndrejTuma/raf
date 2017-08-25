@@ -1,0 +1,35 @@
+.Menu {
+	font-size: $font-size-small;
+	position: relative;
+	z-index: 11;
+
+	.hamburger {
+		position: fixed;
+		right: 10px;
+		top: 28px;
+	}
+	.items {
+		bottom: 0;
+		position: fixed;
+		top: 60px;
+		width: 100%;
+	}
+
+	ul {
+		background-color: $cod-gray;
+		height: 100%;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		a {
+			display: block;
+			text-decoration: none;
+		}
+		li {
+			padding: 5px 30px;
+			position: relative;
+			will-change: left, opacity;
+		}
+	}
+}

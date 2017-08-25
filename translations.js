@@ -9,6 +9,32 @@ export const strings = {
 		'Raf Simons',
 	],
 
+	menu1: [
+		'Home',
+		'Domů',
+		'Hore'
+	],
+	menu2: [
+		'Who is Raf?',
+		'Kdo je Raf?',
+		'Kto je Raf?',
+	],
+	menu3: [
+		'History',
+		'Historie',
+		'História',
+	],
+	menu4: [
+		'Signature style',
+		'Signature style',
+		'Signature style',
+	],
+	menu5: [
+		'Raf in Footshop',
+		'Raf ve Footshopu',
+		'Raf vo Footshope',
+	],
+
 	raf: ['Raf Simons', 'Raf Simons', 'Raf Simons'],
 	lang: ['Language', 'Jazyk', 'Jazyk'],
 	mute: ['Mute music', 'Ztlumit', 'Ztlmiť'],

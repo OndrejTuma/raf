@@ -1,2 +1,4 @@
 todo:
 - mizejici texty v carouselech
+- citace na druhem slidu
+- uryvky z pisnicky na vsech slidech krome 1.

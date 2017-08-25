@@ -9,7 +9,7 @@ class RafInFs extends Component {
 			<div className={`RafInFs`}>
 				<h2 className="heading">{heading}</h2>
 				<figure className="collection">
-					<img src="static/images/new-collection.jpg" alt={heading}/>
+					<img src="static/images/new-collection.jpg" alt={heading} />
 					<figcaption>
 						<strong>{collection}</strong> <span>{inFs}</span>
 					</figcaption>

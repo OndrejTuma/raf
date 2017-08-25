@@ -8,6 +8,9 @@ class Carousel extends Component {
 		const { hasCounter, slides } = this.props
 
 		this.sliderSettings = {
+			afterChange: newIndex => {
+
+			},
 			beforeChange: (oldIndex, newIndex) => {
 				if (hasCounter && slides[oldIndex] && slides[newIndex]) {
 					let numAnim = new CountUp(
@@ -21,11 +24,14 @@ class Carousel extends Component {
 				}
 				this.timeline.className = `timeline active${newIndex}`
 			},
+			draggable: false,
 			fade: true,
 			infinite: true,
-			speed: 500,
+			lazyLoad: true,
+			speed: 1500,
 			slidesToShow: 1,
 			slidesToScroll: 1,
+			swipe: false,
 		}
 	}
 	render() {
@@ -50,7 +56,7 @@ class Carousel extends Component {
 				<Slider {...this.sliderSettings} ref={elm => this.slider = elm}>
 					{slides.map((slide, i) => (
 						<div key={i}>
-							{slide.image && <img src={slide.image} alt={`${slide.key}`} className="image"/>}
+							{slide.image && <img src={slide.image} alt={`${slide.key}`} />}
 							<p>{slide.text}</p>
 						</div>
 					))}

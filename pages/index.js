@@ -8,6 +8,7 @@ import {nextConnect} from '../store'
 import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
+import Menu from '../components/Menu'
 import RafInFs from '../components/RafInFs'
 import Signature from '../components/Signature'
 import Slider from '../components/Slider'
@@ -39,6 +40,14 @@ class Index extends Component {
 				</Head>
 
 				<Header/>
+
+				<Menu translations={{
+					item1: translate('menu1'),
+					item2: translate('menu2'),
+					item3: translate('menu3'),
+					item4: translate('menu4'),
+					item5: translate('menu5'),
+				}} />
 
 				<Slider translations={{ scroll: translate('scroll') }}>
 					<div>

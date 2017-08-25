@@ -1,21 +1,18 @@
 .header {
-	background-color: #111;
+	background-color: $cod-gray;
 	left: 0;
-	padding: 20px 10px 25px 30px;
+	padding: 20px 10px 20px 30px;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 2;
 
 	.logo-footshop {
-		float: left;
-		margin-top: 5px;
+		left: 30px;
+		position: absolute;
+		top: 25px;
 	}
 
-	.hamburger {
-		float: right;
-		padding-top: 8px;
-	}
 	.logo-raf {
 		display: block;
 		margin: auto;

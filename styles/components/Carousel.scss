@@ -37,8 +37,34 @@
 	.slick-slide {
 		padding-right: 40px;
 
+		&.slick-active {
+			img,
+			p {
+				opacity: 1;
+			}
+			img {
+				top: 0;
+			}
+			p {
+				top: 0;
+			}
+		}
+
+		img,
+		p {
+			opacity: 0;
+			transition: all .5s;
+		}
+
+		img {
+			opacity: 0;
+			position: relative;
+			top: -20px;
+		}
 		p {
 			padding-left: 20px;
+			position: relative;
+			top: 20px;
 		}
 	}
 	.slider-controls {

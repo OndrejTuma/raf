@@ -15,6 +15,9 @@ class Youtube extends Component {
 			karaoke: ''
 		}
 	}
+	componentWillUnmount () {
+		clearInterval(this.karaokeInterval)
+	}
 
 	_ytStateChange(e) {
 		if (this.karaokeInterval) {
@@ -43,7 +46,6 @@ this.youtube.mute()
 	}
 
 	setCurrentKaraokeTexts() {
-		console.log('setCurrentKaraokeTexts', this.karaokeInterval);
 		if (this.youtube) {
 			let currentTime = this.youtube.getCurrentTime()
 

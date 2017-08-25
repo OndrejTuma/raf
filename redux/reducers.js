@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import { localeReducer as locale } from 'react-localize-redux'
 
+import actions from './action-types'
+
 const authReducer = (state = {
 	user: {
 		id: 0,
@@ -9,24 +11,36 @@ const authReducer = (state = {
 	isLogged: false,
 }, action) => {
 	switch (action.type) {
-		case 'AUTH_USER': return Object.assign({}, state, {
+		case actions.AUTH_USER: return Object.assign({}, state, {
 			user: action.payload
 		})
-		case 'LOG_IN': return Object.assign({}, state, {
+		case actions.LOG_IN: return Object.assign({}, state, {
 			isLogged: true
 		})
-		case 'LOG_OUT': return Object.assign({}, state, {
+		case actions.LOG_OUT: return Object.assign({}, state, {
 			isLogged: false
 		})
 		default: return state
 	}
 }
 const globalReducer = (state = {
-	fetching: false,
+	slider: {
+		activeSlide: 0,
+		previousSlide: null,
+	},
 }, action) => {
 	switch (action.type) {
-		case 'IS_FETCHING':  return Object.assign({}, state, {
-			fetching: action.payload,
+		case actions.SET_ACTIVE_SLIDE:  return Object.assign({}, state, {
+			slider: {
+				...state.slider,
+				activeSlide: action.payload,
+			},
+		})
+		case actions.SET_PREVIOUS_SLIDE:  return Object.assign({}, state, {
+			slider: {
+				...state.slider,
+				previousSlide: action.payload,
+			},
 		})
 		default: return state
 	}
