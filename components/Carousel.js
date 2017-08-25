@@ -21,6 +21,7 @@ class Carousel extends Component {
 				}
 				this.timeline.className = `timeline active${newIndex}`
 			},
+			fade: true,
 			infinite: true,
 			speed: 500,
 			slidesToShow: 1,

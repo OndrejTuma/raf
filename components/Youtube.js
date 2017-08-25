@@ -6,25 +6,6 @@ import YouTube from 'react-youtube'
 import lyrics from '../karaoke-lyrics'
 
 
-if (typeof window != 'undefined' && window) {
-	window.originalSetInterval=window.setInterval;
-	window.originalClearInterval=window.clearInterval;
-	window.activeIntervals=0;
-
-	window.setInterval=function(func,delay)
-	{
-		window.activeIntervals++;
-		return window.originalSetInterval(func,delay);
-	};
-
-	window.clearInterval=function(intervalID)
-	{
-		window.activeIntervals--;
-		window.originalClearInterval(intervalID);
-	};
-}
-
-
 class Youtube extends Component {
 
 	constructor(props) {
@@ -41,7 +22,7 @@ class Youtube extends Component {
 			this.karaokeInterval = 0
 		}
 
-		if (e.data === 1 && this.karaokeInterval === 0) {
+		if (e.data === 1 && !this.karaokeInterval) {
 			this.karaokeInterval = setInterval(this.setCurrentKaraokeTexts.bind(this), 200)
 		}
 	}
@@ -51,7 +32,7 @@ class Youtube extends Component {
 		this.youtube = event.target
 
 		this.youtube.playVideo()
-		this.youtube.mute()
+this.youtube.mute()
 
 		if (this.youtube.isMuted()) {
 			this.mute.innerHTML = loud
