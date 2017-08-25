@@ -100,10 +100,9 @@ class Slider extends Component {
 			this.slidingTimeout = setTimeout(() => {
 				// fix for kinetic scrolling of a browser
 				var activeSlideScrollTop = activeSlide * this._getViewportHeight()
-				if (activeSlideScrollTop != this.lastScrollTop) {
-					console.log('activeSlideScrollTop', activeSlideScrollTop);
+				// tolerance of 50px before setting frame to correct position
+				if (Math.abs(activeSlideScrollTop - this.lastScrollTop) > 50) {
 					document.body.scrollTop = activeSlideScrollTop
-					//this.slideTo(activeSlide)
 				}
 
 				this.isSliding = false
