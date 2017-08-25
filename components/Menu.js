@@ -16,12 +16,11 @@ class Menu extends Component {
 	}
 
 	handleClick(e, index) {
-		const { global: { slider: { activeSlide } } } = this.props
-
 		e.preventDefault()
 
-		this.props.dispatch(setActiveSlide(index, activeSlide))
+		const { activeSlide, dispatch } = this.props
 
+		dispatch(setActiveSlide(index, activeSlide))
 		this.setState({ open: false })
 	}
 	render() {
@@ -73,5 +72,6 @@ class Menu extends Component {
 }
 
 export default nextConnect(state => ({
-	global: state.global,
+	activeSlide: state.global.slider.activeSlide,
+	previousSlide: state.global.slider.previousSlide,
 }))(Menu)

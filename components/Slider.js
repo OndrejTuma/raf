@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
 import { Events, scrollSpy, scroller } from 'react-scroll'
 
 import {setActiveSlide} from '../redux/actions'
@@ -9,55 +8,42 @@ import ScrollDown from './ScrollDown'
 
 class Slider extends Component {
 
-	componentDidMount() {
-		this.scroller.vh = this._getViewportHeight()
-		this.scroller.scrollTop = this._getScrollTop()
-		this.scroller.activeSlide = Math.round(this.scroller.scrollTop / this.scroller.vh)
+	constructor (props) {
+		super(props)
 
-		Events.scrollEvent.register('begin', (to, element) => {
-
-		})
-		Events.scrollEvent.register('end', (to, element) => {
-			if (!to) {
-				return
-			}
-
-			let slide = to.match(/\d+/) ? parseInt(to.match(/\d+/)[0]) : null
-
-			if (slide >= 0) {
-				let oldSlide = this.scroller.direction > 0 ? slide + 1 : slide - 1,
-					oldElement = document.getElementById(`slide${oldSlide}`)
-
-				element.classList.add('active')
-
-				if (oldElement) {
-					oldElement.classList.remove('active')
-				}
-			}
-			setTimeout(() => this.scroller.isSliding = false, 100)
-		})
-		scrollSpy.update()
-
-		//window.addEventListener('scroll', this._handleScroll.bind(this))
+		this._handleScroll = this._handleScroll.bind(this)
+		this._handleScrollEnd = this._handleScrollEnd.bind(this)
 	}
-	componentWillMount() {
-		this.scroller = {
-			isSliding: false,
-			direction: 0,
-			duration: 1000,
-			prevSlide: null,
-			slides: 0,
-		}
-		this.scroller.settings = {
-			duration: this.scroller.duration,
+	componentDidMount() {
+		const { children } = this.props
+
+		this.isSliding = false
+		this.lastScrollTop = this._getScrollTop()
+		this.duration = 1000
+		this.scrollerSettings = {
+			duration: this.duration,
 			ignoreCancelEvents: true,
 			smooth: true,
+		}
+		this.slides = children.length
+		this.slidingTimeout = 0
+
+
+		Events.scrollEvent.register('begin', (to, element) => {} )
+		Events.scrollEvent.register('end', this._handleScrollEnd)
+		scrollSpy.update()
+
+		if (typeof window !== 'undefined') {
+			window.addEventListener('scroll', this._handleScroll)
 		}
 	}
 	componentWillUnmount() {
 		Events.scrollEvent.remove('begin')
 		Events.scrollEvent.remove('end')
-		//window.removeEventListener('scroll', this._handleScroll.bind(this))
+
+		if (typeof window !== 'undefined') {
+			window.removeEventListener('scroll', this._handleScroll)
+		}
 	}
 
 	_getScrollTop() {
@@ -67,48 +53,73 @@ class Slider extends Component {
 		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 	}
 	_handleScroll() {
-		let scrollTop = this._getScrollTop()
+		let { activeSlide, dispatch } = this.props
+		let actualScrollTop = this._getScrollTop()
+		let scrollDown = actualScrollTop > this.lastScrollTop
 
-		if (!this.scroller.isSliding) {
-			let currentSlide = Math.round(scrollTop / this.scroller.vh)
+		if (!this.isSliding) {
+			let nextSlide
 
-			// scroll down
-			if (scrollTop > this.scroller.scrollTop) {
-				this.scroller.direction = -1
-
-				if (this.scroller.activeSlide < this.scroller.slides - 1) {
-					this.scroller.isSliding = true
-					this.scroller.activeSlide = currentSlide + 1
-					this.slideTo(this.scroller.activeSlide)
-				}
+			if (scrollDown && activeSlide < this.slides - 1) {
+				nextSlide = activeSlide + 1
 			}
-			// scroll up
-			else {
-				this.scroller.direction = 1
-
-				if (this.scroller.activeSlide > 0) {
-					this.scroller.isSliding = true
-					this.scroller.activeSlide = currentSlide - 1
-					this.slideTo(this.scroller.activeSlide)
-				}
+			else if (!scrollDown && activeSlide > 0) {
+				nextSlide = activeSlide - 1
 			}
 
-console.log('scrolling', scrollTop, this.scroller.scrollTop, this.scroller.direction > 0 ? 'up' : 'down');
+			if (nextSlide >= 0) {
+				dispatch(setActiveSlide(nextSlide, activeSlide))
+			}
 		}
-		this.scroller.scrollTop = scrollTop
+
+		this.lastScrollTop = actualScrollTop
 	}
 	_handleScrollClick(e) {
-		const { global: { slider: { activeSlide } } } = this.props
 		e.preventDefault()
-		this.props.dispatch(setActiveSlide(1, activeSlide))
+		const {activeSlide, dispatch} = this.props
+
+		dispatch(setActiveSlide(1, activeSlide))
+	}
+	_handleScrollEnd(to, element) {
+		if (!to) {
+			return
+		}
+
+		let { activeSlide, previousSlide } = this.props,
+			slide = to.match(/\d+/) ? parseInt(to.match(/\d+/)[0]) : null
+
+		if (slide >= 0) {
+			element.classList.add('active')
+
+			// fix for kinetic scrolling of a browser
+			var activeSlideScrollTop = activeSlide * this._getViewportHeight()
+			if (activeSlideScrollTop != this.lastScrollTop) {
+				this.slideTo(activeSlide)
+			}
+
+			let oldElement = document.getElementById(`slide${previousSlide}`)
+			if (oldElement) {
+				oldElement.classList.remove('active')
+			}
+		}
+		if ( ! this.slidingTimeout) {
+			this.slidingTimeout = setTimeout(() => {
+				this.isSliding = false
+				clearTimeout(this.slidingTimeout)
+				this.slidingTimeout = 0
+			}, 100)
+		}
 	}
 
 	slideTo(slide) {
-		scroller.scrollTo(`slide${slide}`, this.scroller.settings)
+		// client-side only
+		if (typeof window !== 'undefined') {
+			this.isSliding = true
+			scroller.scrollTo(`slide${slide}`, this.scrollerSettings)
+		}
 	}
 	render() {
-		const { children, global: { slider: { activeSlide } }, translations: { scroll } } = this.props
-		this.scroller.slides = children.length
+		const { children, activeSlide, translations: { scroll } } = this.props
 
 		this.slideTo(activeSlide)
 
@@ -132,5 +143,6 @@ console.log('scrolling', scrollTop, this.scroller.scrollTop, this.scroller.direc
 }
 
 export default nextConnect(state => ({
-	global: state.global
+	activeSlide: state.global.slider.activeSlide,
+	previousSlide: state.global.slider.previousSlide,
 }))(Slider)
