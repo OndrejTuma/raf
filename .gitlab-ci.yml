@@ -1,0 +1,18 @@
+stages:
+    - deploy
+
+deploy to develop:
+    only:
+    - develop
+    stage: deploy
+    tags:
+    - shell
+    script: bash /home/web/scripts/deploy-raf-dev.sh
+
+deploy to production:
+    only:
+    - production
+    stage: deploy
+    tags:
+    - shell
+    script: bash  /home/web/scripts/deploy-raf-production.sh
