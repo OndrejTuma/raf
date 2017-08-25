@@ -91,12 +91,6 @@ class Slider extends Component {
 		if (slide >= 0) {
 			element.classList.add('active')
 
-			// fix for kinetic scrolling of a browser
-			var activeSlideScrollTop = activeSlide * this._getViewportHeight()
-			if (activeSlideScrollTop != this.lastScrollTop) {
-				this.slideTo(activeSlide)
-			}
-
 			let oldElement = document.getElementById(`slide${previousSlide}`)
 			if (oldElement) {
 				oldElement.classList.remove('active')
@@ -104,6 +98,14 @@ class Slider extends Component {
 		}
 		if ( ! this.slidingTimeout) {
 			this.slidingTimeout = setTimeout(() => {
+				// fix for kinetic scrolling of a browser
+				var activeSlideScrollTop = activeSlide * this._getViewportHeight()
+				if (activeSlideScrollTop != this.lastScrollTop) {
+					console.log('activeSlideScrollTop', activeSlideScrollTop);
+					document.body.scrollTop = activeSlideScrollTop
+					//this.slideTo(activeSlide)
+				}
+
 				this.isSliding = false
 				clearTimeout(this.slidingTimeout)
 				this.slidingTimeout = 0
@@ -113,7 +115,7 @@ class Slider extends Component {
 
 	slideTo(slide) {
 		// client-side only
-		if (typeof window !== 'undefined') {
+		if (typeof window !== 'undefined' && ! this.isSliding) {
 			this.isSliding = true
 			scroller.scrollTo(`slide${slide}`, this.scrollerSettings)
 		}
