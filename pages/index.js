@@ -52,7 +52,7 @@ class Index extends Component {
 	}
 
 	render() {
-		const {translate} = this.props
+		const {translate, activeSlide} = this.props
 
 		return (
 			<div>
@@ -82,12 +82,14 @@ class Index extends Component {
 						}}/>
 					</div>
 					<div>
-						<WhoIsRaf translations={{
+						<WhoIsRaf activeSlide={activeSlide} translations={{
 							heading: translate('who'),
 							about: translate('about'),
 							interview: translate('interview'),
-							cite: translate('cite1'),
-						}}/>
+						}} cites={[
+							{ text: translate('cite1'), author: translate('author1') },
+							{ text: translate('cite2'), author: translate('author2') },
+						]}/>
 					</div>
 					<div>
 						<History translations={{
@@ -133,6 +135,7 @@ class Index extends Component {
 
 export default nextConnect(state => ({
 	isMobile: state.global.isMobile,
+	activeSlide: state.global.slider.activeSlide,
 	translate: (state.locale && state.locale.languages.length) ? getTranslate(state.locale) : () => {},
 	currentLanguage: (state.locale && state.locale.languages.length) ? getActiveLanguage(state.locale) : '',
 }))(Index)

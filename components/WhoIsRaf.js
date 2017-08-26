@@ -1,7 +1,11 @@
 import React from 'react'
 
+import Cites from './Cites'
+
 const WhoIsRaf = ({
-	translations: { heading, about, interview, cite }
+	activeSlide,
+	cites,
+	translations: { heading, about, interview },
 }) => {
 	return (
 		<div className="who-is-raf">
@@ -10,7 +14,9 @@ const WhoIsRaf = ({
 			<div className="content">
 				<p>{about}</p>
 				<a href="#">{interview}</a>
-				<blockquote>{cite}</blockquote>
+				{activeSlide === 1 ? (
+					<Cites data={cites}/>
+				) : ''}
 			</div>
 		</div>
 	)

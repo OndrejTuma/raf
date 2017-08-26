@@ -49,9 +49,24 @@ export const strings = {
 	],
 	interview: ['Interview with Raf Simons for The New York Times', 'Rozhovor Rafa Simonse pro The New York Times', 'Rozhovor Rafa Simonse pro The New York Times'],
 	cite1: [
-		'"Raf is our fashion god." <small>A$ap Rocky</small>',
-		'"Raf is our fashion god." <small>A$ap Rocky</small>',
-		'"Raf is our fashion god." <small>A$ap Rocky</small>',
+		'Raf is our fashion god.',
+		'Raf is our fashion god.',
+		'Raf is our fashion god.',
+	],
+	author1: [
+		'A$ap Rocky',
+		'A$ap Rocky',
+		'A$ap Rocky',
+	],
+	cite2: [
+		'I have no idea who Raf is.',
+		'I have no idea who Raf is.',
+		'I have no idea who Raf is.',
+	],
+	author2: [
+		'unknown Stranger',
+		'unknown Stranger',
+		'unknown Stranger',
 	],
 
 	history: ['Raf\'s History', 'Historie', 'História'],
