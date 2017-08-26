@@ -1,3 +1,30 @@
 .Cites {
+	color: $gray;
 
+	blockquote {
+		font-size: $font-size-small;
+		font-weight: 700;
+		margin: $margin--default 0;
+		text-align: center;
+	}
+	small {
+		float: right;
+		font-size: $font-size-tiny;
+		font-weight: 400;
+		margin-top: 5px;
+		text-transform: uppercase;
+	}
+
+	@include media(phablet) {
+		float: left;
+
+		blockquote {
+			font-size: $font-size-big;
+			margin-bottom: 0;
+			padding-right: 50px;
+		}
+		small {
+			font-size: $font-size;
+		}
+	}
 }

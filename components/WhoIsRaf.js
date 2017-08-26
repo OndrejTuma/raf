@@ -12,8 +12,11 @@ const WhoIsRaf = ({
 			<h2 className="heading">{heading}</h2>
 			<img src={`static/images/raf-bio.jpg`} alt="Raf Simons" className="image"/>
 			<div className="content">
-				<p>{about}</p>
-				<a href="#">{interview}</a>
+				<p>
+					{about}<br/>
+					<a href="#">{interview}</a>
+				</p>
+
 				{activeSlide === 1 ? (
 					<Cites data={cites}/>
 				) : ''}
