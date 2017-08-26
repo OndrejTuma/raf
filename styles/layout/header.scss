@@ -17,4 +17,14 @@
 		display: block;
 		margin: auto;
 	}
+
+	@include media(phablet) {
+		background-color: transparent;
+		margin: auto;
+		max-width: 1000px;
+
+		.logo-raf {
+			float: right;
+		}
+	}
 }

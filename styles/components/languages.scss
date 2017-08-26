@@ -11,4 +11,10 @@
 	ul {
 		font-size: .8em;
 	}
+
+	@include media(phablet) {
+		left: 0;
+		position: absolute;
+		top: 100%;
+	}
 }

@@ -2,10 +2,20 @@ import React, { Component } from 'react'
 import SVG from 'react-svg'
 
 class ScrollDown extends Component {
+
+	constructor (props) {
+		super(props)
+
+		this._handleScroll = this._handleScroll.bind(this)
+	}
+
 	componentDidMount() {
-		window.addEventListener('scroll', this._handleScroll.bind(this))
+		window.addEventListener('scroll', this._handleScroll)
 
 		this._handleScroll()
+	}
+	componentWillUnmount () {
+		window.removeEventListener('scroll', this._handleScroll)
 	}
 
 	_handleScroll() {

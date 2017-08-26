@@ -1,11 +1,28 @@
-.youtube {
+.Youtube {
+	margin: auto;
+	max-width: 1000px;
+	position: relative;
 
+	.mute {
+		float: right;
+		font-size: $font-size-small;
+		padding: 30px 30px 30px 10px;
+		text-align: center;
+		text-transform: uppercase;
+
+		p {
+			margin-bottom: 0;
+		}
+		svg {
+			fill: $white;
+			width: 30px;
+		}
+	}
 	.video {
 		clear: both;
-		position: relative;
 
 		.title {
-			font-size: 50px;
+			//font-size: 50px;
 			font-weight: 700;
 			letter-spacing: 5px;
 			margin-bottom: 0;
@@ -24,6 +41,20 @@
 				transform: rotate(90deg);
 				transform-origin: top right;
 			}
+		}
+	}
+	.youtube {
+		position: relative;
+	}
+
+	@include media(phablet) {
+		padding-top: 100px;
+
+		.mute {
+			position: absolute;
+			right: 0;
+			top: 100%;
+			z-index: 1;
 		}
 	}
 }

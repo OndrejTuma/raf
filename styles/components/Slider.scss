@@ -46,4 +46,16 @@
 			transition: left $animationsDuration, opacity $animationsDuration;
 		}
 	}
+	.slide-video {
+
+	}
+
+	@include media(phablet) {
+		margin: auto;
+		max-width: 1000px;
+
+		.slide {
+			padding-top: 0;
+		}
+	}
 }

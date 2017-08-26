@@ -1,4 +1,8 @@
 .logo-raf {
 	@include dim(100px, 30px);
 	fill: $white;
+
+	@include media(phablet) {
+		@include dim(200px, 60px);
+	}
 }

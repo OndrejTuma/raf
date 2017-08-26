@@ -28,6 +28,10 @@ const globalReducer = (state = {
 		activeSlide: 0,
 		previousSlide: null,
 	},
+	youtube: {
+		state: null,
+	},
+	isMobile: null,
 }, action) => {
 	switch (action.type) {
 		case actions.SET_ACTIVE_SLIDE:  return Object.assign({}, state, {
@@ -42,6 +46,17 @@ const globalReducer = (state = {
 				previousSlide: action.payload,
 			},
 		})
+		case actions.SET_YOUTUBE_STATE:  return {
+			...state,
+			youtube: {
+				...state.youtube,
+				state: action.payload
+			}
+		}
+		case actions.SET_IS_MOBILE:  return {
+			...state,
+			isMobile: action.payload,
+		}
 		default: return state
 	}
 }

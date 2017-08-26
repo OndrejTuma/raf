@@ -24,7 +24,7 @@ class Menu extends Component {
 		this.setState({ open: false })
 	}
 	render() {
-		let { translations: { item1, item2, item3, item4, item5 } } = this.props
+		let { translations: { item1, item2, item3, item4, item5 }, isMobile } = this.props
 
 		let menuItems = [
 			{ name: item1, anchor: 'slide0' },
@@ -39,10 +39,16 @@ class Menu extends Component {
 
 		return (
 			<div className={`Menu`}>
-				<div className={hamburgerClass} onClick={() => this.setState({ open: !this.state.open })}>
-					<span className="lines"></span>
-				</div>
-				<Motion defaultStyle={{left: 100}} style={{left: spring(this.state.open ? 0 : 100, { stiffness: 200 })}}>
+				{isMobile && (
+					<div className={hamburgerClass} onClick={() => this.setState({ open: !this.state.open })}>
+						<span className="lines"></span>
+					</div>
+				)}
+				<Motion defaultStyle={{
+					left: isMobile ? 100 : 0
+				}} style={{
+					left: spring( this.state.open ? 0 : 100, { stiffness: 200 } )
+				}}>
 					{style => (
 						<div className="items" style={{ left: `${style.left}%` }}>
 							<StaggeredMotion
@@ -72,6 +78,7 @@ class Menu extends Component {
 }
 
 export default nextConnect(state => ({
+	isMobile: state.global.isMobile,
 	activeSlide: state.global.slider.activeSlide,
 	previousSlide: state.global.slider.previousSlide,
 }))(Menu)

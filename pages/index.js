@@ -4,6 +4,7 @@ import SVG from 'react-svg'
 import {addTranslation, getTranslate, setLanguages, getActiveLanguage} from 'react-localize-redux'
 
 import {nextConnect} from '../store'
+import {setIsMobile} from '../redux/actions'
 
 import Header from '../components/Header'
 import History from '../components/History'
@@ -26,6 +27,28 @@ class Index extends Component {
 		super(props)
 		this.props.dispatch(setLanguages(langs, defaultLang))
 		this.props.dispatch(addTranslation(strings))
+
+		this._setIsMobile = this._setIsMobile.bind(this)
+
+		this.mobileBreakpoint = 1000
+	}
+	componentDidMount() {
+		this._setIsMobile()
+
+		window.addEventListener('resize', this._setIsMobile)
+	}
+	componentWillUnmount() {
+		window.removeEventListener('resize', this._setIsMobile)
+	}
+
+	_setIsMobile () {
+		const { isMobile } = this.props
+
+		let currentIsMobile = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < this.mobileBreakpoint
+
+		if (isMobile != currentIsMobile) {
+			this.props.dispatch(setIsMobile(currentIsMobile))
+		}
 	}
 
 	render() {
@@ -50,7 +73,7 @@ class Index extends Component {
 				}} />
 
 				<Slider translations={{ scroll: translate('scroll') }}>
-					<div>
+					<div className="relative">
 						<Languages/>
 						<Youtube translations={{
 							loud: translate('loud'),
@@ -109,8 +132,7 @@ class Index extends Component {
 
 
 export default nextConnect(state => ({
-	auth: state.auth,
-	global: state.global,
+	isMobile: state.global.isMobile,
 	translate: (state.locale && state.locale.languages.length) ? getTranslate(state.locale) : () => {},
 	currentLanguage: (state.locale && state.locale.languages.length) ? getActiveLanguage(state.locale) : '',
 }))(Index)
