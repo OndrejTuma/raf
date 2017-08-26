@@ -102,7 +102,7 @@ class Youtube extends Component {
 				<div className="video">
 					<p className="title left">{raf}</p>
 					<p className="title right">{raf}</p>
-					<ResponsiveRatio className="youtube" ratio={16/9}>
+					<ResponsiveRatio className="youtube" ratio={16/8}>
 						<p className="karaoke">{this.karaoke}</p>
 						<YouTube
 							videoId={`_eLryuBCO-M`}

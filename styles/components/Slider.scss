@@ -39,6 +39,7 @@
 			transform: rotate(90deg) translateX(100%);
 			z-index: 1;
 			transition: margin-top $animationsDuration, opacity $animationsDuration;
+			white-space: nowrap;
 		}
 		.image {
 			left: 5%;
@@ -56,6 +57,11 @@
 
 		.slide {
 			padding-top: 0;
+
+			.heading {
+				font-size: $font-size-big;
+				margin-right: -10%;
+			}
 		}
 	}
 }
