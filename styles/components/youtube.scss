@@ -1,9 +1,9 @@
 .Youtube {
 	margin: auto;
 	max-width: 1000px;
-	position: relative;
 
 	.mute {
+		cursor: pointer;
 		float: right;
 		font-size: $font-size-small;
 		padding: 30px 30px 30px 10px;
@@ -20,6 +20,8 @@
 	}
 	.video {
 		clear: both;
+		overflow: hidden;
+		position: relative;
 
 		.title {
 			//font-size: 50px;
@@ -30,6 +32,7 @@
 			position: absolute;
 			text-transform: uppercase;
 			top: 100%;
+			z-index: 1;
 
 			&.left {
 				left: 0;
@@ -48,7 +51,6 @@
 	}
 
 	@include media(phablet) {
-		padding-top: 100px;
 
 		.mute {
 			position: absolute;

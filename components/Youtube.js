@@ -99,32 +99,30 @@ class Youtube extends Component {
 					<p>{isMuted ? loud : mute}</p>
 					<SVG path="static/svg/mute.svg"/>
 				</div>
-				<div className="video">
+				<ResponsiveRatio className="video" ratio={16/8}>
 					<p className="title left">{raf}</p>
 					<p className="title right">{raf}</p>
-					<ResponsiveRatio className="youtube" ratio={16/8}>
-						<p className="karaoke">{this.karaoke}</p>
-						<YouTube
-							videoId={`_eLryuBCO-M`}
-							opts={{
-								height: '100%',
-								width: '100%',
-								//https://developers.google.com/youtube/player_parameters
-								playerVars: {
-									autoplay: 1,
-									controls: 0,
-									disablekb: 1,
-									iv_load_policy: 3,
-									loop: 1,
-									modestbranding: 1,
-									showinfo: 0,
-								},
-							}}
-							onReady={this._ytReady}
-							onStateChange={this._ytStateChange}
-						/>
-					</ResponsiveRatio>
-				</div>
+					<p className="karaoke">{this.karaoke}</p>
+					<YouTube
+						videoId={`_eLryuBCO-M`}
+						opts={{
+							height: '100%',
+							width: '100%',
+							//https://developers.google.com/youtube/player_parameters
+							playerVars: {
+								autoplay: 1,
+								controls: 0,
+								disablekb: 1,
+								iv_load_policy: 3,
+								loop: 1,
+								modestbranding: 1,
+								showinfo: 0,
+							},
+						}}
+						onReady={this._ytReady}
+						onStateChange={this._ytStateChange}
+					/>
+				</ResponsiveRatio>
 
 			</div>
 		)

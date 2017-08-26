@@ -24,7 +24,10 @@ class Menu extends Component {
 		this.setState({ open: false })
 	}
 	render() {
-		let { translations: { item1, item2, item3, item4, item5 }, isMobile } = this.props
+		let { activeSlide, isMobile, translations: { item1, item2, item3, item4, item5 } } = this.props
+		let { open } = this.state
+
+		let isOpened = isMobile ? open : true
 
 		let menuItems = [
 			{ name: item1, anchor: 'slide0' },
@@ -32,8 +35,8 @@ class Menu extends Component {
 			{ name: item3, anchor: 'slide2' },
 			{ name: item4, anchor: 'slide3' },
 			{ name: item5, anchor: 'slide4' },
-		],
-			hamburgerClass = classNames('hamburger', {
+		]
+		let hamburgerClass = classNames('hamburger', {
 			'active': this.state.open
 		})
 
@@ -44,25 +47,23 @@ class Menu extends Component {
 						<span className="lines"></span>
 					</div>
 				)}
-				<Motion defaultStyle={{
-					left: isMobile ? 100 : 0
-				}} style={{
-					left: spring( this.state.open ? 0 : 100, { stiffness: 200 } )
+				<Motion style={{
+					left: spring( isOpened ? 0 : 100, { stiffness: 200 } )
 				}}>
 					{style => (
 						<div className="items" style={{ left: `${style.left}%` }}>
 							<StaggeredMotion
-								defaultStyles={menuItems.map(item => ({ left: 100, opacity: 0 }))}
+								defaultStyles={menuItems.map(item => ({ left: isOpened ? 0 : 100, opacity: 0 }))}
 								styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
 									return i === 0
-										? { left: spring(this.state.open ? 0 : 100, { stiffness: 100, damping: 10 }), opacity: spring(this.state.open ? 1 : 0) }
+										? { left: spring(isOpened ? 0 : 100, { stiffness: 100, damping: 10 }), opacity: spring(isOpened ? 1 : 0) }
 										: prevInterpolatedStyles[i - 1]
 								})}
 							>
 								{interpolatingStyles => (
 									<ul>
 										{interpolatingStyles.map((style, i) =>
-											<li key={i} style={style}>
+											<li key={i} style={style} className={classNames({ active: activeSlide === i })}>
 												<a href={`#${menuItems[i].anchor}`} onClick={e => this.handleClick(e, i)}>{menuItems[i].name}</a>
 											</li>
 										)}

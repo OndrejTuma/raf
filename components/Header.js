@@ -1,11 +1,10 @@
 import React from 'react'
 import SVG from 'react-svg'
-import Link from 'next/link'
+
+import LogoFootshop from './LogoFootshop'
 
 export default () =>
 	<div className="header">
-		<Link href="/">
-			<a><SVG path="static/svg/logo-footshop.svg" className="logo-footshop" /></a>
-		</Link>
+		<LogoFootshop/>
 		<SVG path="static/svg/logo-raf.svg" className="logo-raf" />
 	</div>

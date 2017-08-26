@@ -1,7 +1,7 @@
 .header {
 	background-color: $cod-gray;
 	left: 0;
-	padding: 20px 10px 20px 30px;
+	padding: 20px 10px;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -20,8 +20,9 @@
 
 	@include media(phablet) {
 		background-color: transparent;
-		margin: auto;
+		left: 50%;
 		max-width: 1000px;
+		transform: translateX(-50%);
 
 		.logo-raf {
 			float: right;
