@@ -7,10 +7,9 @@
 	width: 100%;
 	z-index: 2;
 
-	.logo-footshop {
-		left: 30px;
+	.LogoFootshop {
+		left: 20px;
 		position: absolute;
-		top: 25px;
 	}
 
 	.logo-raf {
@@ -21,7 +20,7 @@
 	@include media(phablet) {
 		background-color: transparent;
 		left: 50%;
-		max-width: 1000px;
+		max-width: $wrapper--width;
 		transform: translateX(-50%);
 
 		.logo-raf {

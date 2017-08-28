@@ -24,18 +24,10 @@ class Menu extends Component {
 		this.setState({ open: false })
 	}
 	render() {
-		let { activeSlide, isMobile, translations: { item1, item2, item3, item4, item5 } } = this.props
+		let { activeSlide, isMobile, items } = this.props
 		let { open } = this.state
 
 		let isOpened = isMobile ? open : true
-
-		let menuItems = [
-			{ name: item1, anchor: 'slide0' },
-			{ name: item2, anchor: 'slide1' },
-			{ name: item3, anchor: 'slide2' },
-			{ name: item4, anchor: 'slide3' },
-			{ name: item5, anchor: 'slide4' },
-		]
 		let hamburgerClass = classNames('hamburger', {
 			'active': this.state.open
 		})
@@ -53,7 +45,7 @@ class Menu extends Component {
 					{style => (
 						<div className="items" style={{ left: `${style.left}%` }}>
 							<StaggeredMotion
-								defaultStyles={menuItems.map(item => ({ left: isOpened ? 0 : 100, opacity: 0 }))}
+								defaultStyles={items.map(() => ({ left: isOpened ? 0 : 100, opacity: 0 }))}
 								styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
 									return i === 0
 										? { left: spring(isOpened ? 0 : 100, { stiffness: 100, damping: 10 }), opacity: spring(isOpened ? 1 : 0) }
@@ -62,11 +54,15 @@ class Menu extends Component {
 							>
 								{interpolatingStyles => (
 									<ul>
-										{interpolatingStyles.map((style, i) =>
-											<li key={i} style={style} className={classNames({ active: activeSlide === i })}>
-												<a href={`#${menuItems[i].anchor}`} onClick={e => this.handleClick(e, i)}>{menuItems[i].name}</a>
-											</li>
-										)}
+										{interpolatingStyles.map((style, i) => {
+											let index = isMobile ? i : items.length - 1 - i
+
+											return (
+												<li key={index} style={style} className={classNames({ active: activeSlide === index })}>
+													<a href={`#${items[index].anchor}`} onClick={e => this.handleClick(e, index)}>{items[index].name}</a>
+												</li>
+											)
+										})}
 									</ul>
 								)}
 							</StaggeredMotion>

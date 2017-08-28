@@ -1,3 +1,17 @@
 .History {
 
+
+	@include media(phablet) {
+		.timeline {
+			li {
+				padding: 0 30px;
+
+				&:nth-child(1) { top: 0; }
+				&:nth-child(2) { top: 15px; }
+				&:nth-child(3) { top: 30px; }
+				&:nth-child(4) { top: 15px; }
+				&:nth-child(5) { top: 0; }
+			}
+		}
+	}
 }

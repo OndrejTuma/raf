@@ -3,25 +3,56 @@
 	.Carousel .slick-slide {
 		position: relative;
 
-		&.slick-active {
-			img {
-				opacity: .5;
-			}
-			p {
-				bottom: 0;
-			}
-		}
-
 		img {
 			max-height: 50vh;
-		}
-		p {
-			bottom: -20px;
-			left: 0;
+			opacity: .5;
 			position: absolute;
-			top: auto !important;
-			right: 40px;
+			z-index: -1;
+		}
+		.info {
+			padding: 50px 0 0 15px;
 		}
 	}
 
+
+	@include media(phablet) {
+		.content {
+			position: static !important;
+		}
+		.Carousel {
+			.slick-slide {
+				text-align: left;
+
+				.info {
+					clear: both;
+					padding-left: 20%;
+					position: static;
+				}
+
+				img {
+					float: left;
+					max-height: 40vh;
+					opacity: 1;
+					position: static;
+				}
+			}
+			.step {
+				left: 20%;
+				padding-top: 180px;
+				position: absolute;
+				top: 40vh;
+				z-index: 1;
+			}
+			.timeline {
+				padding-left: 8%;
+
+				li {
+					&:nth-child(1) { top: 20px; }
+					&:nth-child(2) { top: 40px; }
+					&:nth-child(3) { top: 20px; }
+					&:nth-child(4) { top: 0; }
+				}
+			}
+		}
+	}
 }

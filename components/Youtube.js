@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-
 import SVG from 'react-svg'
 import YouTube from 'react-youtube'
+import classNames from 'classnames'
 
 import {nextConnect} from '../store'
 import {setYoutubeState} from '../redux/actions'
@@ -95,9 +95,9 @@ class Youtube extends Component {
 
 		return (
 			<div className="Youtube">
-				<div className="mute" onClick={() => this.muteToggle()}>
+				<div className={classNames('mute', { 'is-muted': isMuted })} onClick={() => this.muteToggle()}>
 					<p>{isMuted ? loud : mute}</p>
-					<SVG path="static/svg/mute.svg"/>
+					<SVG path={`static/svg/${isMuted ? 'unmute' : 'mute'}.svg`}/>
 				</div>
 				<ResponsiveRatio className="video" ratio={16/8}>
 					<p className="title left">{raf}</p>

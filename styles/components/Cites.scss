@@ -2,16 +2,17 @@
 	color: $gray;
 
 	blockquote {
+		float: left;
 		font-size: $font-size-small;
 		font-weight: 700;
 		margin: $margin--default 0;
-		text-align: center;
 	}
 	small {
 		float: right;
 		font-size: $font-size-tiny;
 		font-weight: 400;
 		margin-top: 5px;
+		position: relative;
 		text-transform: uppercase;
 	}
 

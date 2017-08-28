@@ -6,13 +6,12 @@ class History extends Component {
 
 	render() {
 		let { translations: { heading, fact1, fact2, fact3, fact4, fact5 } } = this.props
-
 		let slides = [
-			{ key: 1989, text: fact1, image: 'static/images/1989.jpg' },
-			{ key: 1995, text: fact2, image: 'static/images/1989.jpg' },
-			{ key: 2001, text: fact3, image: 'static/images/1989.jpg' },
-			{ key: 2006, text: fact4, image: 'static/images/1989.jpg' },
-			{ key: 2013, text: fact5, image: 'static/images/1989.jpg' },
+			{ key: 1989, text: fact1, image: 'static/images/history/1989.jpg' },
+			{ key: 1995, text: fact2, image: 'static/images/history/1995.jpg' },
+			{ key: 2001, text: fact3, image: 'static/images/history/2001.jpg' },
+			{ key: 2006, text: fact4, image: 'static/images/history/2006.jpg' },
+			{ key: 2013, text: fact5, image: 'static/images/history/2013.jpg' },
 		]
 
 		return (
@@ -20,7 +19,6 @@ class History extends Component {
 				<h2 className="heading">{heading}</h2>
 				<div className="content">
 					<Carousel slides={slides} hasCounter="1" />
-
 				</div>
 			</div>
 		)

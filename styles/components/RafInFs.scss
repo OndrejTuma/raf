@@ -1,3 +1,7 @@
+#slide4 {
+	overflow: visible;
+}
+
 .RafInFs {
 	.collection {
 		color: $black;
@@ -13,6 +17,7 @@
 			box-shadow: 5px 5px 20px rgba($black, .5);
 			left: 50%;
 			line-height: 1;
+			max-width: 500px;
 			position: absolute;
 			padding: 10px;
 			top: 50%;
@@ -30,6 +35,12 @@
 			display: block;
 			font-size: 1.3em;
 			font-weight: 400;
+		}
+	}
+
+	@include media(phablet) {
+		img {
+			height: 70vh;
 		}
 	}
 }

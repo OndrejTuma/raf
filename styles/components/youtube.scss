@@ -1,6 +1,7 @@
 .Youtube {
 	margin: auto;
-	max-width: 1000px;
+	max-width: $wrapper--width;
+	position: relative;
 
 	.mute {
 		cursor: pointer;
@@ -9,6 +10,13 @@
 		padding: 30px 30px 30px 10px;
 		text-align: center;
 		text-transform: uppercase;
+
+		&.is-muted {
+			svg {
+				height: 30px;
+				padding-top: 5px;
+			}
+		}
 
 		p {
 			margin-bottom: 0;

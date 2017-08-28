@@ -3,8 +3,9 @@
 	.slide {
 		$animationsDuration: .7s;
 
-		min-height: 100vh;
+		height: 100vh;
 		padding-top: 100px;
+		overflow: hidden;
 		position: relative;
 
 		&.active {
@@ -52,13 +53,9 @@
 	}
 
 	@include media(phablet) {
-		margin: auto;
-		max-width: 1000px;
-
 		.slide {
 			.heading {
 				font-size: $font-size-big;
-				margin-right: -10%;
 			}
 		}
 	}

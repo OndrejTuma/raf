@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Head from 'next/head'
-import SVG from 'react-svg'
 import {addTranslation, getTranslate, setLanguages, getActiveLanguage} from 'react-localize-redux'
 
 import {nextConnect} from '../store'
@@ -9,6 +8,7 @@ import {setIsMobile} from '../redux/actions'
 import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
+import LogoFootshop from '../components/LogoFootshop'
 import Menu from '../components/Menu'
 import RafInFs from '../components/RafInFs'
 import Signature from '../components/Signature'
@@ -52,7 +52,7 @@ class Index extends Component {
 	}
 
 	render() {
-		const {translate, activeSlide} = this.props
+		const {translate, activeSlide, isMobile} = this.props
 
 		return (
 			<div>
@@ -64,16 +64,16 @@ class Index extends Component {
 
 				<Header/>
 
-				<Menu translations={{
-					item1: translate('menu1'),
-					item2: translate('menu2'),
-					item3: translate('menu3'),
-					item4: translate('menu4'),
-					item5: translate('menu5'),
-				}} />
+				<Menu items={[
+					{name: translate('menu1'), anchor: 'slide0'},
+					{name: translate('menu2'), anchor: 'slide1'},
+					{name: translate('menu3'), anchor: 'slide2'},
+					{name: translate('menu4'), anchor: 'slide3'},
+					{name: translate('menu5'), anchor: 'slide4'},
+				]} />
 
 				<Slider translations={{ scroll: translate('scroll') }}>
-					<div className="relative">
+					<div className="intro">
 						<Languages/>
 						<Youtube translations={{
 							loud: translate('loud'),
@@ -121,10 +121,23 @@ class Index extends Component {
 							inFs: translate('inFs'),
 						}}/>
 						<Socials/>
-						<p className="fst tac" style={{width: '80%', lineHeight: 1, margin: '0 auto 2em'}}>{translate('foot')}</p>
-						<div className="tac mbs">
-							<SVG path="static/svg/logo-footshop.svg" className="logo-footshop bigger"/>
-						</div>
+						{isMobile ? (
+							<div className="footer">
+								<p>
+									{translate('foot')} <a href="&">{translate('footLink')}</a>
+								</p>
+								<LogoFootshop className="bigger"/>
+							</div>
+						) : (
+							<div className="footer">
+								<LogoFootshop className="bigger"/>
+								<p>
+									{translate('foot')} <a href="&">{translate('footLink')}</a>
+
+								</p>
+							</div>
+						)}
+
 					</div>
 				</Slider>
 			</div>

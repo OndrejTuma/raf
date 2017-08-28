@@ -10,16 +10,18 @@ const WhoIsRaf = ({
 	return (
 		<div className="who-is-raf">
 			<h2 className="heading">{heading}</h2>
-			<img src={`static/images/raf-bio.jpg`} alt="Raf Simons" className="image"/>
-			<div className="content">
-				<p>
-					{about}<br/>
-					<a href="#">{interview}</a>
-				</p>
+			<div className="relative">
+				<img src={`static/images/raf-bio.jpg`} alt="Raf Simons" className="image"/>
+				<div className="content">
+					<p>
+						{about}<br/>
+						<a href="#" className="link">{interview}</a>
+					</p>
 
-				{activeSlide === 1 ? (
-					<Cites data={cites}/>
-				) : ''}
+					{activeSlide === 1 ? (
+						<Cites data={cites}/>
+					) : ''}
+				</div>
 			</div>
 		</div>
 	)

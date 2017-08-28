@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Events, scrollSpy, scroller } from 'react-scroll'
+import classNames from 'classnames'
 
 import {setActiveSlide} from '../redux/actions'
 import {nextConnect} from '../store'
@@ -108,7 +109,7 @@ class Slider extends Component {
 				this.isSliding = false
 				clearTimeout(this.slidingTimeout)
 				this.slidingTimeout = 0
-			}, 100)
+			}, 200)
 		}
 	}
 

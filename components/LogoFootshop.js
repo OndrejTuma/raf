@@ -12,8 +12,10 @@ class LogoFootshop extends Component {
 	}
 
 	render() {
+		const { className } = this.props
+
 		return (
-			<a className={`LogoFootshop`} href="#" onClick={e => this._handleClick(e)}><SVG path="static/svg/logo-footshop.svg" /></a>
+			<a className={`LogoFootshop${className ? ` ${className}` : ''}`} href="#" onClick={e => this._handleClick(e)}><SVG path="static/svg/logo-footshop.svg" /></a>
 		)
 	}
 }
