@@ -17,6 +17,7 @@ class Youtube extends Component {
 		super(props)
 
 		this.setCurrentKaraokeTexts = this.setCurrentKaraokeTexts.bind(this)
+		this._setTitlesHeight = this._setTitlesHeight.bind(this)
 		this._ytStateChange = this._ytStateChange.bind(this)
 		this._ytReady = this._ytReady.bind(this)
 
@@ -26,7 +27,42 @@ class Youtube extends Component {
 		this.karaoke = null
 		this.karaokeInterval = 0
 	}
+	componentDidMount() {
+		window.addEventListener('resize', this._setTitlesHeight)
+		this._setTitlesHeight()
+	}
+	componentWillUnmount() {
+		window.removeEventListener('resize', this._setTitlesHeight)
+	}
 
+	_setTitlesHeight() {
+		let lastZooming
+
+		clearInterval(this.titleInterval)
+		this.titleInterval = setInterval(() => {
+			if ( !this.titleLeft || !this.titleRight || !this.videoWrapper) {
+				return
+			}
+			if (this.videoWrapper.offsetHeight) {
+				let fontSize = parseInt(this.titleLeft.style.fontSize) || 10,
+					tolerance = 20,
+					zooming = Math.abs(this.titleLeft.offsetWidth - this.videoWrapper.offsetHeight) > tolerance,
+					zoomIn = this.titleLeft.offsetWidth + tolerance < this.videoWrapper.offsetHeight
+
+				if (!zooming) {
+					clearInterval(this.titleInterval)
+				}
+				else {
+					this.titleLeft.style.fontSize = `${zoomIn ? fontSize + 10 : fontSize - 10}px`
+					this.titleRight.style.fontSize = `${zoomIn ? fontSize + 10 : fontSize - 10}px`
+				}
+			}
+
+		}, 10)
+	}
+	_ytEnded() {
+		this.youtube.playVideo()
+	}
 	_ytStateChange(e) {
 		const { dispatch } = this.props
 		const { isMuted } = this.state
@@ -99,31 +135,33 @@ class Youtube extends Component {
 					<p>{isMuted ? loud : mute}</p>
 					<SVG path={`static/svg/${isMuted ? 'unmute' : 'mute'}.svg`}/>
 				</div>
-				<ResponsiveRatio className="video" ratio={16/8}>
-					<p className="title left">{raf}</p>
-					<p className="title right">{raf}</p>
-					<p className="karaoke">{this.karaoke}</p>
-					<YouTube
-						videoId={`_eLryuBCO-M`}
-						opts={{
-							height: '100%',
-							width: '100%',
-							//https://developers.google.com/youtube/player_parameters
-							playerVars: {
-								autoplay: 1,
-								controls: 0,
-								disablekb: 1,
-								iv_load_policy: 3,
-								loop: 1,
-								modestbranding: 1,
-								showinfo: 0,
-							},
-						}}
-						onReady={this._ytReady}
-						onStateChange={this._ytStateChange}
-					/>
-				</ResponsiveRatio>
-
+				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
+					<ResponsiveRatio className="video" ratio={16/8}>
+						<p ref={elm => this.titleLeft = elm} className="title left">{raf}</p>
+						<p ref={elm => this.titleRight = elm} className="title right">{raf}</p>
+						<p className="karaoke">{this.karaoke}</p>
+						<YouTube
+							videoId={`_eLryuBCO-M`}
+							opts={{
+								height: '100%',
+								width: '100%',
+								//https://developers.google.com/youtube/player_parameters
+								playerVars: {
+									autoplay: 1,
+									controls: 0,
+									disablekb: 1,
+									iv_load_policy: 3,
+									loop: 1,
+									modestbranding: 1,
+									showinfo: 0,
+								},
+							}}
+							onReady={this._ytReady}
+							onEnd={this._ytEnded}
+							onStateChange={this._ytStateChange}
+						/>
+					</ResponsiveRatio>
+				</div>
 			</div>
 		)
 	}

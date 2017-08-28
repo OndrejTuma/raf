@@ -133,11 +133,9 @@ class Index extends Component {
 								<LogoFootshop className="bigger"/>
 								<p>
 									{translate('foot')} <a href="&">{translate('footLink')}</a>
-
 								</p>
 							</div>
 						)}
-
 					</div>
 				</Slider>
 			</div>
