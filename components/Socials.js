@@ -10,15 +10,17 @@ const Socials = props =>  {
 		{ name: 'YouTube', url: 'https://www.youtube.com', svg: 'social-youtube' },
 	];
 	return (
-		<ul className={`Socials`}>
-			{socials.map((service, i) => (
-				<li key={i}>
-					<a href={service.url} title={service.name}>
-						<SVG path={`static/svg/${service.svg}.svg`} />
-					</a>
-				</li>
-			))}
-		</ul>
+		<div className={`Socials`}>
+			<ul>
+				{socials.map((service, i) => (
+					<li key={i}>
+						<a href={service.url} title={service.name}>
+							<SVG path={`static/svg/${service.svg}.svg`} />
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
 	)
 }
 

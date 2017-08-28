@@ -1,4 +1,7 @@
 import React from 'react'
+import {Motion, spring} from 'react-motion'
+
+import {nextConnect} from '../store'
 
 import Cites from './Cites'
 
@@ -27,4 +30,7 @@ const WhoIsRaf = ({
 	)
 }
 
-export default WhoIsRaf
+export default nextConnect(state => ({
+	isMobile: state.global.isMobile,
+	activeSlide: state.global.slider.activeSlide,
+}))(WhoIsRaf)

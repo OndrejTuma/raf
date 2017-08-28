@@ -1,15 +1,33 @@
 .Socials {
-	list-style: none;
-	margin: 0 0 $margin--default;
-	padding-left: 0;
 	text-align: center;
 
+	a {
+		display: block;
+		padding: 0 5px;
+		transform: scale(1);
+		transition: transform .3s;
+	}
 	li {
 		display: inline-block;
-		padding: 0 5px;
 	}
 	svg {
 		fill: $white;
 		width: 40px;
 	}
+	ul {
+		display: inline-block;
+		list-style: none;
+		margin: 0 0 $margin--default;
+		padding-left: 0;
+
+		&:hover {
+			a {
+				transform: scale(.8);
+			}
+			li:hover a {
+				transform: scale(1.2);
+			}
+		}
+	}
+
 }
