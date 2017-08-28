@@ -22,9 +22,9 @@ class Youtube extends Component {
 		this._ytReady = this._ytReady.bind(this)
 
 		this.state = {
-			isMuted: true
+			isMuted: true,
+			karaoke: null,
 		}
-		this.karaoke = null
 		this.karaokeInterval = 0
 	}
 	componentDidMount() {
@@ -105,27 +105,31 @@ class Youtube extends Component {
 		this.setState({ isMuted: !isMuted })
 	}
 	setCurrentKaraokeTexts () {
+		const { karaoke } = this.state
+
 		if (this.youtube) {
 			let currentTime = this.youtube.getCurrentTime()
 
 			if (currentTime) {
-				this.karaoke = lyrics.reduce((res, line, i) => {
-					if (line.words && line.words.length) {
-						line.words.map(word => {
+				this.setState({
+					karaoke: lyrics.reduce((res, line) => {
+						if (line.words && line.words.length) {
 							if (currentTime >= line.duration.from && line.duration.to >= currentTime) {
-								return <span key={i} style={word.css} className={word.class}>{word.text}</span>
+								line.words.map((word, i) => {
+									res.push(<span key={i} style={word.css} className={word.class}>{word.text}</span>)
+								})
 							}
-						})
-					}
-					return res
-				}, [])
+						}
+						return res
+					}, [])
+				})
 			}
 		}
 	}
 
 	render() {
 		const { translations: { mute, loud, raf } } = this.props
-		let { isMuted } = this.state
+		let { isMuted, karaoke } = this.state
 
 		return (
 			<div className="Youtube">
@@ -137,7 +141,7 @@ class Youtube extends Component {
 					<ResponsiveRatio className="video" ratio={16/8}>
 						<p ref={elm => this.titleLeft = elm} className="title left">{raf}</p>
 						<p ref={elm => this.titleRight = elm} className="title right">{raf}</p>
-						<p className="karaoke">{this.karaoke}</p>
+						<p className="karaoke">{karaoke}</p>
 						<YouTube
 							videoId={`_eLryuBCO-M`}
 							opts={{
