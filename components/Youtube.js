@@ -36,8 +36,6 @@ class Youtube extends Component {
 	}
 
 	_setTitlesHeight() {
-		let lastZooming
-
 		clearInterval(this.titleInterval)
 		this.titleInterval = setInterval(() => {
 			if ( !this.titleLeft || !this.titleRight || !this.videoWrapper) {
@@ -49,12 +47,12 @@ class Youtube extends Component {
 					zooming = Math.abs(this.titleLeft.offsetWidth - this.videoWrapper.offsetHeight) > tolerance,
 					zoomIn = this.titleLeft.offsetWidth + tolerance < this.videoWrapper.offsetHeight
 
-				if (!zooming) {
-					clearInterval(this.titleInterval)
-				}
-				else {
+				if (zooming) {
 					this.titleLeft.style.fontSize = `${zoomIn ? fontSize + 10 : fontSize - 10}px`
 					this.titleRight.style.fontSize = `${zoomIn ? fontSize + 10 : fontSize - 10}px`
+				}
+				else {
+					clearInterval(this.titleInterval)
 				}
 			}
 
