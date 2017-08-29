@@ -57,6 +57,48 @@ const animations = {
 			scale: spring(1, { stiffness: 200 }),
 		},
 	},
+	raf1: {
+		before: {
+			scale: 3,
+		},
+		after: {
+			scale: spring(1, { stiffness: 200 }),
+		},
+	},
+	raf2: {
+		before: {
+			scale: 3,
+			rotate: 0,
+		},
+		after: {
+			scale: spring(1, { stiffness: 200 }),
+			rotate: -90,
+		},
+	},
+	raf3: {
+		before: {
+			scale: 3,
+		},
+		after: {
+			scale: spring(1, { stiffness: 200 }),
+		},
+	},
+	raf4: {
+		before: {
+			scale: 3,
+		},
+		after: {
+			scale: spring(1.5, { stiffness: 200 }),
+		},
+	},
+	raf5: {
+		before: {
+			scale: 6,
+		},
+		after: {
+			scale: spring(3, { stiffness: 200 }),
+		},
+	},
 }
 export const lines = {
 	iDont: ['I', 'done', 'came', 'up'],
@@ -66,8 +108,11 @@ export const lines = {
 	dontAsk: ['You', 'ain\'t', 'even', 'gotta', 'ask'],
 	what: ['What', 'are', 'those?', 'What', 'is', 'that?'],
 	raf: [
-		{ text: 'Please', animation: animations.zoomOut },
-		'don\'t', 'touch', 'my', 'Raf'
+		{ text: 'Please', animation: animations.raf1 },
+		{ text: 'don\'t', animation: animations.raf2 },
+		{ text: 'touch', animation: animations.raf3 },
+		{ text: 'my', animation: animations.raf4 },
+		{ text: 'Raf', animation: animations.raf5 },
 	],
 	step: ['Ho', 'don\'t', 'step', 'on', 'my', 'Raf', 'Simons'],
 	spending: ['Do', 'you', 'know', 'how', 'much', 'I\'m', 'spendin\'?'],
