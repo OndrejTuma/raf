@@ -12,6 +12,9 @@
 		text-transform: uppercase;
 		width: 80%;
 
+		a {
+			color: $black;
+		}
 		figcaption {
 			background-color: $white;
 			box-shadow: 5px 5px 20px rgba($black, .5);

@@ -33,12 +33,13 @@
 					float: left;
 					max-height: 40vh;
 					opacity: 1;
-					position: static;
+					position: relative;
 				}
 			}
 			.step {
 				left: 20%;
-				padding-top: 180px;
+				margin-left: 50px;
+				padding-top: 200px;
 				position: absolute;
 				top: 40vh;
 				z-index: 1;

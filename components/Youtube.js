@@ -146,7 +146,7 @@ class Youtube extends Component {
 					<p>{isMuted ? loud : mute}</p>
 					<SVG path={`static/svg/${isMuted ? 'unmute' : 'mute'}.svg`}/>
 				</div>
-				{this.youtube ? (
+				{0 && this.youtube ? (
 					<div style={{ position: 'absolute', zIndex: 2, bottom: '100%', backgroundColor: 'black', padding: 20, width: '100%', textAlign: 'center' }}>
 						<span style={{ padding: 10 }}>{this.youtube && Math.round(this.youtube.getCurrentTime() * 100)/100}</span>
 						<span onClick={() => this.youtube.pauseVideo()} style={{ padding: 10 }}>pause</span>

@@ -12,14 +12,16 @@ class RafInFs extends Component {
 			<div className={`RafInFs`}>
 				<h2 className="heading">{heading}</h2>
 				<figure className="collection">
-					<Motion style={{ top: activeSlide === 4 ? spring(0, { stiffness: 20 }) : 100 }}>
+					<Motion style={{ top: spring(activeSlide === 4 ? 0 : -100, { stiffness: 40 }) }}>
 						{style => (
 							<img style={style} src="static/images/new-collection.jpg" alt={heading} />
 						)}
 					</Motion>
-					<figcaption>
-						<strong>{collection}</strong> <span>{inFs}</span>
-					</figcaption>
+					<a href="#">
+						<figcaption>
+							<strong>{collection}</strong> <span>{inFs}</span>
+						</figcaption>
+					</a>
 				</figure>
 			</div>
 		)
