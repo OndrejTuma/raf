@@ -10,8 +10,12 @@
 
 
 	.text {
-		color: $tundora;
+		color: $cod-gray;
 		position: absolute;
-		text-transform: uppercase;
+		//text-transform: uppercase;
+	}
+
+	@include media(phablet) {
+		font-size: $font-size-big;
 	}
 }

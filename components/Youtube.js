@@ -60,8 +60,8 @@ class Youtube extends Component {
 
 		}, 10)
 	}
-	_ytEnded() {
-		this.youtube.playVideo()
+	_ytEnded(e) {
+		e.target.playVideo()
 	}
 	_ytStateChange(e) {
 		const { dispatch } = this.props

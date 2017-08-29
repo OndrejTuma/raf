@@ -91,9 +91,18 @@ class Carousel extends Component {
 			</div>
 		</div>
 		let timeline = <ul className={timelineClasses}>
-			{slides && slides.map((slide, i) => (
-				<li key={i} className={classNames({ active: activeSlide === i })} onClick={() => this.slider.slickGoTo(i)}>{slide ? slide.key : i+1}</li>
-			))}
+			{slides && slides.reduce((res, slide, i) => {
+				let control = <li key={i} className={classNames({ active: activeSlide === i })} onClick={() => this.slider.slickGoTo(i)}>{slide.key}</li>
+
+				if (isMobile) {
+					res.push(control)
+				}
+				else {
+					res.unshift(control)
+				}
+
+				return res
+			}, [])}
 		</ul>
 
 		return isMobile ? (

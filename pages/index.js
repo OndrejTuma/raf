@@ -77,7 +77,9 @@ class Index extends Component {
 
 				<Slider translations={{ scroll: translate('scroll') }}>
 					<div className="intro">
-						<Languages/>
+						<Languages translations={{
+							loud: translate('loud'),
+						}}/>
 						<Youtube translations={{
 							loud: translate('loud'),
 							mute: translate('mute'),

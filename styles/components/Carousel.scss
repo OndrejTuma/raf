@@ -29,6 +29,7 @@
 	}
 	.slick-list {
 		font-size: $font-size-tiny;
+		line-height: 1;
 		text-align: right;
 	}
 	.slick-slide {
@@ -180,10 +181,31 @@
 				padding: 0 15px;
 				position: relative;
 
-				&.active {
+				&:before {
+					@include square(6px);
+					background-color: $white;
+					border-radius: 50%;
+					bottom: 100%;
+					content: '';
+					left: 50%;
+					margin-bottom: 5px;
+					position: absolute;
+					transform: scale(0) translate3d(-50%, 0, 0);
+					transition: transform .5s;
+				}
 
+				&.active:before {
+					transform: scale(1) translate3d(-50%, 0, 0);
 				}
 			}
+		}
+	}
+	@include media(desktop) {
+		.bundled {
+			left: 20%;
+		}
+		.timeline {
+			left: 100px;
 		}
 	}
 }
