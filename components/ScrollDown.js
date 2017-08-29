@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import SVG from 'react-svg'
+
+import Mouse from '../static/svg/mouse.svg'
+import MouseDown from '../static/svg/mouse-down.svg'
 
 class ScrollDown extends Component {
 
@@ -45,8 +47,8 @@ class ScrollDown extends Component {
 		return (
 			<div className="scroll-down" ref={elm => this.wrapper = elm} style={{ display: 'none' }}>
 				<p>{scroll}</p>
-				<SVG path="static/svg/mouse.svg" className="mouse"/>
-				<SVG path="static/svg/mouse-down.svg" className="arrow"/>
+				<Mouse className="mouse"/>
+				<MouseDown className="arrow"/>
 			</div>
 		)
 	}

@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
-import SVG from 'react-svg'
 import YouTube from 'react-youtube'
 import classNames from 'classnames'
 import {Motion, spring} from 'react-motion'
 
 import {nextConnect} from '../store'
 import {setYoutubeState} from '../redux/actions'
+
+import Mute from '../static/svg/mute.svg'
+import Unmute from '../static/svg/unmute.svg'
 
 import ResponsiveRatio from './ResponsiveRatio'
 
@@ -147,9 +149,9 @@ class Youtube extends Component {
 			<div className="Youtube">
 				<div className={classNames('mute', { 'is-muted': isMuted })} onClick={() => this.muteToggle()}>
 					<p>{isMuted ? loud : mute}</p>
-					<SVG path={`static/svg/${isMuted ? 'unmute' : 'mute'}.svg`}/>
+					{isMuted ? <Unmute/> : <Mute/>}
 				</div>
-				{this.youtube ? (
+				{0 && this.youtube ? (
 					<div style={{ position: 'absolute', zIndex: 2, bottom: '100%', backgroundColor: 'black', padding: 20, width: '100%', textAlign: 'center' }}>
 						<span style={{ padding: 10 }}>{this.youtube && Math.round(this.youtube.getCurrentTime() * 100)/100}</span>
 						<span onClick={() => this.youtube.pauseVideo()} style={{ padding: 10 }}>pause</span>

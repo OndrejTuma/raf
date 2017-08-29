@@ -1,13 +1,19 @@
 import React from 'react'
-import SVG from 'react-svg'
+
+import Facebook from '../static/svg/social-facebook.svg'
+import Twitter from '../static/svg/social-twitter.svg'
+import Instagram from '../static/svg/social-instagram.svg'
+import Pinterest from '../static/svg/social-pinterest.svg'
+import Youtube from '../static/svg/social-youtube.svg'
+
 
 const Socials = props =>  {
 	const socials = [
-		{ name: 'Facebook', url: 'https://www.facebook.com', svg: 'social-facebook' },
-		{ name: 'Twitter', url: 'https://www.twitter.com', svg: 'social-twitter' },
-		{ name: 'Instagram', url: 'https://www.instagram.com', svg: 'social-instagram' },
-		{ name: 'Pinterest', url: 'https://www.pinterest.com', svg: 'social-pinterest' },
-		{ name: 'YouTube', url: 'https://www.youtube.com', svg: 'social-youtube' },
+		{ name: 'Facebook', url: 'https://www.facebook.com', svg: <Facebook/> },
+		{ name: 'Twitter', url: 'https://www.twitter.com', svg: <Twitter/> },
+		{ name: 'Instagram', url: 'https://www.instagram.com', svg: <Instagram/> },
+		{ name: 'Pinterest', url: 'https://www.pinterest.com', svg: <Pinterest/> },
+		{ name: 'YouTube', url: 'https://www.youtube.com', svg: <Youtube/> },
 	];
 	return (
 		<div className={`Socials`}>
@@ -15,7 +21,7 @@ const Socials = props =>  {
 				{socials.map((service, i) => (
 					<li key={i}>
 						<a href={service.url} title={service.name}>
-							<SVG path={`static/svg/${service.svg}.svg`} />
+							{service.svg}
 						</a>
 					</li>
 				))}

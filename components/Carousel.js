@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import SVG from 'react-svg'
 import Slider from 'react-slick'
 import CountUp from 'countup.js'
 import classNames from 'classnames'
-import {Motion, spring, StaggeredMotion} from 'react-motion'
+import {spring, StaggeredMotion} from 'react-motion'
 
 import {nextConnect} from '../store'
+
+import ArrowUp from '../static/svg/arrow-up.svg'
+import ArrowDown from '../static/svg/arrow-down.svg'
+
 
 class Carousel extends Component {
 	constructor (props) {
@@ -84,10 +87,10 @@ class Carousel extends Component {
 		</Slider>
 		let step = <div className="step">
 			<div className="prev" onClick={() => this.slider.slickPrev()}>
-				<SVG path="static/svg/arrow-up.svg"/>
+				<ArrowUp/>
 			</div>
 			<div className="next" onClick={() => this.slider.slickNext()}>
-				<SVG path="static/svg/arrow-down.svg"/>
+				<ArrowDown/>
 			</div>
 		</div>
 		let timeline = <ul className={timelineClasses}>
