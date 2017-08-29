@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import SVG from 'react-svg'
 import YouTube from 'react-youtube'
 import classNames from 'classnames'
+import {Motion, spring} from 'react-motion'
 
 import {nextConnect} from '../store'
 import {setYoutubeState} from '../redux/actions'
@@ -22,7 +23,7 @@ class Youtube extends Component {
 		this._ytReady = this._ytReady.bind(this)
 
 		this.state = {
-			isMuted: true,
+			isMuted: false,
 			karaoke: null,
 		}
 		this.karaokeInterval = 0
@@ -32,6 +33,7 @@ class Youtube extends Component {
 		this._setTitlesHeight()
 	}
 	componentWillUnmount() {
+		clearInterval(this.karaokeInterval)
 		window.removeEventListener('resize', this._setTitlesHeight)
 	}
 
@@ -105,25 +107,32 @@ class Youtube extends Component {
 		this.setState({ isMuted: !isMuted })
 	}
 	setCurrentKaraokeTexts () {
-		const { karaoke } = this.state
-
 		if (this.youtube) {
-			let currentTime = this.youtube.getCurrentTime()
+			let currentTime = this.youtube.getCurrentTime(),
+				newKaraoke = lyrics.reduce((res, line, i) => {
+					if (currentTime >= line.duration.from && line.duration.to >= currentTime) {
+						res.push(<div key={i} className={`words words${i}`}>{
+							line.words.reduce((words, word, i) => {
+								if (currentTime >= line.duration.from + line.duration.words * i) {
+									words.push(<Motion key={i} defaultStyle={line.animation.before} style={line.animation.after}>{
+										style => (
+											<span style={{
+												...style,
+												transform: `${typeof style.rotate !== 'undefined' ? `rotate(${style.rotate}deg)` : ``}${typeof style.scale !== 'undefined' ? ` scale(${style.scale})` : ``}`,
+											}}>{word}</span>
+										)
+									}</Motion>)
+								}
+								return words
+							}, [])
+						}</div>)
+					}
+					return res
+				}, [])
 
-			if (currentTime) {
-				this.setState({
-					karaoke: lyrics.reduce((res, line) => {
-						if (line.words && line.words.length) {
-							if (currentTime >= line.duration.from && line.duration.to >= currentTime) {
-								line.words.map((word, i) => {
-									res.push(<span key={i} style={word.css} className={word.class}>{word.text}</span>)
-								})
-							}
-						}
-						return res
-					}, [])
-				})
-			}
+			this.setState({
+				karaoke: newKaraoke
+			})
 		}
 	}
 
@@ -137,11 +146,19 @@ class Youtube extends Component {
 					<p>{isMuted ? loud : mute}</p>
 					<SVG path={`static/svg/${isMuted ? 'unmute' : 'mute'}.svg`}/>
 				</div>
+				{this.youtube ? (
+					<div style={{ position: 'absolute', zIndex: 2, bottom: '100%', backgroundColor: 'black', padding: 20, width: '100%', textAlign: 'center' }}>
+						<span style={{ padding: 10 }}>{this.youtube && Math.round(this.youtube.getCurrentTime() * 100)/100}</span>
+						<span onClick={() => this.youtube.pauseVideo()} style={{ padding: 10 }}>pause</span>
+						<span onClick={() => this.youtube.playVideo()} style={{ padding: 10 }}>play</span>
+						<span onClick={() => this.youtube.seekTo(20)} style={{ padding: 10 }}>seek</span>
+					</div>
+				) : ''}
 				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
 					<ResponsiveRatio className="video" ratio={16/8}>
 						<p ref={elm => this.titleLeft = elm} className="title left">{raf}</p>
 						<p ref={elm => this.titleRight = elm} className="title right">{raf}</p>
-						<p className="karaoke">{karaoke}</p>
+						<div className="karaoke">{karaoke}</div>
 						<YouTube
 							videoId={`_eLryuBCO-M`}
 							opts={{

@@ -1,35 +1,22 @@
 .karaoke {
-	@include square(100%);
-	left: 0;
+	bottom: 0;
+	left: 30px;
 	margin: 0;
 	overflow: hidden;
 	position: absolute;
+	right: 30px;
+	text-transform: uppercase;
 	top: 0;
 
-	.slideLeft { animation: slideLeft .5s 1; }
-	.slideRight { animation: slideRight .5s 1; }
-	.zoomIn { animation: zoomIn .5s 1; }
-	.zoomOut { animation: zoomOut .5s 1; }
+	.words {
+		left: 30%;
+		position: absolute;
+		top: 10%;
+	}
 
 	span {
 		float: left;
+		padding: 0 3px;
 		position: relative;
 	}
-}
-
-@keyframes slideLeft {
-	0% { left: -10px; opacity: 0; }
-	100% { left: 0; opacity: 1; }
-}
-@keyframes slideRight {
-	0% { right: -10px; opacity: 0; }
-	100% { right: 0; opacity: 1; }
-}
-@keyframes zoomIn {
-	0% { transform: scale(0); opacity: 0; }
-	100% { transform: scale(1); opacity: 1; }
-}
-@keyframes zoomOut {
-	0% { transform: scale(2); opacity: 0; }
-	100% { transform: scale(1); opacity: 1; }
 }
