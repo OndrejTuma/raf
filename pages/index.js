@@ -61,7 +61,9 @@ class Index extends Component {
 					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
 					<title>{translate('title')}</title>
-
+					<meta name="description" content={translate('desc')}/>
+					<meta name="keywords" content="raf simons tenisky,raf simons sneakers,raf simons boty,raf simons ozweego"/>
+					<link rel='icon' href='/static/favicon.ico' />
 				</Head>
 
 				<Header/>

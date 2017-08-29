@@ -48,6 +48,7 @@
 		.animate-image {
 			background-color: $bg-color;
 			display: inline-block;
+			font-size: 0;
 			left: 5%;
 			position: relative;
 			transition: all $animationsDuration;
