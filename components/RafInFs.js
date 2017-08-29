@@ -10,18 +10,16 @@ class RafInFs extends Component {
 
 		return (
 			<div className={`RafInFs`}>
-				<h2 className="heading">{heading}</h2>
+				<h2 className="animate-heading">{heading}</h2>
 				<figure className="collection">
-					<Motion style={{ top: spring(activeSlide === 4 ? 0 : -100, { stiffness: 40 }) }}>
-						{style => (
-							<img style={style} src="static/images/new-collection.jpg" alt={heading} />
-						)}
-					</Motion>
-					<a href="#">
-						<figcaption>
+					<div className="animate-image">
+						<img src="static/images/new-collection.jpg" alt={heading} />
+					</div>
+					<figcaption className="animate-content">
+						<a href="#" >
 							<strong>{collection}</strong> <span>{inFs}</span>
-						</figcaption>
-					</a>
+						</a>
+					</figcaption>
 				</figure>
 			</div>
 		)

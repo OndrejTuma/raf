@@ -9,6 +9,7 @@ import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
 import LogoFootshop from '../components/LogoFootshop'
+import Lyrics from '../components/Lyrics'
 import Menu from '../components/Menu'
 import RafInFs from '../components/RafInFs'
 import Signature from '../components/Signature'
@@ -63,6 +64,8 @@ class Index extends Component {
 				</Head>
 
 				<Header/>
+
+				<Lyrics/>
 
 				<Menu items={[
 					{name: translate('menu1'), anchor: 'slide0'},

@@ -42,7 +42,7 @@ const animations = {
 		},
 	},
 }
-const lines = {
+export const lines = {
 	iDont: ['I', 'done', 'came', 'up'],
 	bustin: ['Bustin\'', 'down', 'a', 'whole', 'bag'],
 	broke: ['Broke', 'nigga,', 'step','back'],

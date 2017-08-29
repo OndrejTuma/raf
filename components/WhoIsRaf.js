@@ -1,5 +1,4 @@
 import React from 'react'
-import {Motion, spring} from 'react-motion'
 
 import {nextConnect} from '../store'
 
@@ -12,10 +11,12 @@ const WhoIsRaf = ({
 }) => {
 	return (
 		<div className="who-is-raf">
-			<h2 className="heading">{heading}</h2>
-			<div className="relative">
-				<img src={`static/images/raf-bio.jpg`} alt="Raf Simons" className="image"/>
-				<div className="content">
+			<h2 className="animate-heading">{heading}</h2>
+			<div className="info">
+				<div className="animate-image">
+					<img src={`static/images/raf-bio.jpg`} alt="Raf Simons"/>
+				</div>
+				<div className="animate-content">
 					<p>
 						{about}<br/>
 						<a href="#" className="link">{interview}</a>

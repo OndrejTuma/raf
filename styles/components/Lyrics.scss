@@ -1,0 +1,17 @@
+.Lyrics {
+	@include square(100%);
+	font-weight: 700;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	white-space: nowrap;
+	z-index: -2;
+
+
+	.text {
+		color: $tundora;
+		position: absolute;
+		text-transform: uppercase;
+	}
+}

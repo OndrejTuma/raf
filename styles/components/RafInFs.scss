@@ -12,24 +12,40 @@
 		text-transform: uppercase;
 		width: 80%;
 
+		.active & {
+			.animate-image {
+				img {
+					opacity: .7;
+				}
+			}
+
+			figcaption.animate-content {
+				top: 50%;
+			}
+		}
+
+		.animate-image {
+			left: 0;
+		}
+
 		a {
 			color: $black;
+			text-decoration: none;
 		}
 		figcaption {
 			background-color: $white;
 			box-shadow: 5px 5px 20px rgba($black, .5);
-			left: 50%;
 			line-height: 1;
 			max-width: 500px;
-			position: absolute;
 			padding: 10px;
-			top: 50%;
-			transform: translate(-50%, -50%);
 			width: 100%;
-		}
-		img {
-			opacity: .7;
-			position: relative;
+
+			&.animate-content {
+				left: 50%;
+				position: absolute;
+				top: 45%;
+				transform: translate(-50%, -50%);
+			}
 		}
 		span {
 			font-size: $font-size-small;

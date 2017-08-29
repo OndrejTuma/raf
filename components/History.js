@@ -16,8 +16,8 @@ class History extends Component {
 
 		return (
 			<div className={`History`}>
-				<h2 className="heading">{heading}</h2>
-				<div className="content">
+				<h2 className="animate-heading">{heading}</h2>
+				<div className="animate-content">
 					<Carousel slides={slides} hasCounter="1" />
 				</div>
 			</div>

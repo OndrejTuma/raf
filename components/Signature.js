@@ -15,8 +15,8 @@ class Signature extends Component {
 
 		return (
 			<div className={`Signature`}>
-				<h2 className="heading">{heading}</h2>
-				<div className="content">
+				<h2 className="animate-heading">{heading}</h2>
+				<div className="animate-content">
 					<Carousel slides={slides} reversed={true} />
 				</div>
 			</div>
