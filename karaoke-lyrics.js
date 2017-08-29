@@ -122,7 +122,6 @@ export const lines = {
 }
 
 const lyrics = [
-	// line 1
 	{
 		animation: animations.slideLeft,
 		duration: {

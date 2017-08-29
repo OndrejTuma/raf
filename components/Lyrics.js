@@ -43,7 +43,10 @@ class Lyrics extends Component {
 						return (
 							<div key={i} className="text" style={position}>
 								<Typist cursor={{show: false}} startDelay={5000} onTypingDone={() => this._typingFinished()}>
-									"{line.join(' ')}"
+									"{line.reduce((res, word, i) => {
+										res += `${i > 0 ? ' ' : ''}${word.text || word}`
+										return res
+								}, '')}"
 								</Typist>
 							</div>
 						)
