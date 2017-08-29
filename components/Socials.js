@@ -2,27 +2,26 @@ import React from 'react'
 
 import Facebook from '../static/svg/social-facebook.svg'
 import Twitter from '../static/svg/social-twitter.svg'
+import Snapchat from '../static/svg/social-snapchat.svg'
 import Instagram from '../static/svg/social-instagram.svg'
-import Pinterest from '../static/svg/social-pinterest.svg'
 import Youtube from '../static/svg/social-youtube.svg'
 
 
-const Socials = props =>  {
+const Socials = ({ translations: { linkFb, linkTw, linkYt, linkIt, linkSc } }) =>  {
 	const socials = [
-		{ name: 'Facebook', url: 'https://www.facebook.com', svg: <Facebook/> },
-		{ name: 'Twitter', url: 'https://www.twitter.com', svg: <Twitter/> },
-		{ name: 'Instagram', url: 'https://www.instagram.com', svg: <Instagram/> },
-		{ name: 'Pinterest', url: 'https://www.pinterest.com', svg: <Pinterest/> },
-		{ name: 'YouTube', url: 'https://www.youtube.com', svg: <Youtube/> },
-	];
+		{ name: 'Facebook', url: linkFb, svg: <Facebook/> },
+		{ name: 'Twitter', url: linkTw, svg: <Twitter/> },
+		{ name: 'Snapchat', url: linkSc, svg: <Snapchat/> },
+		{ name: 'Instagram', url: linkIt, svg: <Instagram/> },
+		{ name: 'YouTube', url: linkYt, svg: <Youtube/> },
+	]
+
 	return (
 		<div className={`Socials`}>
 			<ul>
 				{socials.map((service, i) => (
 					<li key={i}>
-						<a href={service.url} title={service.name}>
-							{service.svg}
-						</a>
+						<a href={service.url} title={service.name}>{service.svg}</a>
 					</li>
 				))}
 			</ul>

@@ -13,10 +13,10 @@ class LogoFootshop extends Component {
 	}
 
 	render() {
-		const { className } = this.props
+		const { className, link } = this.props
 
 		return (
-			<a className={`LogoFootshop${className ? ` ${className}` : ''}`} href="#" onClick={e => this._handleClick(e)}>
+			<a className={`LogoFootshop${className ? ` ${className}` : ''}`} href={link} onClick={e => this._handleClick(e)}>
 				<FootLogo/>
 			</a>
 		)

@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import { nextConnect } from '../store'
-import { getTranslate, setActiveLanguage, getActiveLanguage } from 'react-localize-redux'
+import { setActiveLanguage } from 'react-localize-redux'
+
+import {nextConnect} from '../store'
 
 import { langs } from '../translations'
 
 class Languages extends Component {
 	render() {
-		const { currentLanguage, dispatch, translate } = this.props
+		const { dispatch, translations: { lang } } = this.props
 
 		return (
 			<div className="languages">
-				<p>{translate('lang')}</p>
+				<p>{lang}</p>
 				<ul className="slash-list">
 					{langs.map((lang, i) => {
-						if (lang != currentLanguage.code) {
-							return <li key={i} onClick={() => dispatch(setActiveLanguage(lang))}>{lang}</li>
-						}
+						return <li key={i} onClick={() => dispatch(setActiveLanguage(lang))}>{lang}</li>
 					})}
 				</ul>
 			</div>
@@ -23,9 +22,4 @@ class Languages extends Component {
 	}
 }
 
-export default nextConnect(state => ({
-	auth: state.auth,
-	global: state.global,
-	translate: (state.locale && state.locale.languages.length) ? getTranslate(state.locale) : () => {},
-	currentLanguage: (state.locale && state.locale.languages.length) ? getActiveLanguage(state.locale) : '',
-}))(Languages)
+export default nextConnect()(Languages)

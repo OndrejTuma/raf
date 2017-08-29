@@ -61,6 +61,7 @@ class Index extends Component {
 					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
 					<title>{translate('title')}</title>
+
 				</Head>
 
 				<Header/>
@@ -78,7 +79,7 @@ class Index extends Component {
 				<Slider translations={{ scroll: translate('scroll') }}>
 					<div className="intro">
 						<Languages translations={{
-							loud: translate('loud'),
+							lang: translate('lang'),
 						}}/>
 						<Youtube translations={{
 							loud: translate('loud'),
@@ -125,19 +126,25 @@ class Index extends Component {
 							collection: translate('collection'),
 							inFs: translate('inFs'),
 						}}/>
-						<Socials/>
+						<Socials translations={{
+							linkFb: translate('linkFb'),
+							linkTw: translate('linkTw'),
+							linkIt: translate('linkIt'),
+							linkSc: translate('linkSc'),
+							linkYt: translate('linkYt'),
+						}}/>
 						{isMobile ? (
 							<div className="footer">
 								<p>
-									{translate('foot')} <a href="&">{translate('footLink')}</a>
+									{translate('foot')} <a href={translate('footLinkUrl')}>{translate('footLink')}</a>
 								</p>
-								<LogoFootshop className="bigger"/>
+								<LogoFootshop link={translate('footLogoUrl')} className="bigger"/>
 							</div>
 						) : (
 							<div className="footer">
-								<LogoFootshop className="bigger"/>
+								<LogoFootshop link={translate('footLogoUrl')} className="bigger"/>
 								<p>
-									{translate('foot')} <a href="&">{translate('footLink')}</a>
+									{translate('foot')} <a href={translate('footLinkUrl')}>{translate('footLink')}</a>
 								</p>
 							</div>
 						)}
