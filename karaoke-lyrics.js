@@ -41,6 +41,22 @@ const animations = {
 			top: spring(0, { stiffness: 200 }),
 		},
 	},
+	zoomIn: {
+		before: {
+			scale: 6,
+		},
+		after: {
+			scale: spring(1, { stiffness: 200 }),
+		},
+	},
+	zoomOut: {
+		before: {
+			scale: 0,
+		},
+		after: {
+			scale: spring(1, { stiffness: 200 }),
+		},
+	},
 }
 export const lines = {
 	iDont: ['I', 'done', 'came', 'up'],
@@ -49,7 +65,10 @@ export const lines = {
 	peep: ['Why', 'don\'t', 'you', 'peep', 'a', 'nigga\'s', 'swag'],
 	dontAsk: ['You', 'ain\'t', 'even', 'gotta', 'ask'],
 	what: ['What', 'are', 'those?', 'What', 'is', 'that?'],
-	raf: ['Please', 'don\'t', 'touch', 'my', 'Raf'],
+	raf: [
+		{ text: 'Please', animation: animations.zoomOut },
+		'don\'t', 'touch', 'my', 'Raf'
+	],
 	step: ['Ho', 'don\'t', 'step', 'on', 'my', 'Raf', 'Simons'],
 	spending: ['Do', 'you', 'know', 'how', 'much', 'I\'m', 'spendin\'?'],
 	milli: ['My', 'closet', 'it', 'worth', '\'bout', 'a', 'milli'],

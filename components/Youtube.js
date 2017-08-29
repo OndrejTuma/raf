@@ -114,12 +114,15 @@ class Youtube extends Component {
 						res.push(<div key={i} className={`words words${i}`}>{
 							line.words.reduce((words, word, i) => {
 								if (currentTime >= line.duration.from + line.duration.words * i) {
-									words.push(<Motion key={i} defaultStyle={line.animation.before} style={line.animation.after}>{
+									let animationSource = word.animation || line.animation,
+										text = word.text || word
+
+									words.push(<Motion key={i} defaultStyle={animationSource.before} style={animationSource.after}>{
 										style => (
 											<span style={{
 												...style,
 												transform: `${typeof style.rotate !== 'undefined' ? `rotate(${style.rotate}deg)` : ``}${typeof style.scale !== 'undefined' ? ` scale(${style.scale})` : ``}`,
-											}}>{word}</span>
+											}}>{text}</span>
 										)
 									}</Motion>)
 								}
@@ -146,12 +149,12 @@ class Youtube extends Component {
 					<p>{isMuted ? loud : mute}</p>
 					<SVG path={`static/svg/${isMuted ? 'unmute' : 'mute'}.svg`}/>
 				</div>
-				{0 && this.youtube ? (
+				{this.youtube ? (
 					<div style={{ position: 'absolute', zIndex: 2, bottom: '100%', backgroundColor: 'black', padding: 20, width: '100%', textAlign: 'center' }}>
 						<span style={{ padding: 10 }}>{this.youtube && Math.round(this.youtube.getCurrentTime() * 100)/100}</span>
 						<span onClick={() => this.youtube.pauseVideo()} style={{ padding: 10 }}>pause</span>
 						<span onClick={() => this.youtube.playVideo()} style={{ padding: 10 }}>play</span>
-						<span onClick={() => this.youtube.seekTo(20)} style={{ padding: 10 }}>seek</span>
+						<span onClick={() => this.youtube.seekTo(31)} style={{ padding: 10 }}>seek</span>
 					</div>
 				) : ''}
 				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
