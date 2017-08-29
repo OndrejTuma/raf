@@ -19,10 +19,18 @@
 			}
 			.animate-image {
 				left: 0;
+				transform: scale(1);
 
 				img {
 					opacity: .4;
 				}
+			}
+			// delays
+			.animate-image, .animate-image img {
+				transition-delay: .4s;
+			}
+			.animate-content {
+				transition-delay: .5s;
 			}
 		}
 
@@ -51,6 +59,7 @@
 			font-size: 0;
 			left: 5%;
 			position: relative;
+			transform: scale(.95);
 			transition: all $animationsDuration;
 
 			img {
