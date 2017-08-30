@@ -12,10 +12,11 @@ class Slider extends Component {
 	constructor (props) {
 		super(props)
 
+		this._handleKeyDown = this._handleKeyDown.bind(this)
+		this._handleResize = this._handleResize.bind(this)
 		this._handleScroll = this._handleScroll.bind(this)
 		this._handleTouch = this._handleTouch.bind(this)
 		this._handleScrollEnd = this._handleScrollEnd.bind(this)
-		this._handleResize = this._handleResize.bind(this)
 	}
 	componentDidMount() {
 		const { children } = this.props
@@ -52,6 +53,7 @@ class Slider extends Component {
 			//window.addEventListener('scroll', this._handleScroll, true)
 			window.addEventListener('touchmove', this._handleTouch)
 			window.addEventListener('wheel', this._handleScroll)
+			window.addEventListener('keydown', this._handleKeyDown)
 		}
 	}
 	_deactivateScrollListening() {
@@ -59,6 +61,7 @@ class Slider extends Component {
 			//window.removeEventListener('scroll', this._handleScroll)
 			window.removeEventListener('touchmove', this._handleTouch)
 			window.removeEventListener('wheel', this._handleScroll)
+			window.removeEventListener('keydown', this._handleKeyDown)
 		}
 	}
 	_getScrollTop() {
@@ -66,6 +69,15 @@ class Slider extends Component {
 	}
 	_getViewportHeight() {
 		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+	}
+	_handleKeyDown(e) {
+		console.log(e);
+		if ([32, 34, 40].indexOf(e.keyCode) >= 0) {
+			this._nextSlide(true)
+		}
+		else if ([33, 38].indexOf(e.keyCode) >= 0) {
+			this._nextSlide(false)
+		}
 	}
 	_handleResize(e) {
 		const { activeSlide } = this.props

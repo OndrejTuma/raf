@@ -5,13 +5,14 @@ import thunkMiddleware from 'redux-thunk'
 
 import reducers from './redux/reducers'
 
+const dev = process.env.NODE_ENV !== 'production'
+
 const loggerMiddleware = createLogger()
 const initStore = (initialState) => {
 	return createStore(
 		reducers,
 		initialState,
-		applyMiddleware(thunkMiddleware, loggerMiddleware),
-		//applyMiddleware(thunkMiddleware),
+		dev ? applyMiddleware(thunkMiddleware, loggerMiddleware) : applyMiddleware(thunkMiddleware)
 	)
 }
 
