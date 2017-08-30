@@ -2,4 +2,8 @@
 	max-width: $wrapper--width;
 	margin: auto;
 	position: relative;
+	
+	@media only screen and (min-height: 800px) {
+		padding-top: 5%;
+	}
 }

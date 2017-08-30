@@ -39,7 +39,7 @@
 
 		}
 
-		img, p {
+		h3, img, p {
 			position: relative;
 		}
 		h3 {
@@ -178,7 +178,7 @@
 			li {
 				display: inline-block;
 				margin-top: 0 !important;
-				padding: 0 15px;
+				padding: 0 10px;
 				position: relative;
 
 				&:before {
@@ -206,6 +206,13 @@
 		}
 		.timeline {
 			left: 100px;
+		}
+	}
+	@include media(big-vh) {
+		.timeline {
+			li {
+				padding: 0 20px;
+			}
 		}
 	}
 }

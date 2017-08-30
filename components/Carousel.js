@@ -59,9 +59,13 @@ class Carousel extends Component {
 					{activeSlide === i ? (
 						<StaggeredMotion
 							defaultStyles={[ { top: -50 }, { top: 50 }, { top: 50 } ]}
-							styles={prevStyles => prevStyles.map((_, j) => ({
-								top: spring( 0, { stiffness: 100, damping: 10 }),
-							}))}
+							styles={prevStyles => prevStyles.map((_, j) => {
+								let styles = j === 0 ? {
+									top: spring( 0, { stiffness: 90, damping: 7 }),
+								} : prevStyles[j - 1]
+
+								return styles
+							})}
 						>
 							{styles => (
 								<div>

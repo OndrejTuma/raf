@@ -1,6 +1,8 @@
 
 // set media queries based on @mobile-first variable
 @mixin media-queries($mobile-first: false) {
+	$big-vh: "only screen and (min-height: 800px)" !global;
+
 	@if $mobile-first == true {
 		$desktop-lg: "only screen and (min-width: #{$container--desktop} + 1)" !global;
 		$desktop: "only screen and (min-width: #{$container--tablet} + 1)" !global;
@@ -27,6 +29,8 @@
 		$media: $tablet;
 	} @else if $type == phablet {
 		$media: $phablet;
+	} @else if $type == big-vh {
+		$media: $big-vh;
 	}
 
 	@media #{$media} {

@@ -143,7 +143,7 @@ class Youtube extends Component {
 	}
 
 	render() {
-		const { translations: { mute, loud, raf } } = this.props
+		const { translations: { mute, loud, raf }, ytState } = this.props
 		let { isMuted, karaoke } = this.state
 
 		return (
@@ -161,9 +161,9 @@ class Youtube extends Component {
 					</div>
 				) : ''}
 				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
-					<ResponsiveRatio className="video" ratio={16/8}>
-						<p ref={elm => this.titleLeft = elm} className="title left">{raf}</p>
-						<p ref={elm => this.titleRight = elm} className="title right">{raf}</p>
+					<ResponsiveRatio className="video" ratio={16/7}>
+						<p ref={elm => this.titleLeft = elm} className={classNames('title', 'left')}>{raf}</p>
+						<p ref={elm => this.titleRight = elm} className={classNames('title', 'right')}>{raf}</p>
 						<div className="karaoke">{karaoke}</div>
 						<YouTube
 							videoId={`_eLryuBCO-M`}

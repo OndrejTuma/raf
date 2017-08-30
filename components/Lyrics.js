@@ -19,12 +19,15 @@ class Lyrics extends Component {
 			}
 		}
 	}
+	componentWillUnmount () {
+		clearTimeout(this.timeoutInterval)
+	}
 
 	_typingFinished() {
 		const {active} = this.state
 		let newActive = active < this.lines.length - 1 ? active + 1 : 0
 
-		setTimeout(() => this.setState({
+		this.timeoutInterval = setTimeout(() => this.setState({
 			active: newActive,
 			position: {
 				left: `${Math.random() * 50}%`,
