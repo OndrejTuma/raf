@@ -164,7 +164,7 @@ class Youtube extends Component {
 					<ResponsiveRatio className="video" ratio={16/7}>
 						<p ref={elm => this.titleLeft = elm} className={classNames('title', 'left')}>{raf}</p>
 						<p ref={elm => this.titleRight = elm} className={classNames('title', 'right')}>{raf}</p>
-						<div className="karaoke">{karaoke}</div>
+						<div style={{ display: ytState === 1 ? 'block' : 'none' }} className="karaoke">{karaoke}</div>
 						<YouTube
 							videoId={`_eLryuBCO-M`}
 							opts={{
