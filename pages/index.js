@@ -5,10 +5,10 @@ import {addTranslation, getTranslate, setLanguages, getActiveLanguage} from 'rea
 import {nextConnect} from '../store'
 import {setIsMobile} from '../redux/actions'
 
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
-import LogoFootshop from '../components/LogoFootshop'
 import Lyrics from '../components/Lyrics'
 import Menu from '../components/Menu'
 import RafInFs from '../components/RafInFs'
@@ -136,21 +136,14 @@ class Index extends Component {
 							linkSc: translate('linkSc'),
 							linkYt: translate('linkYt'),
 						}}/>
-						{isMobile ? (
-							<div className="footer">
-								<p>
-									{translate('foot')} <a href={translate('footLinkUrl')}>{translate('footLink')}</a>
-								</p>
-								<LogoFootshop link={translate('footLogoUrl')} className="bigger"/>
-							</div>
-						) : (
-							<div className="footer">
-								<LogoFootshop link={translate('footLogoUrl')} className="bigger"/>
-								<p>
-									{translate('foot')} <a href={translate('footLinkUrl')}>{translate('footLink')}</a>
-								</p>
-							</div>
-						)}
+					</div>
+					<div>
+						<Footer translations={{
+							footshoUrl: translate('footLogoUrl'),
+							link: translate('footLinkUrl'),
+							linkText: translate('footLink'),
+							text: translate('foot'),
+						}}/>
 					</div>
 				</Slider>
 			</div>

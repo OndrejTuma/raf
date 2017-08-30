@@ -7,9 +7,11 @@
 	z-index: 11;
 
 	.hamburger {
+		padding: 28px 10px;
 		position: fixed;
-		right: 10px;
-		top: 28px;
+		right: 0;
+		top: 0;
+		width: 80px;
 	}
 	.items {
 		bottom: 0;

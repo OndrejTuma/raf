@@ -6,11 +6,13 @@
 		img {
 			max-height: 50vh;
 			opacity: .5;
-			position: absolute;
 			z-index: -1;
 		}
 		.info {
-			padding: 50px 0 0 15px;
+			padding: 20% 0 0 15px;
+			position: absolute;
+			right: 40px;
+			top: 0;
 		}
 	}
 
@@ -26,6 +28,7 @@
 				.info {
 					clear: both;
 					padding-left: 20%;
+					padding-top: 0;
 					position: static;
 				}
 

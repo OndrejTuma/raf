@@ -1,9 +1,18 @@
-.footer {
+#slide5 {
+	@include child-middle;
+	padding-top: 0;
+
+	& > div {
+		width: 100%;
+	}
+}
+
+.Footer {
 	@extend .wrapper;
+	@include child-middle;
 	font-size: $font-size-tiny;
 	line-height: 1;
 	text-align: center;
-	padding-bottom: $padding--default;
 
 	p {
 		margin: 0 auto $margin--big;
@@ -11,15 +20,15 @@
 	}
 
 	@include media(phablet) {
-		text-align: left;
 
 		p {
+			max-width: 500px;
 			width: auto;
 		}
 
 		.LogoFootshop {
-			float: left;
-			margin: 0 10px 5px 0;
+			display: inline-block;
+			margin: auto;
 		}
 	}
 }

@@ -15,6 +15,7 @@ class Slider extends Component {
 		this._handleScroll = this._handleScroll.bind(this)
 		this._handleTouch = this._handleTouch.bind(this)
 		this._handleScrollEnd = this._handleScrollEnd.bind(this)
+		this._handleResize = this._handleResize.bind(this)
 	}
 	componentDidMount() {
 		const { children } = this.props
@@ -34,12 +35,16 @@ class Slider extends Component {
 		scrollSpy.update()
 
 		this._activateScrollListening()
+
+		window.addEventListener('resize', this._handleResize)
 	}
 	componentWillUnmount() {
 		Events.scrollEvent.remove('begin')
 		Events.scrollEvent.remove('end')
 
 		this._deactivateScrollListening()
+
+		window.removeEventListener('resize', this._handleResize)
 	}
 
 	_activateScrollListening() {
@@ -62,6 +67,18 @@ class Slider extends Component {
 	_getViewportHeight() {
 		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 	}
+	_handleResize(e) {
+		const { activeSlide } = this.props
+
+		this.slideTo(activeSlide)
+	}
+	_handleScroll(e) {
+		let scrollDown = e.deltaY > 0
+
+		if (!this.props.isSliding) {
+			this._nextSlide(scrollDown)
+		}
+	}
 	_handleTouch(e) {
 		if (e.touches.length && !this.props.isSliding) {
 			let touch = e.touches[0]
@@ -71,29 +88,6 @@ class Slider extends Component {
 				this._nextSlide(scrollDown)
 			}
 			this.lastTouchY = touch.clientY
-		}
-	}
-	_handleScroll(e) {
-		let scrollDown = e.deltaY > 0
-
-		if (!this.props.isSliding) {
-			this._nextSlide(scrollDown)
-		}
-	}
-	_nextSlide(scrollDown = true) {
-		let { activeSlide, dispatch } = this.props,
-			nextSlide
-
-		if (scrollDown && activeSlide < this.slides - 1) {
-			nextSlide = activeSlide + 1
-		}
-		else if (!scrollDown && activeSlide > 0) {
-			nextSlide = activeSlide - 1
-		}
-
-		if (nextSlide >= 0) {
-			this.slideTo(nextSlide)
-			dispatch(setActiveSlide(nextSlide, activeSlide))
 		}
 	}
 	_handleScrollClick(e) {
@@ -123,6 +117,22 @@ class Slider extends Component {
 				}
 				this._activateScrollListening()
 			}, 500)
+		}
+	}
+	_nextSlide(scrollDown = true) {
+		let { activeSlide, dispatch } = this.props,
+			nextSlide
+
+		if (scrollDown && activeSlide < this.slides - 1) {
+			nextSlide = activeSlide + 1
+		}
+		else if (!scrollDown && activeSlide > 0) {
+			nextSlide = activeSlide - 1
+		}
+
+		if (nextSlide >= 0) {
+			this.slideTo(nextSlide)
+			dispatch(setActiveSlide(nextSlide, activeSlide))
 		}
 	}
 

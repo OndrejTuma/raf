@@ -2,8 +2,10 @@
 	float: left;
 	font-size: $font-size-small;
 	padding: 30px 10px 30px 30px;
+	position: relative;
 	text-align: center;
 	text-transform: uppercase;
+	z-index: 1;
 
 	li {
 		cursor: pointer;

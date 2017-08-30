@@ -48,7 +48,6 @@
 @import "layout/_p";
 @import "layout/_table";
 @import "layout/buttons";
-@import "layout/footer";
 @import "layout/header";
 @import "layout/nav";
 @import "layout/strong";
@@ -60,6 +59,7 @@
 // reusable components
 @import "components/hamburger";
 //#generated-components
+@import "components/Footer";
 @import "components/Lyrics";
 @import "components/Cites";
 @import "components/LogoFootshop";
