@@ -9,6 +9,7 @@ export const setActiveSlide = (payload, prevousSlide) => dispatch => {
 export const setPreviousSlide = payload => dispatch => dispatch({ type: actions.SET_PREVIOUS_SLIDE, payload })
 
 export const setIsMobile = payload => dispatch => dispatch({ type: actions.SET_IS_MOBILE, payload })
+export const setIsSliding = payload => dispatch => dispatch({ type: actions.SET_IS_SLIDING, payload })
 
 export const setYoutubeState = payload => dispatch => dispatch({ type: actions.SET_YOUTUBE_STATE, payload })
 

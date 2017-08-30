@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Events, scrollSpy, scroller } from 'react-scroll'
 import classNames from 'classnames'
 
-import {setActiveSlide} from '../redux/actions'
+import {setActiveSlide,setIsSliding} from '../redux/actions'
 import {nextConnect} from '../store'
 
 import ScrollDown from './ScrollDown'
@@ -19,7 +19,6 @@ class Slider extends Component {
 	componentDidMount() {
 		const { children } = this.props
 
-		this.isSliding = false
 		this.lastScrollTop = this._getScrollTop()
 		this.duration = 1000
 		this.scrollerSettings = {
@@ -64,7 +63,7 @@ class Slider extends Component {
 		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 	}
 	_handleTouch(e) {
-		if (e.touches.length && !this.isSliding) {
+		if (e.touches.length && !this.props.isSliding) {
 			let touch = e.touches[0]
 
 			if (this.lastTouchY) {
@@ -75,18 +74,13 @@ class Slider extends Component {
 		}
 	}
 	_handleScroll(e) {
-		console.log(e)
 		let scrollDown = e.deltaY > 0
 
-		if (!this.isSliding) {
+		if (!this.props.isSliding) {
 			this._nextSlide(scrollDown)
 		}
 	}
 	_nextSlide(scrollDown = true) {
-		if (this.isSliding) {
-			return
-		}
-
 		let { activeSlide, dispatch } = this.props,
 			nextSlide
 
@@ -104,16 +98,11 @@ class Slider extends Component {
 	}
 	_handleScrollClick(e) {
 		e.preventDefault()
-		const {activeSlide, dispatch} = this.props
 
-		dispatch(setActiveSlide(1, activeSlide))
+		this._nextSlide(true)
 	}
 	_handleScrollEnd(to, element) {
-		if (!to) {
-			return
-		}
-
-		let { previousSlide } = this.props,
+		let { dispatch, isSliding, previousSlide } = this.props,
 			slide = to.match(/\d+/) ? parseInt(to.match(/\d+/)[0]) : null
 
 		if (slide >= 0) {
@@ -126,20 +115,32 @@ class Slider extends Component {
 		}
 		if ( ! this.slidingTimeout) {
 			this.slidingTimeout = setTimeout(() => {
-				this.isSliding = false
-				this.lastTouchY = null
-				this._activateScrollListening()
 				clearTimeout(this.slidingTimeout)
+				this.lastTouchY = null
 				this.slidingTimeout = 0
+				if (isSliding) {
+					dispatch(setIsSliding(false))
+				}
+				this._activateScrollListening()
 			}, 500)
 		}
 	}
 
 	slideTo(slide) {
+		const { activeSlide, dispatch, isSliding } = this.props
+
 		// client-side only
-		if (typeof window !== 'undefined' && ! this.isSliding) {
-			this.isSliding = true
-			this._deactivateScrollListening()
+		if (typeof window !== 'undefined') {
+			let willBeSliding = slide != activeSlide
+
+			if (typeof isSliding === 'undefined') {
+				dispatch(setIsSliding(willBeSliding))
+			}
+			else if (!isSliding && willBeSliding) {
+				dispatch(setIsSliding(true))
+				this._deactivateScrollListening()
+			}
+
 			scroller.scrollTo(`slide${slide}`, this.scrollerSettings)
 		}
 	}
@@ -168,6 +169,7 @@ class Slider extends Component {
 }
 
 export default nextConnect(state => ({
+	isSliding: state.global.isSliding,
 	activeSlide: state.global.slider.activeSlide,
 	previousSlide: state.global.slider.previousSlide,
 }))(Slider)

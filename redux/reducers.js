@@ -32,6 +32,7 @@ const globalReducer = (state = {
 		state: null,
 	},
 	isMobile: null,
+	isSliding: undefined,
 }, action) => {
 	switch (action.type) {
 		case actions.SET_ACTIVE_SLIDE:  return Object.assign({}, state, {
@@ -56,6 +57,10 @@ const globalReducer = (state = {
 		case actions.SET_IS_MOBILE:  return {
 			...state,
 			isMobile: action.payload,
+		}
+		case actions.SET_IS_SLIDING:  return {
+			...state,
+			isSliding: action.payload,
 		}
 		default: return state
 	}
