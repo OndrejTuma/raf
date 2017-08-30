@@ -30,7 +30,7 @@ export const strings = {
 	],
 	menu4: [
 		'Signature style',
-		'Signature style',
+		'Jedinečný styl',
 	],
 	menu5: [
 		'Raf in Footshop',
@@ -114,7 +114,7 @@ export const strings = {
 
 	signature: [
 		'Signature style',
-		'Signature style',
+		'Jedinečný styl',
 	],
 	signKey1: [
 		'Ozweego',
