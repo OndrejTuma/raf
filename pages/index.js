@@ -62,7 +62,7 @@ class Index extends Component {
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
 					<title>{translate('title')}</title>
 					<meta name="description" content={translate('desc')}/>
-					<meta name="keywords" content="raf simons tenisky,raf simons sneakers,raf simons boty,raf simons ozweego"/>
+					<meta name="keywords" content={translate('keywords')}/>
 					<link rel='icon' href='/static/favicon.ico' />
 				</Head>
 
@@ -126,6 +126,7 @@ class Index extends Component {
 						<RafInFs translations={{
 							heading: translate('RafInFs'),
 							collection: translate('collection'),
+							collectionLink: translate('collectionLink'),
 							inFs: translate('inFs'),
 						}}/>
 						<Socials translations={{

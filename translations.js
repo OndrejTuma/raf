@@ -4,12 +4,16 @@ export const langs = ['en', 'cz']
 
 export const strings = {
 	title: [
-		'Raf Simons, exkluzivní tenisky od známého návrháře',
+		'Raf Simons, Exclusive sneakers from the world known designer',
 		'Raf Simons, exkluzivní tenisky od známého návrháře',
 	],
 	desc: [
+		'Shoes with a timeless design embodying fashionable avant-garde, that is the work of Belgian designer, Raf Simons, and you can find them in Footshop.',
 		'Boty s nadčasovým designem ztělesňujícím módní avantgardu, to je tvorba belgického návrháře Rafa Simonse, kterou nyní najdeš i ve Footshopu.',
-		'Boty s nadčasovým designem ztělesňujícím módní avantgardu, to je tvorba belgického návrháře Rafa Simonse, kterou nyní najdeš i ve Footshopu.',
+	],
+	keywords: [
+		'raf simons tennis shoes, raf simons sneakers, raf simons shoes, raf simons ozweego',
+		'raf simons tenisky, raf simons sneakers, raf simons boty, raf simons ozweego',
 	],
 
 	menu1: [
@@ -59,8 +63,8 @@ export const strings = {
 		'Kdo je Raf Simons?',
 	],
 	about: [
-		'Raf Simons je ztělesněním současné módní avantgardy, jež místy přechází až v šokující extravaganci.<br>Chvílemi je až fascinující, s jakou lehkostí tvorba tohoto belgického návrháře překonává hranice ustálených linií a kontur a zhmotňuje tak dosud nepředstavitelnou abstrakci. Rafem Simonsem navržené tenisky dokáží překvapivě vkusně ztvárnit satiru na omšelá módní klišé, nebo je naopak s drzostí sobě vlastní nevybíravým způsobem boří.',
 		'Raf Simons is the epitome of contemporary fashion avant-garde, which sometimes, graduates into shocking extravaganza.<br>Sometimes, it is fascinating , with what ease the design of this Belgian designer surpasses the boundaries of steady lines and contours, and thus materializes the unimaginable abstraction. Sneakers designed by Raf Simmons can surprisingly transform satire into dazzling fashionable cliché, or, on the contrary, with their own self-indulgence, deconstruckt it.',
+		'Raf Simons je ztělesněním současné módní avantgardy, jež místy přechází až v šokující extravaganci.<br>Chvílemi je až fascinující, s jakou lehkostí tvorba tohoto belgického návrháře překonává hranice ustálených linií a kontur a zhmotňuje tak dosud nepředstavitelnou abstrakci. Rafem Simonsem navržené tenisky dokáží překvapivě vkusně ztvárnit satiru na omšelá módní klišé, nebo je naopak s drzostí sobě vlastní nevybíravým způsobem boří.',
 	],
 	interview: [
 		'Raf Simons interview for The New York Times',
@@ -157,14 +161,18 @@ export const strings = {
 		'in Footshop',
 		've Footshopu',
 	],
+	collectionLink: [
+		'https://www.footshop.com/en/146_adidas-raf-simons',
+		'https://www.footshop.cz/cs/146_adidas-raf-simons',
+	],
 
 	foot: [
-		'Footshop zastává na českém a slovenském trhu vedoucí postavení, za což vděčí především svým aktivitám, které dalece přesahují prostý prodej tenisek. Spolupracuje se známými umělci a médii, a tak k nám jako jediný přináší řadu exkluzivních značek a kolekcí tenisek.',
+		'Footshop holds a leading position in the Czech and Slovak markets, owing it mainly to its activities far beyond the simple sale of sneakers. It cooperates with well-known artists and the media, and thus brings numbers of exclusive brands and collections of sneakers as the only one in the country.',
 		'Footshop zastává na českém a slovenském trhu vedoucí postavení, za což vděčí především svým aktivitám, které dalece přesahují prostý prodej tenisek. Spolupracuje se známými umělci a médii, a tak k nám jako jediný přináší řadu exkluzivních značek a kolekcí tenisek.',
 	],
 	footLink: [
-		'Více o FOOTSHOPU zde.',
-		'Více o FOOTSHOPU zde.',
+		'More about FOOTSHOP.',
+		'Více o FOOTSHOPU.',
 	],
 	footLinkUrl: [
 		'https://about.footshop.com/en/',

@@ -39,7 +39,7 @@ class Carousel extends Component {
 			draggable: false,
 			fade: true,
 			infinite: true,
-			lazyLoad: true,
+			//lazyLoad: true,
 			speed: 500,
 			slidesToShow: 1,
 			slidesToScroll: 1,
@@ -58,7 +58,7 @@ class Carousel extends Component {
 				<div key={i}>
 					{activeSlide === i ? (
 						<StaggeredMotion
-							defaultStyles={[ { top: -20 }, { top: 20 }, { top: 20 } ]}
+							defaultStyles={[ { top: -50 }, { top: 50 }, { top: 50 } ]}
 							styles={prevStyles => prevStyles.map((_, j) => ({
 								top: spring( 0, { stiffness: 100, damping: 10 }),
 							}))}

@@ -1,5 +1,6 @@
 .karaoke {
 	bottom: 0;
+	font-size: $font-size-small;
 	left: 30px;
 	margin: 0;
 	overflow: hidden;
@@ -9,14 +10,30 @@
 	top: 0;
 
 	.words {
-		left: 30%;
+		left: 50%;
 		position: absolute;
-		top: 10%;
+		top: 40%;
+
+		&.raf {
+			span:nth-child(2) { margin: 1em 0 0 -.7em; font-size: .5em; }
+			span:nth-child(3) { margin: .3em 0 0 -.7em; font-size: .5em; }
+			span:nth-child(4) { margin: .5em 0 -1em -1.2em; }
+			span:nth-child(5) { clear: both; font-size: 3em; }
+		}
 	}
 
 	span {
 		float: left;
+		line-height: 1.1;
 		padding: 0 3px;
 		position: relative;
+	}
+
+	@include media(phablet) {
+		font-size: $font-size-big;
+
+		.words {
+			right: 10%;
+		}
 	}
 }

@@ -30,6 +30,8 @@
 
 		a {
 			color: $black;
+			display: block;
+			padding: 10px;
 			text-decoration: none;
 		}
 		figcaption {
@@ -37,7 +39,6 @@
 			box-shadow: 5px 5px 20px rgba($black, .5);
 			line-height: 1;
 			max-width: 500px;
-			padding: 10px;
 			width: 100%;
 
 			&.animate-content {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import YouTube from 'react-youtube'
 import classNames from 'classnames'
-import {Motion, spring} from 'react-motion'
+import {Motion} from 'react-motion'
 
 import {nextConnect} from '../store'
 import {setYoutubeState} from '../redux/actions'
@@ -109,11 +109,12 @@ class Youtube extends Component {
 		this.setState({ isMuted: !isMuted })
 	}
 	setCurrentKaraokeTexts () {
-		if (this.youtube) {
+		if (this.youtube && this.props.activeSlide === 0) {
 			let currentTime = this.youtube.getCurrentTime(),
 				newKaraoke = lyrics.reduce((res, line, i) => {
 					if (currentTime >= line.duration.from && line.duration.to >= currentTime) {
-						res.push(<div key={i} className={`words words${i}`}>{
+						let classes = classNames('words', `words${i}`, line.className)
+						res.push(<div key={i} className={classes}>{
 							line.words.reduce((words, word, i) => {
 								if (currentTime >= line.duration.from + line.duration.words * i) {
 									let animationSource = word.animation || line.animation,
@@ -151,12 +152,12 @@ class Youtube extends Component {
 					<p>{isMuted ? loud : mute}</p>
 					{isMuted ? <Unmute/> : <Mute/>}
 				</div>
-				{0 && this.youtube ? (
+				{this.youtube ? (
 					<div style={{ position: 'absolute', zIndex: 2, bottom: '100%', backgroundColor: 'black', padding: 20, width: '100%', textAlign: 'center' }}>
 						<span style={{ padding: 10 }}>{this.youtube && Math.round(this.youtube.getCurrentTime() * 100)/100}</span>
 						<span onClick={() => this.youtube.pauseVideo()} style={{ padding: 10 }}>pause</span>
 						<span onClick={() => this.youtube.playVideo()} style={{ padding: 10 }}>play</span>
-						<span onClick={() => this.youtube.seekTo(31)} style={{ padding: 10 }}>seek</span>
+						<span onClick={() => this.youtube.seekTo(32)} style={{ padding: 10 }}>seek</span>
 					</div>
 				) : ''}
 				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
@@ -192,5 +193,6 @@ class Youtube extends Component {
 }
 
 export default nextConnect(state => ({
+	activeSlide: state.global.slider.activeSlide,
 	ytState: state.global.youtube.state,
 }))(Youtube)

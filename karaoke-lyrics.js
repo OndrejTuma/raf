@@ -57,46 +57,14 @@ const animations = {
 			scale: spring(1, { stiffness: 200 }),
 		},
 	},
-	raf1: {
-		before: {
-			scale: 3,
-		},
-		after: {
-			scale: spring(1, { stiffness: 200 }),
-		},
-	},
-	raf2: {
+	rotateLeft: {
 		before: {
 			scale: 3,
 			rotate: 0,
 		},
 		after: {
 			scale: spring(1, { stiffness: 200 }),
-			rotate: -90,
-		},
-	},
-	raf3: {
-		before: {
-			scale: 3,
-		},
-		after: {
-			scale: spring(1, { stiffness: 200 }),
-		},
-	},
-	raf4: {
-		before: {
-			scale: 3,
-		},
-		after: {
-			scale: spring(1.5, { stiffness: 200 }),
-		},
-	},
-	raf5: {
-		before: {
-			scale: 6,
-		},
-		after: {
-			scale: spring(3, { stiffness: 200 }),
+			rotate: spring(-90, { stiffness: 200 }),
 		},
 	},
 }
@@ -108,11 +76,11 @@ export const lines = {
 	dontAsk: ['You', 'ain\'t', 'even', 'gotta', 'ask'],
 	what: ['What', 'are', 'those?', 'What', 'is', 'that?'],
 	raf: [
-		{ text: 'Please', animation: animations.raf1 },
-		{ text: 'don\'t', animation: animations.raf2 },
-		{ text: 'touch', animation: animations.raf3 },
-		{ text: 'my', animation: animations.raf4 },
-		{ text: 'Raf', animation: animations.raf5 },
+		{ text: 'Please', animation: animations.slideRight },
+		{ text: 'don\'t', animation: animations.rotateLeft },
+		{ text: 'touch', animation: animations.slideLeft },
+		{ text: 'my', animation: animations.zoomOut },
+		{ text: 'Raf', animation: animations.zoomIn },
 	],
 	step: ['Ho', 'don\'t', 'step', 'on', 'my', 'Raf', 'Simons'],
 	spending: ['Do', 'you', 'know', 'how', 'much', 'I\'m', 'spendin\'?'],
@@ -178,6 +146,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 32.5,
 			to: 34,
@@ -187,6 +156,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 34,
 			to: 35.5,
@@ -304,6 +274,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 57.5,
 			to: 59,
@@ -412,6 +383,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 78.9,
 			to: 80.5,
@@ -610,6 +582,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 118.5,
 			to: 120,
@@ -619,6 +592,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 120,
 			to: 121.5,
@@ -628,6 +602,7 @@ const lyrics = [
 	},
 	{
 		animation: animations.slideLeft,
+		className: 'raf',
 		duration: {
 			from: 121.7,
 			to: 123,
