@@ -53,14 +53,23 @@ class Index extends Component {
 	}
 
 	render() {
-		const {translate, activeSlide, isMobile} = this.props
+		const {translate, activeSlide} = this.props
+		let heads = {
+			title: translate('title'),
+			url: "https://raf.footshop.cz/",
+			img: "https://raf.footshop.cz/static/images/signature/bunny.jpg",
+		}
 
 		return (
 			<div>
 				<Head>
 					<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+					<meta property="og:title" content={heads.title} />
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content={heads.url} />
+					<meta property="og:image" content={heads.img} />
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
-					<title>{translate('title')}</title>
+					<title>{heads.title}</title>
 					<meta name="description" content={translate('desc')}/>
 					<meta name="keywords" content={translate('keywords')}/>
 					<link rel='icon' href='/static/favicon.ico' />
