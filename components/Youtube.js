@@ -27,50 +27,56 @@ class Youtube extends Component {
 		this.state = {
 			isMuted: false,
 			karaoke: null,
+			karaokeInterval: 0,
+			titleInterval: 0,
 		}
-		this.karaokeInterval = 0
-		this.titleInterval = 0
 	}
 	componentDidMount() {
 		window.addEventListener('resize', this._setTitlesHeight)
 		this._setTitlesHeight()
 	}
 	componentWillUnmount() {
-		clearInterval(this.karaokeInterval)
-		clearInterval(this.titleInterval)
+		const {karaokeInterval, titleInterval} = this.state
+
+		clearInterval(karaokeInterval)
+		clearInterval(titleInterval)
 		window.removeEventListener('resize', this._setTitlesHeight)
 	}
 
 	_setTitlesHeight() {
-		this.titleInterval = setInterval(() => {
-			if ( !this.titleLeft || !this.titleRight || !this.videoWrapper) {
-				return
-			}
-			if (this.videoWrapper.offsetHeight) {
-				let fontSize = parseInt(this.titleLeft.style.fontSize) || 20,
-					tolerance = 5,
-					changeBy = 5,
-					zooming = Math.abs(this.titleLeft.offsetWidth - this.videoWrapper.offsetHeight) > tolerance,
-					zoomIn = this.titleLeft.offsetWidth + tolerance < this.videoWrapper.offsetHeight
-
-				if (zooming) {
-					this.titleLeft.style.fontSize = `${zoomIn ? fontSize + changeBy : fontSize - changeBy}px`
-					this.titleRight.style.fontSize = `${zoomIn ? fontSize + changeBy : fontSize - changeBy}px`
+		this.setState({
+			titleInterval: setInterval(() => {
+				if ( !this.titleLeft || !this.titleRight || !this.videoWrapper) {
+					return
 				}
-				else {
-					clearInterval(this.titleInterval)
-					this.titleInterval = 0
-				}
-			}
+				if (this.videoWrapper.offsetHeight) {
+					let fontSize = parseInt(this.titleLeft.style.fontSize) || 20,
+						tolerance = 10,
+						changeBy = 5,
+						zooming = Math.abs(this.titleLeft.offsetWidth - this.videoWrapper.offsetHeight) > tolerance,
+						zoomIn = this.titleLeft.offsetWidth + tolerance < this.videoWrapper.offsetHeight
 
-		}, 10)
+					if (zooming) {
+						this.titleLeft.style.fontSize = `${zoomIn ? fontSize + changeBy : fontSize - changeBy}px`
+						this.titleRight.style.fontSize = `${zoomIn ? fontSize + changeBy : fontSize - changeBy}px`
+					}
+					else {
+						clearInterval(this.state.titleInterval)
+						this.setState({
+							titleInterval: 0
+						})
+					}
+				}
+
+			}, 100)
+		})
 	}
 	_ytEnded(e) {
 		e.target.playVideo()
 	}
 	_ytStateChange(e) {
 		const { dispatch } = this.props
-		const { isMuted } = this.state
+		const { isMuted, karaokeInterval } = this.state
 
 		dispatch(setYoutubeState(e.data))
 
@@ -85,13 +91,17 @@ class Youtube extends Component {
 					this.youtube.unMute()
 				}
 			}
-			if (!this.karaokeInterval) {
-				this.karaokeInterval = setInterval(this.setCurrentKaraokeTexts, 200)
+			if (!karaokeInterval) {
+				this.setState({
+					karaokeInterval: setInterval(this.setCurrentKaraokeTexts, 200)
+				})
 			}
 		}
 		else {
-			clearInterval(this.karaokeInterval)
-			this.karaokeInterval = 0
+			clearInterval(karaokeInterval)
+			this.setState({
+				karaokeInterval: 0
+			})
 		}
 	}
 	_ytReady(event) {
@@ -147,7 +157,7 @@ class Youtube extends Component {
 
 	render() {
 		const { translations: { mute, loud, raf }, ytState } = this.props
-		let { isMuted, karaoke } = this.state
+		let { isMuted, karaoke, titleInterval } = this.state
 
 		return (
 			<div className="Youtube">
@@ -165,8 +175,8 @@ class Youtube extends Component {
 				) : ''}
 				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
 					<ResponsiveRatio className="video" ratio={16/7}>
-						<p ref={elm => this.titleLeft = elm} className={classNames('title', 'left', { hidden: this.titleInterval })}>{raf}</p>
-						<p ref={elm => this.titleRight = elm} className={classNames('title', 'right', { hidden: this.titleInterval })}>{raf}</p>
+						<p ref={elm => this.titleLeft = elm} className={classNames('title', 'left', { hidden: titleInterval })}>{raf}</p>
+						<p ref={elm => this.titleRight = elm} className={classNames('title', 'right', { hidden: titleInterval })}>{raf}</p>
 						<div style={{ display: ytState === 1 ? 'block' : 'none' }} className="karaoke">{karaoke}</div>
 						<YouTube
 							videoId={`_eLryuBCO-M`}
