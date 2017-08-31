@@ -57,7 +57,7 @@ class Index extends Component {
 		let heads = {
 			title: translate('title'),
 			url: "https://raf.footshop.cz/",
-			img: "https://raf.footshop.cz/static/images/signature/bunny.jpg",
+			img: "https://raf.footshop.cz/static/images/share.jpg",
 		}
 
 		return (
