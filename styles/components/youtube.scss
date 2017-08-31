@@ -41,8 +41,13 @@
 			opacity: .5;
 			position: absolute;
 			text-transform: uppercase;
+			transition: opacity 1s;
 			top: 100%;
 			z-index: 1;
+
+			&.hidden {
+				opacity: 0;
+			}
 
 			&.left {
 				left: 0;

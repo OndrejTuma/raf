@@ -29,6 +29,7 @@ class Youtube extends Component {
 			karaoke: null,
 		}
 		this.karaokeInterval = 0
+		this.titleInterval = 0
 	}
 	componentDidMount() {
 		window.addEventListener('resize', this._setTitlesHeight)
@@ -46,7 +47,7 @@ class Youtube extends Component {
 				return
 			}
 			if (this.videoWrapper.offsetHeight) {
-				let fontSize = parseInt(this.titleLeft.style.fontSize) || 10,
+				let fontSize = parseInt(this.titleLeft.style.fontSize) || 20,
 					tolerance = 5,
 					changeBy = 5,
 					zooming = Math.abs(this.titleLeft.offsetWidth - this.videoWrapper.offsetHeight) > tolerance,
@@ -58,6 +59,7 @@ class Youtube extends Component {
 				}
 				else {
 					clearInterval(this.titleInterval)
+					this.titleInterval = 0
 				}
 			}
 
@@ -163,8 +165,8 @@ class Youtube extends Component {
 				) : ''}
 				<div className="video-wrapper" ref={elm => this.videoWrapper = elm}>
 					<ResponsiveRatio className="video" ratio={16/7}>
-						<p ref={elm => this.titleLeft = elm} className={classNames('title', 'left')}>{raf}</p>
-						<p ref={elm => this.titleRight = elm} className={classNames('title', 'right')}>{raf}</p>
+						<p ref={elm => this.titleLeft = elm} className={classNames('title', 'left', { hidden: this.titleInterval })}>{raf}</p>
+						<p ref={elm => this.titleRight = elm} className={classNames('title', 'right', { hidden: this.titleInterval })}>{raf}</p>
 						<div style={{ display: ytState === 1 ? 'block' : 'none' }} className="karaoke">{karaoke}</div>
 						<YouTube
 							videoId={`_eLryuBCO-M`}
