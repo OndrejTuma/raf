@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ga from 'react-google-analytics'
 
 import {nextConnect} from '../store'
 
@@ -10,7 +11,7 @@ class Footer extends Component {
 		const {translations: {footshoUrl, link, linkText, text}} = this.props
 
 		let FootshopLogo = <LogoFootshop link={footshoUrl} className="bigger"/>,
-			FootContent = <p>{text} <a href={link}>{linkText}</a></p>
+			FootContent = <p>{text} <a href={link} onClick={() => ga('send', 'event', `footer-about-footshop`, 'click')}>{linkText}</a></p>
 
 		return (
 			<div className={`Footer`}>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Head from 'next/head'
 import {addTranslation, getTranslate, setLanguages, getActiveLanguage} from 'react-localize-redux'
+import FacebookProvider, { Like } from 'react-facebook'
+import ga, { Initializer as GAInitializer } from 'react-google-analytics'
 
 import {nextConnect} from '../store'
 import {setIsMobile} from '../redux/actions'
@@ -15,6 +17,7 @@ import RafInFs from '../components/RafInFs'
 import Signature from '../components/Signature'
 import Slider from '../components/Slider'
 import Socials from '../components/Socials'
+import TurnDevice from '../components/TurnDevice'
 import Youtube from '../components/Youtube'
 import WhoIsRaf from '../components/WhoIsRaf'
 
@@ -57,7 +60,7 @@ class Index extends Component {
 		let heads = {
 			title: translate('title'),
 			url: "https://raf.footshop.cz/",
-			img: "https://raf.footshop.cz/static/images/share.jpg",
+			img: "https://raf.footshop.cz/static/images/og-image.jpg",
 		}
 
 		return (
@@ -75,6 +78,9 @@ class Index extends Component {
 					<link rel='icon' href='/static/favicon.ico' />
 				</Head>
 
+				<GAInitializer/>
+				{ga('create', 'UA-78607882-7', 'auto')}
+
 				<Header/>
 
 				<Lyrics/>
@@ -87,11 +93,16 @@ class Index extends Component {
 					{name: translate('menu5'), anchor: 'slide4'},
 				]} />
 
+				<TurnDevice text={translate('turnDevice')}/>
+
 				<Slider translations={{ scroll: translate('scroll') }}>
 					<div className="intro">
 						<Languages translations={{
 							lang: translate('lang'),
 						}}/>
+						<FacebookProvider appId="737738779689385">
+							<Like className="facebook-like" href={heads.url} layout="button"/>
+						</FacebookProvider>
 						<Youtube translations={{
 							loud: translate('loud'),
 							mute: translate('mute'),

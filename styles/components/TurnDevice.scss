@@ -1,0 +1,30 @@
+.TurnDevice {
+	display: none;
+
+	@media only screen and (orientation: landscape) and (max-height: 500px) {
+		@include child-middle;
+		background-color: rgba($black, .95);
+		bottom: 0;
+		display: block;
+		left: 0;
+		position: fixed;
+		right: 0;
+		text-align: center;
+		text-transform: uppercase;
+		top: 0;
+		z-index: 11;
+
+		& > div {
+			max-width: 500px;
+			padding: 20px;
+		}
+
+		svg {
+			fill: $white;
+			width: 100px;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -16,6 +16,11 @@ export const strings = {
 		'raf simons tenisky, raf simons sneakers, raf simons boty, raf simons ozweego',
 	],
 
+	turnDevice: [
+		'Please turn your device vertically',
+		'Prosím, otočte telefon',
+	],
+
 	menu1: [
 		'Home',
 		'Domů',

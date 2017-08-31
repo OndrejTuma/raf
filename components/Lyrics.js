@@ -19,6 +19,14 @@ class Lyrics extends Component {
 			}
 		}
 	}
+	componentDidMount() {
+		this.setState({
+			position: {
+				left: `${Math.random() * 50}%`,
+				top: `${Math.random() * 80}%`,
+			}
+		})
+	}
 	componentWillUnmount () {
 		clearTimeout(this.timeoutInterval)
 	}

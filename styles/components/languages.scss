@@ -1,7 +1,7 @@
 .languages {
 	float: left;
-	font-size: $font-size-small;
-	padding: 30px 10px 30px 30px;
+	font-size: $font-size-small - 4;
+	padding: 0 10px 15px 30px;
 	position: relative;
 	text-align: center;
 	text-transform: uppercase;
@@ -18,8 +18,10 @@
 	}
 
 	@include media(phablet) {
+		font-size: $font-size-small;
 		left: 0;
+		padding-top: 0;
 		position: absolute;
-		top: 100%;
+		top: 0;
 	}
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import ga from 'react-google-analytics'
 
 import Facebook from '../static/svg/social-facebook.svg'
 import Twitter from '../static/svg/social-twitter.svg'
@@ -21,7 +22,7 @@ const Socials = ({ translations: { linkFb, linkTw, linkYt, linkIt, linkSc } }) =
 			<ul>
 				{socials.map((service, i) => (
 					<li key={i}>
-						<a href={service.url} title={service.name}>{service.svg}</a>
+						<a href={service.url} title={service.name} onClick={() => ga('send', 'event', `socials-${service.name}`, 'click')}>{service.svg}</a>
 					</li>
 				))}
 			</ul>

@@ -1,23 +1,19 @@
 .Youtube {
 	margin: auto;
 	max-width: $wrapper--width;
-	position: relative;
 
 	.mute {
-		position: absolute;
-		right: 0;
-		z-index: 1;
-
 		cursor: pointer;
-		font-size: $font-size-small;
-		padding: 30px 30px 30px 10px;
+		float: right;
+		font-size: $font-size-small - 4;
+		padding: 0 30px 10px 10px;
 		text-align: center;
 		text-transform: uppercase;
 
 		&.is-muted {
 			svg {
-				height: 30px;
-				padding-top: 5px;
+				height: 21px;
+				padding-top: 3px;
 			}
 		}
 
@@ -26,7 +22,7 @@
 		}
 		svg {
 			fill: $white;
-			width: 30px;
+			width: 24px;
 		}
 	}
 	.video-wrapper {
@@ -38,7 +34,7 @@
 		position: relative;
 
 		.title {
-			//font-size: 50px;
+			font-size: 25px;
 			font-weight: 700;
 			letter-spacing: 5px;
 			margin-bottom: 0;
@@ -67,7 +63,17 @@
 	@include media(phablet) {
 
 		.mute {
+			font-size: $font-size-small;
 			top: 100%;
+
+			&.is-muted svg {
+				height: 30px;
+				padding-top: 5px;
+			}
+
+			svg {
+				width: 30px;
+			}
 		}
 	}
 }

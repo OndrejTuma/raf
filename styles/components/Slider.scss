@@ -33,6 +33,9 @@
 				transition-delay: .5s;
 			}
 		}
+		&.vertical {
+			@include child-middle()
+		}
 
 		.animate-content {
 			opacity: 0;

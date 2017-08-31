@@ -36,24 +36,25 @@ class Youtube extends Component {
 	}
 	componentWillUnmount() {
 		clearInterval(this.karaokeInterval)
+		clearInterval(this.titleInterval)
 		window.removeEventListener('resize', this._setTitlesHeight)
 	}
 
 	_setTitlesHeight() {
-		clearInterval(this.titleInterval)
 		this.titleInterval = setInterval(() => {
 			if ( !this.titleLeft || !this.titleRight || !this.videoWrapper) {
 				return
 			}
 			if (this.videoWrapper.offsetHeight) {
 				let fontSize = parseInt(this.titleLeft.style.fontSize) || 10,
-					tolerance = 20,
+					tolerance = 5,
+					changeBy = 5,
 					zooming = Math.abs(this.titleLeft.offsetWidth - this.videoWrapper.offsetHeight) > tolerance,
 					zoomIn = this.titleLeft.offsetWidth + tolerance < this.videoWrapper.offsetHeight
 
 				if (zooming) {
-					this.titleLeft.style.fontSize = `${zoomIn ? fontSize + 10 : fontSize - 10}px`
-					this.titleRight.style.fontSize = `${zoomIn ? fontSize + 10 : fontSize - 10}px`
+					this.titleLeft.style.fontSize = `${zoomIn ? fontSize + changeBy : fontSize - changeBy}px`
+					this.titleRight.style.fontSize = `${zoomIn ? fontSize + changeBy : fontSize - changeBy}px`
 				}
 				else {
 					clearInterval(this.titleInterval)
