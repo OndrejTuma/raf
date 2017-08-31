@@ -82,7 +82,7 @@ export const lines = {
 		{ text: 'my', animation: animations.zoomOut },
 		{ text: 'Raf', animation: animations.zoomIn },
 	],
-	step: ['Ho', 'don\'t', 'step', 'on', 'my', 'Raf', 'Simons'],
+	step: ['Ho,', 'don\'t', 'step', 'on', 'my', 'Raf', 'Simons'],
 	spending: ['Do', 'you', 'know', 'how', 'much', 'I\'m', 'spendin\'?'],
 	milli: ['My', 'closet', 'it', 'worth', '\'bout', 'a', 'milli'],
 	runway: ['Took', 'the', 'lil\'', 'bitch', 'out', 'the', 'runway'],

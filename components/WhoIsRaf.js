@@ -19,7 +19,7 @@ const WhoIsRaf = ({
 				<div className="animate-content">
 					<p>
 						{about}<br/>
-						<a href="#" className="link">{interview}</a>
+						<a href="https://www.nytimes.com/2016/03/06/t-magazine/raf-simons-interview.html?mcubz=0" target="_blank" className="link">{interview}</a>
 					</p>
 
 					{activeSlide === 1 ? (

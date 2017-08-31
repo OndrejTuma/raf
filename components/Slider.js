@@ -71,12 +71,25 @@ class Slider extends Component {
 		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 	}
 	_handleKeyDown(e) {
-		console.log(e);
-		if ([32, 34, 40].indexOf(e.keyCode) >= 0) {
+		let keyCode = e.keyCode
+
+		// spacebar, page down, arrow down
+		if ([32, 34, 40].indexOf(keyCode) >= 0) {
 			this._nextSlide(true)
 		}
-		else if ([33, 38].indexOf(e.keyCode) >= 0) {
+		// page up, arrow up
+		else if ([33, 38].indexOf(keyCode) >= 0) {
 			this._nextSlide(false)
+		}
+		else {
+			// home, end
+			if ([35, 36].indexOf(keyCode) >= 0) {
+				const { dispatch, activeSlide } = this.props
+				let slide = keyCode === 35 ? this.slides - 1 : 0
+
+				this.slideTo(slide)
+				dispatch(setActiveSlide(slide, activeSlide))
+			}
 		}
 	}
 	_handleResize(e) {

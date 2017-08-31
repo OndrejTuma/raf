@@ -63,7 +63,7 @@ export const strings = {
 		'Kdo je Raf Simons?',
 	],
 	about: [
-		'Raf Simons is the epitome of contemporary fashion avant-garde, which sometimes, graduates into shocking extravaganza.<br>Sometimes, it is fascinating , with what ease the design of this Belgian designer surpasses the boundaries of steady lines and contours, and thus materializes the unimaginable abstraction. Sneakers designed by Raf Simmons can surprisingly transform satire into dazzling fashionable cliché, or, on the contrary, with their own self-indulgence, deconstruckt it.',
+		'Raf Simons is the epitome of contemporary fashion avant-garde, which sometimes, graduates into shocking extravaganza.<br>Sometimes, it is fascinating , with what ease the design of this Belgian designer surpasses the boundaries of steady lines and contours, and thus materializes the unimaginable abstraction. Sneakers designed by Raf Simmons can surprisingly transform satire into dazzling fashionable cliché, or, on the contrary, with their own self-indulgence, deconstruct it.',
 		'Raf Simons je ztělesněním současné módní avantgardy, jež místy přechází až v šokující extravaganci.<br>Chvílemi je až fascinující, s jakou lehkostí tvorba tohoto belgického návrháře překonává hranice ustálených linií a kontur a zhmotňuje tak dosud nepředstavitelnou abstrakci. Rafem Simonsem navržené tenisky dokáží překvapivě vkusně ztvárnit satiru na omšelá módní klišé, nebo je naopak s drzostí sobě vlastní nevybíravým způsobem boří.',
 	],
 	interview: [
