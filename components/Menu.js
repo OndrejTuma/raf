@@ -21,7 +21,7 @@ class Menu extends Component {
 		const { activeSlide, isSliding, dispatch } = this.props
 
 		if (!isSliding && index != activeSlide) {
-			dispatch(setActiveSlide(index, activeSlide))
+			dispatch(setActiveSlide(index))
 		}
 		this.setState({ open: false })
 	}
@@ -80,5 +80,4 @@ export default nextConnect(state => ({
 	isMobile: state.global.isMobile,
 	isSliding: state.global.isSliding,
 	activeSlide: state.global.slider.activeSlide,
-	previousSlide: state.global.slider.previousSlide,
 }))(Menu)

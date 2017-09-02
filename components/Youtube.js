@@ -14,6 +14,8 @@ import ResponsiveRatio from './ResponsiveRatio'
 import lyrics from '../karaoke-lyrics'
 
 
+const dev = process.env.NODE_ENV !== 'production'
+
 class Youtube extends Component {
 
 	constructor(props) {
@@ -25,7 +27,7 @@ class Youtube extends Component {
 		this._ytReady = this._ytReady.bind(this)
 
 		this.state = {
-			isMuted: false,
+			isMuted: dev,
 			karaoke: null,
 			karaokeInterval: 0,
 			titleInterval: 0,

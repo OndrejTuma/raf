@@ -1,12 +1,6 @@
 import actions from './action-types'
 
-export const setActiveSlide = (payload, prevousSlide) => dispatch => {
-	dispatch({ type: actions.SET_ACTIVE_SLIDE, payload })
-	if (prevousSlide >= 0) {
-		dispatch(setPreviousSlide(prevousSlide))
-	}
-}
-export const setPreviousSlide = payload => dispatch => dispatch({ type: actions.SET_PREVIOUS_SLIDE, payload })
+export const setActiveSlide = (payload) => dispatch => dispatch({ type: actions.SET_ACTIVE_SLIDE, payload })
 
 export const setIsMobile = payload => dispatch => dispatch({ type: actions.SET_IS_MOBILE, payload })
 export const setIsSliding = payload => dispatch => dispatch({ type: actions.SET_IS_SLIDING, payload })

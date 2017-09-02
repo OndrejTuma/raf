@@ -26,7 +26,6 @@ const authReducer = (state = {
 const globalReducer = (state = {
 	slider: {
 		activeSlide: 0,
-		previousSlide: null,
 	},
 	youtube: {
 		state: null,
@@ -39,12 +38,6 @@ const globalReducer = (state = {
 			slider: {
 				...state.slider,
 				activeSlide: action.payload,
-			},
-		})
-		case actions.SET_PREVIOUS_SLIDE:  return Object.assign({}, state, {
-			slider: {
-				...state.slider,
-				previousSlide: action.payload,
 			},
 		})
 		case actions.SET_YOUTUBE_STATE:  return {

@@ -17,21 +17,19 @@ class Slider extends Component {
 		this._handleScroll = this._handleScroll.bind(this)
 		this._handleTouch = this._handleTouch.bind(this)
 		this._handleScrollEnd = this._handleScrollEnd.bind(this)
-	}
-	componentDidMount() {
-		const { children } = this.props
+		this._handleScrollStart = this._handleScrollStart.bind(this)
 
-		this.lastScrollTop = this._getScrollTop()
 		this.duration = 1000
 		this.scrollerSettings = {
 			duration: this.duration,
 			ignoreCancelEvents: true,
 			smooth: true,
 		}
-		this.slides = children.length
-		this.slidingTimeout = 0
+	}
+	componentDidMount() {
+		this.slides = this.props.children.length
 
-		Events.scrollEvent.register('begin', (to, element) => {} )
+		Events.scrollEvent.register('begin', this._handleScrollStart)
 		Events.scrollEvent.register('end', this._handleScrollEnd)
 		scrollSpy.update()
 
@@ -64,12 +62,6 @@ class Slider extends Component {
 			window.removeEventListener('keydown', this._handleKeyDown)
 		}
 	}
-	_getScrollTop() {
-		return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-	}
-	_getViewportHeight() {
-		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-	}
 	_handleKeyDown(e) {
 		let keyCode = e.keyCode
 
@@ -84,20 +76,19 @@ class Slider extends Component {
 		else {
 			// home, end
 			if ([35, 36].indexOf(keyCode) >= 0) {
-				const { dispatch, activeSlide } = this.props
 				let slide = keyCode === 35 ? this.slides - 1 : 0
 
-				this.slideTo(slide)
-				dispatch(setActiveSlide(slide, activeSlide))
+				this._setSlide(slide)
 			}
 		}
 	}
-	_handleResize(e) {
+	_handleResize() {
 		const { activeSlide } = this.props
 
 		this.slideTo(activeSlide)
 	}
 	_handleScroll(e) {
+		e.preventDefault()
 		let scrollDown = e.deltaY > 0
 
 		if (!this.props.isSliding) {
@@ -105,6 +96,7 @@ class Slider extends Component {
 		}
 	}
 	_handleTouch(e) {
+		e.preventDefault()
 		if (e.touches.length && !this.props.isSliding) {
 			let touch = e.touches[0]
 
@@ -120,30 +112,16 @@ class Slider extends Component {
 
 		this._nextSlide(true)
 	}
-	_handleScrollEnd(to, element) {
-		let { dispatch, isSliding, previousSlide } = this.props,
-			slide = to.match(/\d+/) ? parseInt(to.match(/\d+/)[0]) : null
+	_handleScrollEnd() {
+		let { dispatch, isSliding } = this.props
 
-		if (slide >= 0) {
-			element.classList.add('active')
-
-			let oldElement = document.getElementById(`slide${previousSlide}`)
-			if (oldElement) {
-				oldElement.classList.remove('active')
-			}
+		if (isSliding) {
+			dispatch(setIsSliding(false))
 		}
-		if ( ! this.slidingTimeout) {
-			this.slidingTimeout = setTimeout(() => {
-				clearTimeout(this.slidingTimeout)
-				this.lastTouchY = null
-				this.slidingTimeout = 0
-				if (isSliding) {
-					dispatch(setIsSliding(false))
-				}
-				this._activateScrollListening()
-			}, 500)
-		}
+		this._activateScrollListening()
+		this.lastTouchY = null
 	}
+	_handleScrollStart() {}
 	_nextSlide(scrollDown = true) {
 		let { activeSlide, dispatch } = this.props,
 			nextSlide
@@ -156,10 +134,14 @@ class Slider extends Component {
 		}
 
 		if (nextSlide >= 0) {
-			this.slideTo(nextSlide)
-			dispatch(setActiveSlide(nextSlide, activeSlide))
+			this._setSlide(nextSlide)
 		}
 	}
+	_setSlide(slide) {
+		this.slideTo(slide)
+		this.props.dispatch(setActiveSlide(slide))
+	}
+
 
 	slideTo(slide) {
 		const { activeSlide, dispatch, isSliding } = this.props
@@ -180,7 +162,7 @@ class Slider extends Component {
 		}
 	}
 	render() {
-		const { children, activeSlide, translations: { scroll } } = this.props
+		const { children, activeSlide, isSliding, translations: { scroll } } = this.props
 
 		this.slideTo(activeSlide)
 
@@ -192,7 +174,7 @@ class Slider extends Component {
 				<div className={`Slider`}>
 					{children.map((slide, i) => {
 						return (
-							<div className={`slide`} id={`slide${i}`} key={i}>
+							<div className={classNames('slide', { active: activeSlide === i && !isSliding })} id={`slide${i}`} key={i}>
 								{slide}
 							</div>
 						)
@@ -206,5 +188,4 @@ class Slider extends Component {
 export default nextConnect(state => ({
 	isSliding: state.global.isSliding,
 	activeSlide: state.global.slider.activeSlide,
-	previousSlide: state.global.slider.previousSlide,
 }))(Slider)

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ga from 'react-google-analytics'
 
 import {nextConnect} from '../store'
 
@@ -16,7 +15,7 @@ class RafInFs extends Component {
 						<img src="static/images/new-collection.jpg" alt={heading} />
 					</div>
 					<figcaption className="animate-content">
-						<a href={collectionLink} onClick={() => ga('send', 'event', 'collection-cta', 'click')}>
+						<a href={collectionLink}>
 							<strong>{collection}</strong> <span>{inFs}</span>
 						</a>
 					</figcaption>
