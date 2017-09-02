@@ -18,11 +18,11 @@ class RafInFs extends Component {
 							<ResponsiveImageSize
 								default
 								minWidth={0}
-								path={`${paths.images}new-collection_v400.jpg`}
+								path={`${paths.images}new-collection_h400.jpg`}
 							/>
 							<ResponsiveImageSize
 								minWidth={450}
-								path={`${paths.images}new-collection_v500.jpg`}
+								path={`${paths.images}new-collection_h500.jpg`}
 							/>
 							<ResponsiveImageSize
 								minWidth={1100}

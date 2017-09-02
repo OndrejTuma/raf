@@ -5,12 +5,10 @@
 
 	.info {
 		.animate-image {
-			//left: 0;
 			position: absolute;
 
 			img {
 				max-width: 90%;
-				//opacity: .4;
 			}
 		}
 	}
@@ -36,6 +34,10 @@
 
 			.animate-image {
 				position: relative;
+
+				img {
+					max-width: none;
+				}
 			}
 		}
 		p {

@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import CountUp from 'countup.js'
 import classNames from 'classnames'
 import {spring, StaggeredMotion} from 'react-motion'
+import { ResponsiveImage, ResponsiveImageSize } from 'react-responsive-image'
 
 import {nextConnect} from '../store'
 
@@ -69,7 +70,32 @@ class Carousel extends Component {
 						>
 							{styles => (
 								<div>
-									{slide.image && <img src={slide.image} alt={`${slide.key}`} style={styles[0]} />}
+									{slide.responsive ? (
+										<div style={{
+											...styles[0],
+											position: 'relative',
+										}}>
+											<ResponsiveImage alt={`${slide.key}`}>
+												<ResponsiveImageSize
+													default
+													minWidth={0}
+													path={slide.responsive.mobile || slide.image}
+												/>
+												<ResponsiveImageSize
+													default
+													minWidth={500}
+													path={slide.responsive.tablet || slide.image}
+												/>
+												<ResponsiveImageSize
+													default
+													minWidth={1100}
+													path={slide.responsive.desktop || slide.image}
+												/>
+											</ResponsiveImage>
+										</div>
+									) : (
+										<img src={slide.image} alt={`${slide.key}`} style={styles[0]} />
+									)}
 									<div className="info">
 										{reversed && <h3 style={styles[1]}>{slide.key}</h3>}
 										<p style={styles[2]}>{slide.text}</p>
@@ -79,7 +105,27 @@ class Carousel extends Component {
 						</StaggeredMotion>
 					) : (
 						<div>
-							{slide.image && <img src={slide.image} alt={`${slide.key}`} />}
+							{slide.responsive ? (
+								<ResponsiveImage alt={`${slide.key}`}>
+									<ResponsiveImageSize
+										default
+										minWidth={0}
+										path={slide.responsive.mobile || slide.image}
+									/>
+									<ResponsiveImageSize
+										default
+										minWidth={500}
+										path={slide.responsive.tablet || slide.image}
+									/>
+									<ResponsiveImageSize
+										default
+										minWidth={1100}
+										path={slide.responsive.desktop || slide.image}
+									/>
+								</ResponsiveImage>
+							) : (
+								<img src={slide.image} alt={`${slide.key}`} />
+							)}
 							<div className="info">
 								{reversed && <h3>{slide.key}</h3>}
 								<p>{slide.text}</p>

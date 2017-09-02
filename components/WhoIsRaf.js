@@ -1,6 +1,8 @@
 import React from 'react'
+import { ResponsiveImage, ResponsiveImageSize } from 'react-responsive-image'
 
 import {nextConnect} from '../store'
+import {paths} from '../configs'
 
 import Cites from './Cites'
 
@@ -14,7 +16,21 @@ const WhoIsRaf = ({
 			<h2 className="animate-heading">{heading}</h2>
 			<div className="info">
 				<div className="animate-image">
-					<img src={`static/images/raf-bio.jpg`} alt="Raf Simons"/>
+					<ResponsiveImage alt="Raf Simons">
+						<ResponsiveImageSize
+							default
+							minWidth={0}
+							path={`${paths.images}raf-bio_w300.jpg`}
+						/>
+						<ResponsiveImageSize
+							minWidth={500}
+							path={`${paths.images}raf-bio_w500.jpg`}
+						/>
+						<ResponsiveImageSize
+							minWidth={1100}
+							path={`${paths.images}raf-bio.jpg`}
+						/>
+					</ResponsiveImage>
 				</div>
 				<div className="animate-content">
 					<p>

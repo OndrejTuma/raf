@@ -28,6 +28,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-facebook": "^4.0.14",
+    "react-google-tag-manager": "^2.1.0",
     "react-localize-redux": "^2.5.2",
     "react-motion": "^0.5.0",
     "react-redux": "^5.0.6",
