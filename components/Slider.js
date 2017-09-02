@@ -138,8 +138,13 @@ class Slider extends Component {
 		}
 	}
 	_setSlide(slide) {
+		const { activeSlide, dispatch } = this.props
+
 		this.slideTo(slide)
-		this.props.dispatch(setActiveSlide(slide))
+
+		if (activeSlide !== slide) {
+			dispatch(setActiveSlide(slide))
+		}
 	}
 
 
@@ -148,7 +153,7 @@ class Slider extends Component {
 
 		// client-side only
 		if (typeof window !== 'undefined') {
-			let willBeSliding = slide != activeSlide
+			let willBeSliding = slide !== activeSlide
 
 			if (typeof isSliding === 'undefined') {
 				dispatch(setIsSliding(willBeSliding))
@@ -164,7 +169,7 @@ class Slider extends Component {
 	render() {
 		const { children, activeSlide, isSliding, translations: { scroll } } = this.props
 
-		this.slideTo(activeSlide)
+		this._setSlide(activeSlide)
 
 		return (
 			<div>

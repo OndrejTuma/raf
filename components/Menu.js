@@ -3,7 +3,7 @@ import {Motion, spring, StaggeredMotion} from 'react-motion'
 import classNames from 'classnames'
 
 import {nextConnect} from '../store'
-import {setActiveSlide} from '../redux/actions'
+import {setActiveSlide, setIsSliding} from '../redux/actions'
 
 
 class Menu extends Component {
@@ -21,6 +21,7 @@ class Menu extends Component {
 		const { activeSlide, isSliding, dispatch } = this.props
 
 		if (!isSliding && index != activeSlide) {
+			dispatch(setIsSliding(true))
 			dispatch(setActiveSlide(index))
 		}
 		this.setState({ open: false })

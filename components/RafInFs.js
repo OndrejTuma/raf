@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { ResponsiveImage, ResponsiveImageSize } from 'react-responsive-image'
 
 import {nextConnect} from '../store'
+import {paths} from '../configs'
 
 class RafInFs extends Component {
 
@@ -12,7 +14,21 @@ class RafInFs extends Component {
 				<h2 className="animate-heading">{heading}</h2>
 				<figure className="collection">
 					<div className="animate-image">
-						<img src="static/images/new-collection.jpg" alt={heading} />
+						<ResponsiveImage alt={heading}>
+							<ResponsiveImageSize
+								default
+								minWidth={0}
+								path={`${paths.images}new-collection_v400.jpg`}
+							/>
+							<ResponsiveImageSize
+								minWidth={450}
+								path={`${paths.images}new-collection_v500.jpg`}
+							/>
+							<ResponsiveImageSize
+								minWidth={1100}
+								path={`${paths.images}new-collection.jpg`}
+							/>
+						</ResponsiveImage>
 					</div>
 					<figcaption className="animate-content">
 						<a href={collectionLink}>

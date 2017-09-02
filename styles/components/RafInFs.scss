@@ -1,5 +1,10 @@
 #slide4 {
+	@include child-middle;
 	overflow: visible;
+
+	& > div {
+		width: 100%;
+	}
 }
 
 .RafInFs {
