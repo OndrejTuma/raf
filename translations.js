@@ -56,7 +56,7 @@ export const strings = {
 	],
 	loud: [
 		'Unmute music',
-		'Zhlasit',
+		'Zesílit',
 	],
 	scroll: [
 		'Scroll down',
