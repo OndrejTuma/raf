@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import Head from 'next/head'
 import {addTranslation, getTranslate, setLanguages, getActiveLanguage} from 'react-localize-redux'
 import FacebookProvider, { Like } from 'react-facebook'
-import gtmParts from 'react-google-tag-manager'
 
 import {nextConnect} from '../store'
 import {setIsMobile} from '../redux/actions'
 
 import Footer from '../components/Footer'
+import GoogleTagManager from '../components/GoogleTagManager'
 import Header from '../components/Header'
 import History from '../components/History'
 import Languages from '../components/Languages'
@@ -57,9 +57,6 @@ class Index extends Component {
 
 	render() {
 		const {translate, activeSlide} = this.props
-		const gtm = gtmParts({
-			id: 'GTM-594JXKN',
-		});
 		let heads = {
 			title: translate('title'),
 			url: "https://raf.footshop.cz/",
@@ -81,10 +78,7 @@ class Index extends Component {
 					<link rel='icon' href='/static/favicon.ico' />
 				</Head>
 
-				<div>{gtm.noScriptAsReact()}</div>
-				<div id={'react-google-tag-manager-gtm'}>
-					{gtm.scriptAsReact()}
-				</div>
+				<GoogleTagManager gtmId={`GTM-594JXKN`} />
 
 				<Header/>
 
