@@ -7,7 +7,7 @@ import {paths} from '../configs'
 class RafInFs extends Component {
 
 	render() {
-		const { translations: { heading, collection, collectionLink, inFs } } = this.props
+		const { heading, translations: { collection, collectionLink, inFs } } = this.props
 
 		return (
 			<div className={`RafInFs`}>

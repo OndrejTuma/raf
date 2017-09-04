@@ -5,22 +5,22 @@ import Carousel from './Carousel'
 class Signature extends Component {
 
 	render() {
-		let { translations: { heading, key1, key2, key3, key4, fact1, fact2, fact3, fact4 } } = this.props
+		let { heading, translations: { carousel1, carousel2, carousel3, carousel4 } } = this.props
 		let slides = [
-			{ key: key1, text: fact1, image: 'static/images/signature/ozweego.jpg', responsive: {
+			{ key: carousel1.key, text: carousel1.text, image: 'static/images/signature/ozweego.jpg', responsive: {
 				mobile: 'static/images/signature/ozweego_m.jpg',
 				tablet: 'static/images/signature/ozweego_t.jpg',
 				desktop: 'static/images/signature/ozweego_d.jpg',
 			} },
-			{ key: key2, text: fact2, image: 'static/images/signature/bunny.jpg', responsive: {
+			{ key: carousel2.key, text: carousel2.text, image: 'static/images/signature/bunny.jpg', responsive: {
 				mobile: 'static/images/signature/bunny_m.jpg',
 				tablet: 'static/images/signature/bunny_t.jpg',
 				desktop: 'static/images/signature/bunny_d.jpg',
 			} },
-			{ key: key3, text: fact3, image: 'static/images/signature/perry.jpg', responsive: {
+			{ key: carousel3.key, text: carousel3.text, image: 'static/images/signature/perry.jpg', responsive: {
 				mobile: 'static/images/signature/perry_m.jpg',
 			} },
-			{ key: key4, text: fact4, image: 'static/images/signature/boots.jpg', responsive: {
+			{ key: carousel4.key, text: carousel4.text, image: 'static/images/signature/boots.jpg', responsive: {
 				mobile: 'static/images/signature/boots_m.jpg',
 			} },
 		]

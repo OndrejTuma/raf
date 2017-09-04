@@ -7,9 +7,9 @@ import LogoFootshop from '../components/LogoFootshop'
 class Footer extends Component {
 
 	render() {
-		const {translations: {footshoUrl, link, linkText, text}} = this.props
+		const {translations: {footshopUrl, link, linkText, text}} = this.props
 
-		let FootshopLogo = <LogoFootshop link={footshoUrl} className="bigger"/>,
+		let FootshopLogo = <LogoFootshop link={footshopUrl} className="bigger"/>,
 			FootContent = <p>{text} <a href={link}>{linkText}</a></p>
 
 		return (

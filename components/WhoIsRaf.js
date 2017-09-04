@@ -9,7 +9,8 @@ import Cites from './Cites'
 const WhoIsRaf = ({
 	activeSlide,
 	cites,
-	translations: { heading, about, interview },
+	heading,
+	translations: { about, interview },
 }) => {
 	return (
 		<div className="who-is-raf">

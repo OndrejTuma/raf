@@ -5,27 +5,27 @@ import Carousel from './Carousel'
 class History extends Component {
 
 	render() {
-		let { translations: { heading, fact1, fact2, fact3, fact4, fact5 } } = this.props
+		let { heading, translations: { carousel1, carousel2, carousel3, carousel4, carousel5 } } = this.props
 		let slides = [
-			{ key: 1989, text: fact1, image: 'static/images/history/1989.jpg', responsive: {
+			{ key: carousel1.key, text: carousel1.text, image: 'static/images/history/1989.jpg', responsive: {
 				mobile: 'static/images/history/1989_m.jpg',
 				tablet: 'static/images/history/1989_t.jpg',
 				desktop: 'static/images/history/1989_d.jpg',
 			} },
-			{ key: 1995, text: fact2, image: 'static/images/history/1995.jpg', responsive: {
+			{ key: carousel2.key, text: carousel2.text, image: 'static/images/history/1995.jpg', responsive: {
 				mobile: 'static/images/history/1995_m.jpg',
 				tablet: 'static/images/history/1995_t.jpg',
 				desktop: 'static/images/history/1995_d.jpg',
 			} },
-			{ key: 2001, text: fact3, image: 'static/images/history/2001.jpg', responsive: {
+			{ key: carousel3.key, text: carousel3.text, image: 'static/images/history/2001.jpg', responsive: {
 				mobile: 'static/images/history/2001_m.jpg',
 			} },
-			{ key: 2006, text: fact4, image: 'static/images/history/2006.jpg', responsive: {
+			{ key: carousel4.key, text: carousel4.text, image: 'static/images/history/2006.jpg', responsive: {
 				mobile: 'static/images/history/2006_m.jpg',
 				tablet: 'static/images/history/2006_t.jpg',
 				desktop: 'static/images/history/2006_d.jpg',
 			} },
-			{ key: 2013, text: fact5, image: 'static/images/history/2013.jpg', responsive: {
+			{ key: carousel5.key, text: carousel5.text, image: 'static/images/history/2013.jpg', responsive: {
 				mobile: 'static/images/history/2013_m.jpg',
 				tablet: 'static/images/history/2013_t.jpg',
 				desktop: 'static/images/history/2013_d.jpg',

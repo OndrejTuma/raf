@@ -58,7 +58,7 @@ class Index extends Component {
 	render() {
 		const {translate, activeSlide} = this.props
 		let heads = {
-			title: translate('title'),
+			title: translate('head.title'),
 			url: "https://raf.footshop.cz/",
 			img: "https://raf.footshop.cz/static/images/og-image.jpg",
 		}
@@ -73,8 +73,8 @@ class Index extends Component {
 					<meta property="og:image" content={heads.img} />
 					<style dangerouslySetInnerHTML={{__html: stylesheet}}/>
 					<title>{heads.title}</title>
-					<meta name="description" content={translate('desc')}/>
-					<meta name="keywords" content={translate('keywords')}/>
+					<meta name="description" content={translate('head.desc')}/>
+					<meta name="keywords" content={translate('head.keywords')}/>
 					<link rel='icon' href='/static/favicon.ico' />
 				</Head>
 
@@ -85,83 +85,75 @@ class Index extends Component {
 				<Lyrics/>
 
 				<Menu items={[
-					{name: translate('menu1'), anchor: 'slide0'},
-					{name: translate('menu2'), anchor: 'slide1'},
-					{name: translate('menu3'), anchor: 'slide2'},
-					{name: translate('menu4'), anchor: 'slide3'},
-					{name: translate('menu5'), anchor: 'slide4'},
+					{name: translate('menu.first'), anchor: 'slide0'},
+					{name: translate('menu.second'), anchor: 'slide1'},
+					{name: translate('menu.third'), anchor: 'slide2'},
+					{name: translate('menu.fourth'), anchor: 'slide3'},
+					{name: translate('menu.fifth'), anchor: 'slide4'},
 				]} />
 
 				<TurnDevice text={translate('turnDevice')}/>
 
-				<Slider translations={{ scroll: translate('scroll') }}>
+				<Slider translations={{ scroll: translate('slides.home.scroll') }}>
 					<div className="intro">
 						<Languages translations={{
-							lang: translate('lang'),
+							lang: translate('slides.home.lang'),
 						}}/>
 						<FacebookProvider appId="737738779689385">
 							<Like className="facebook-like" href={heads.url} layout="button"/>
 						</FacebookProvider>
 						<Youtube translations={{
-							loud: translate('loud'),
-							mute: translate('mute'),
-							raf: translate('raf'),
+							loud: translate('slides.home.loud'),
+							mute: translate('slides.home.mute'),
+							raf: translate('slides.home.raf'),
 						}}/>
 					</div>
 					<div>
-						<WhoIsRaf activeSlide={activeSlide} translations={{
-							heading: translate('who'),
-							about: translate('about'),
-							interview: translate('interview'),
+						<WhoIsRaf heading={translate('slides.who.heading')} translations={{
+							about: translate('slides.who.about'),
+							interview: translate('slides.who.interview'),
 						}} cites={[
-							{ text: translate('cite1'), author: translate('author1') },
-							{ text: translate('cite2'), author: translate('author2') },
+							{ text: translate('slides.who.cites.first.text'), author: translate('slides.who.cites.first.author') },
+							{ text: translate('slides.who.cites.second.text'), author: translate('slides.who.cites.second.author') },
 						]}/>
 					</div>
 					<div>
-						<History translations={{
-							heading: translate('history'),
-							fact1: translate('1989'),
-							fact2: translate('1995'),
-							fact3: translate('2001'),
-							fact4: translate('2006'),
-							fact5: translate('2013'),
+						<History heading={translate('slides.history.heading')} translations={{
+							carousel1: { key: translate('slides.history.carousel.first.key'), text: translate('slides.history.carousel.first.text') },
+							carousel2: { key: translate('slides.history.carousel.second.key'), text: translate('slides.history.carousel.second.text') },
+							carousel3: { key: translate('slides.history.carousel.third.key'), text: translate('slides.history.carousel.third.text') },
+							carousel4: { key: translate('slides.history.carousel.fourth.key'), text: translate('slides.history.carousel.fourth.text') },
+							carousel5: { key: translate('slides.history.carousel.fifth.key'), text: translate('slides.history.carousel.fifth.text') },
 						}}/>
 					</div>
 					<div>
-						<Signature translations={{
-							heading: translate('signature'),
-							key1: translate('signKey1'),
-							key2: translate('signKey2'),
-							key3: translate('signKey3'),
-							key4: translate('signKey4'),
-							fact1: translate('sign1'),
-							fact2: translate('sign2'),
-							fact3: translate('sign3'),
-							fact4: translate('sign4'),
+						<Signature heading={translate('slides.signature.heading')} translations={{
+							carousel1: { key: translate('slides.signature.carousel.first.key'), text: translate('slides.signature.carousel.first.text') },
+							carousel2: { key: translate('slides.signature.carousel.second.key'), text: translate('slides.signature.carousel.second.text') },
+							carousel3: { key: translate('slides.signature.carousel.third.key'), text: translate('slides.signature.carousel.third.text') },
+							carousel4: { key: translate('slides.signature.carousel.fourth.key'), text: translate('slides.signature.carousel.fourth.text') },
 						}}/>
 					</div>
 					<div>
-						<RafInFs translations={{
-							heading: translate('RafInFs'),
-							collection: translate('collection'),
-							collectionLink: translate('collectionLink'),
-							inFs: translate('inFs'),
+						<RafInFs heading={translate('slides.rafInFs.heading')} translations={{
+							collection: translate('slides.rafInFs.collection'),
+							collectionLink: translate('slides.rafInFs.collectionLink'),
+							inFs: translate('slides.rafInFs.inFs'),
 						}}/>
 						<Socials translations={{
-							linkFb: translate('linkFb'),
-							linkTw: translate('linkTw'),
-							linkIt: translate('linkIt'),
-							linkSc: translate('linkSc'),
-							linkYt: translate('linkYt'),
+							linkFb: translate('Socials.facebook'),
+							linkTw: translate('Socials.twitter'),
+							linkIt: translate('Socials.instagram'),
+							linkSc: translate('Socials.snapchat'),
+							linkYt: translate('Socials.youtube'),
 						}}/>
 					</div>
 					<div>
 						<Footer translations={{
-							footshoUrl: translate('footLogoUrl'),
-							link: translate('footLinkUrl'),
-							linkText: translate('footLink'),
-							text: translate('foot'),
+							footshopUrl: translate('slides.footer.logoUrl'),
+							link: translate('slides.footer.textLinkUrl'),
+							linkText: translate('slides.footer.textLink'),
+							text: translate('slides.footer.text'),
 						}}/>
 					</div>
 				</Slider>

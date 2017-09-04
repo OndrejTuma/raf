@@ -30,8 +30,8 @@ class Carousel extends Component {
 				if (hasCounter && slides[oldIndex] && slides[newIndex]) {
 					new CountUp(
 						this.selectedYear,
-						slides[oldIndex].key,
-						slides[newIndex].key,
+						parseInt(slides[oldIndex].key),
+						parseInt(slides[newIndex].key),
 						0, 1.5,
 						{ separator: '' }
 					).start()
