@@ -113,50 +113,30 @@ export const strings = {
 			],
 			carousel: {
 				first: {
-					key: [
-						'1989',
-						'1989',
-					],
 					text: [
 						'While studying furniture design, Raf finds himself at Martin Margiela\'s show, which inspires him to create his own work.',
 						'Během studií designu nábytku se Raf ocitá na přehlídce Martina Margiely, která jej inspiruje k vlastní tvorbě.',
 					],
 				},
 				second: {
-					key: [
-						'1995',
-						'1995',
-					],
 					text: [
 						'Raf Simons creates his own designer brand under his own name.',
 						'Raf Simons zakládá pod svým jménem vlastní návrhářskou značku.',
 					],
 				},
 				third: {
-					key: [
-						'2001',
-						'2001',
-					],
 					text: [
 						'Simons releases a controversial collection that responds to a series of terrorist attacks. Two months later, New York twins will fall.',
 						'Simons vydává kontroverzní kolekci reagující na sérii teroristických útoků. Dva měsíce nato dojde k pádu newyorských dvojčat.',
 					],
 				},
 				fourth: {
-					key: [
-						'2006',
-						'2006',
-					],
 					text: [
 						'The designer handed over his art to Jil Sander through a sex-appeal-loaded collection, which is loyal to the brand\'s minimalist roots.',
 						'Návrhář předal své umění značce Jil Sander prostřednictvím sex appealem nabité kolekce, která však byla věrná minimalistickým kořenům značky.',
 					],
 				},
 				fifth: {
-					key: [
-						'2013',
-						'2013',
-					],
 					text: [
 						'Raf Simmons, and the German footwear gigant adidas hve shaken hands and signed a deal.',
 						'Raf Simons si podal ruku s německým obuvním gigantem jménem adidas.',
