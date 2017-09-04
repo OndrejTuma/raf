@@ -119,11 +119,11 @@ class Index extends Component {
 					</div>
 					<div>
 						<History heading={translate('slides.history.heading')} translations={{
-							carousel1: { key: translate('slides.history.carousel.first.key'), text: translate('slides.history.carousel.first.text') },
-							carousel2: { key: translate('slides.history.carousel.second.key'), text: translate('slides.history.carousel.second.text') },
-							carousel3: { key: translate('slides.history.carousel.third.key'), text: translate('slides.history.carousel.third.text') },
-							carousel4: { key: translate('slides.history.carousel.fourth.key'), text: translate('slides.history.carousel.fourth.text') },
-							carousel5: { key: translate('slides.history.carousel.fifth.key'), text: translate('slides.history.carousel.fifth.text') },
+							carousel1: { key: 1989, text: translate('slides.history.carousel.first.text') },
+							carousel2: { key: 1995, text: translate('slides.history.carousel.second.text') },
+							carousel3: { key: 2001, text: translate('slides.history.carousel.third.text') },
+							carousel4: { key: 2006, text: translate('slides.history.carousel.fourth.text') },
+							carousel5: { key: 2013, text: translate('slides.history.carousel.fifth.text') },
 						}}/>
 					</div>
 					<div>
