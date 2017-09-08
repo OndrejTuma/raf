@@ -55,85 +55,70 @@ class Carousel extends Component {
 			carouselClasses = classNames('Carousel', {reversed} )
 
 		let slider = <Slider {...this.sliderSettings} ref={elm => this.slider = elm}>
-			{slides.map((slide, i) => (
-				<div key={i}>
-					{activeSlide === i ? (
-						<StaggeredMotion
-							defaultStyles={[ { top: -50 }, { top: 50 }, { top: 50 } ]}
-							styles={prevStyles => prevStyles.map((_, j) => {
-								let styles = j === 0 ? {
-									top: spring( 0, { stiffness: 90, damping: 7 }),
-								} : prevStyles[j - 1]
+			{slides.map((slide, i) => {
+				let SlideImageResponsive = (
+					<ResponsiveImage alt={`${slide.key}`}>
+						<ResponsiveImageSize
+							minWidth={0}
+							path={slide.responsive.mobile || slide.image}
+						/>
+						<ResponsiveImageSize
+							minWidth={500}
+							path={slide.responsive.tablet || slide.image}
+						/>
+						<ResponsiveImageSize
+							minWidth={1100}
+							path={slide.responsive.desktop || slide.image}
+						/>
+					</ResponsiveImage>
+				)
 
-								return styles
-							})}
-						>
-							{styles => (
-								<div>
-									{slide.responsive ? (
-										<div style={{
-											...styles[0],
-											position: 'relative',
-										}}>
-											<ResponsiveImage alt={`${slide.key}`}>
-												<ResponsiveImageSize
-													default
-													minWidth={0}
-													path={slide.responsive.mobile || slide.image}
-												/>
-												<ResponsiveImageSize
-													default
-													minWidth={500}
-													path={slide.responsive.tablet || slide.image}
-												/>
-												<ResponsiveImageSize
-													default
-													minWidth={1100}
-													path={slide.responsive.desktop || slide.image}
-												/>
-											</ResponsiveImage>
+				return (
+					<div key={i}>
+						{activeSlide === i ? (
+							<StaggeredMotion
+								defaultStyles={[ { top: -50 }, { top: 50 }, { top: 50 } ]}
+								styles={prevStyles => prevStyles.map((_, j) => {
+									let styles = j === 0 ? {
+										top: spring( 0, { stiffness: 90, damping: 7 }),
+									} : prevStyles[j - 1]
+
+									return styles
+								})}
+							>
+								{styles => {
+									return (
+										<div>
+											{slide.responsive ? (
+												<div className="magnify" style={{
+													...styles[0],
+													position: 'relative',
+												}}>
+													{SlideImageResponsive}
+												</div>
+											) : (
+												<img src={slide.image} alt={`${slide.key}`} style={styles[0]} />
+											)}
+											<div className="info">
+												{reversed && <h3 style={styles[1]}>{slide.key}</h3>}
+												<p style={styles[2]}>{slide.text}</p>
+											</div>
 										</div>
-									) : (
-										<img src={slide.image} alt={`${slide.key}`} style={styles[0]} />
-									)}
-									<div className="info">
-										{reversed && <h3 style={styles[1]}>{slide.key}</h3>}
-										<p style={styles[2]}>{slide.text}</p>
-									</div>
+									)
+								}}
+							</StaggeredMotion>
+						) : (
+							<div>
+								{slide.responsive ? SlideImageResponsive : <img src={slide.image} alt={`${slide.key}`} />}
+								<div className="info">
+									{reversed && <h3>{slide.key}</h3>}
+									<p>{slide.text}</p>
 								</div>
-							)}
-						</StaggeredMotion>
-					) : (
-						<div>
-							{slide.responsive ? (
-								<ResponsiveImage alt={`${slide.key}`}>
-									<ResponsiveImageSize
-										default
-										minWidth={0}
-										path={slide.responsive.mobile || slide.image}
-									/>
-									<ResponsiveImageSize
-										default
-										minWidth={500}
-										path={slide.responsive.tablet || slide.image}
-									/>
-									<ResponsiveImageSize
-										default
-										minWidth={1100}
-										path={slide.responsive.desktop || slide.image}
-									/>
-								</ResponsiveImage>
-							) : (
-								<img src={slide.image} alt={`${slide.key}`} />
-							)}
-							<div className="info">
-								{reversed && <h3>{slide.key}</h3>}
-								<p>{slide.text}</p>
 							</div>
-						</div>
-					)}
-				</div>
-			))}
+						)}
+					</div>
+				)
+			})}
 		</Slider>
 		let step = <div className="step">
 			<div className="prev" onClick={() => this.slider.slickPrev()}>

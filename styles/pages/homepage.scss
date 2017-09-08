@@ -4,12 +4,17 @@
 	text-align: center;
 
 	& > div {
-		max-width: $wrapper--width;
+		max-width: 700px;
 		width: 100%;
 	}
 
 	@include media(phablet) {
 		padding: 0 50px;
+	}
+	@include media(desktop-large) {
+		& > div {
+			max-width: $wrapper--width;
+		}
 	}
 }
 

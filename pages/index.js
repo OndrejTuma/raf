@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Head from 'next/head'
-import {addTranslation, getTranslate, setLanguages, getActiveLanguage} from 'react-localize-redux'
+import {addTranslation, getActiveLanguage, getTranslate, setActiveLanguage, setLanguages} from 'react-localize-redux'
 import FacebookProvider, { Like } from 'react-facebook'
 
 import {nextConnect} from '../store'
@@ -29,12 +29,16 @@ class Index extends Component {
 
 	constructor(props) {
 		super(props)
-		this.props.dispatch(setLanguages(langs, defaultLang))
-		this.props.dispatch(addTranslation(strings))
 
 		this._setIsMobile = this._setIsMobile.bind(this)
 
 		this.mobileBreakpoint = 1000
+	}
+	componentWillMount() {
+		const { dispatch, url: { query: { lang } } } = this.props
+
+		dispatch(setLanguages(langs, lang === 'en' ? lang : defaultLang))
+		dispatch(addTranslation(strings))
 	}
 	componentDidMount() {
 		this._setIsMobile()

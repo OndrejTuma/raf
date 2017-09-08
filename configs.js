@@ -1,5 +1,5 @@
 export const paths = {
-	assets: 'static/',
-	images: 'static/images/',
-	svgs: 'static/svg/',
+	assets: '/static/',
+	images: '/static/images/',
+	svgs: '/static/svg/',
 }

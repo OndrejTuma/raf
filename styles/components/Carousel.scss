@@ -36,7 +36,7 @@
 		padding-right: 40px;
 
 		&.slick-active {
-
+			z-index: 1;
 		}
 
 		h3, img, p {
@@ -165,6 +165,7 @@
 		}
 		.timeline {
 			bottom: 0;
+			font-size: 12px;
 			left: 50px;
 			padding: 0 0 0 50px;
 			position: absolute;
@@ -208,6 +209,11 @@
 		}
 		.timeline {
 			left: 100px;
+		}
+	}
+	@include media(desktop-large) {
+		.timeline {
+			font-size: $font-size-tiny;
 		}
 	}
 	@include media(big-vh) {

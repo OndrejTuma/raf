@@ -3,7 +3,7 @@ import { setActiveLanguage } from 'react-localize-redux'
 
 import {nextConnect} from '../store'
 
-import { langs } from '../translations'
+import { langsMap } from '../translations'
 
 class Languages extends Component {
 	render() {
@@ -13,8 +13,12 @@ class Languages extends Component {
 			<div className="languages">
 				<p>{lang}</p>
 				<ul className="slash-list">
-					{langs.map((lang, i) => {
-						return <li key={i} onClick={() => dispatch(setActiveLanguage(lang))}>{lang}</li>
+					{Object.keys(langsMap).map((iso, i) => {
+						return (
+							<li key={i} onClick={() => dispatch(setActiveLanguage(iso))}>
+								{langsMap[iso].name}
+							</li>
+						)
 					})}
 				</ul>
 			</div>

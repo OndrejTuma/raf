@@ -5,7 +5,7 @@
 		float: left;
 		font-size: $font-size-small;
 		font-weight: 700;
-		margin: $margin--default 0;
+		margin: $margin--default 0 0;
 	}
 	small {
 		float: right;
@@ -17,12 +17,15 @@
 	}
 
 	@include media(phablet) {
-		float: left;
-
+		blockquote {
+			font-size: $font-size;
+			margin-top: $margin--small;
+			padding-right: 50px;
+		}
+	}
+	@include media(desktop-large) {
 		blockquote {
 			font-size: $font-size-big;
-			margin-bottom: 0;
-			padding-right: 50px;
 		}
 		small {
 			font-size: $font-size;

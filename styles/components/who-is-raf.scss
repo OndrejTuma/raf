@@ -1,11 +1,29 @@
+#slide1 {
+	@include child-middle;
+	padding-top: 0;
+
+	& > div {
+		width: 100%;
+	}
+}
+
 .who-is-raf {
 	font-size: $font-size-tiny;
 	line-height: 18px;
 	padding: 0 30px 0 20px;
 
+	.Cites {
+		position: absolute;
+	}
 	.info {
+		position: relative;
+
 		.animate-image {
 			position: absolute;
+
+			.slide.active & {
+				left: -20px;
+			}
 
 			img {
 				max-width: 90%;
@@ -22,9 +40,7 @@
 		position: relative;
 	}
 
-	@include media(phablet) {
-		font-size: $font-size;
-		line-height: 1.1;
+	@media only screen and (min-width: 500px) {
 		max-width: $wrapper--width;
 		margin: auto;
 		padding-right: 50px;
@@ -34,6 +50,10 @@
 
 			.animate-image {
 				position: relative;
+
+				.slide.active & {
+					left: 0;
+				}
 
 				img {
 					max-width: none;
@@ -47,5 +67,16 @@
 			position: absolute;
 			right: 0;
 		}
+	}
+	@include media(phablet) {
+		font-size: $font-size - 4;
+		line-height: 1.1;
+
+		.info img {
+			max-height: 70vh;
+		}
+	}
+	@include media(desktop-large) {
+		font-size: $font-size;
 	}
 }

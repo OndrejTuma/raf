@@ -10,6 +10,7 @@
 .RafInFs {
 	.collection {
 		color: $black;
+		font-size: 16px;
 		margin: 0 auto;
 		padding: 0 $padding--default $padding--small;
 		position: relative;
@@ -43,7 +44,7 @@
 			background-color: $white;
 			box-shadow: 5px 5px 20px rgba($black, .5);
 			line-height: 1;
-			max-width: 500px;
+			max-width: 300px;
 			width: 100%;
 
 			&.animate-content {
@@ -54,16 +55,25 @@
 			}
 		}
 		img {
-			max-height: 70vh;
+			max-height: 60vh;
 		}
 		span {
-			font-size: $font-size-small;
 			letter-spacing: 3px;
 		}
 		strong {
 			display: block;
-			font-size: 1.3em;
+			font-size: 1.65em;
 			font-weight: 400;
+		}
+	}
+
+	@include media(desktop-large) {
+		.collection {
+			font-size: $font-size-small;
+
+			figcaption {
+				max-width: 500px;
+			}
 		}
 	}
 }

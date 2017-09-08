@@ -28,7 +28,7 @@ const WhoIsRaf = ({
 							path={`${paths.images}raf-bio_w500.jpg`}
 						/>
 						<ResponsiveImageSize
-							minWidth={1100}
+							minWidth={1300}
 							path={`${paths.images}raf-bio.jpg`}
 						/>
 					</ResponsiveImage>
@@ -38,11 +38,10 @@ const WhoIsRaf = ({
 						{about}<br/>
 						<a href="https://www.nytimes.com/2016/03/06/t-magazine/raf-simons-interview.html?mcubz=0" target="_blank" className="link">{interview}</a>
 					</p>
-
-					{activeSlide === 1 ? (
-						<Cites data={cites}/>
-					) : ''}
 				</div>
+				{activeSlide === 1 ? (
+					<Cites data={cites}/>
+				) : ''}
 			</div>
 		</div>
 	)
